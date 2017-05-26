@@ -1,0 +1,55 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/roads/index/vehicle-hollow"
+	},
+	{
+		"label": "Thùng hở",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Thùng hở"
+		}
+	},
+	{
+		"label": "Thùng kín",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Thùng kín"
+		}
+	},
+	{
+		"label": "Container",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Container"
+		}
+	},
+	{
+		"label": "Tải có cẩu",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Tải có cẩu"
+		}
+	},
+	{
+		"label": "Tải ben",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Tải ben"
+		}
+	},
+	{
+		"label": "Đông lạnh",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Đông lạnh"
+		}
+	},
+	{
+		"label": "Khác",
+		"url": "/roads/index/vehicle-hollow",
+		"query": {
+			"type": "Khác"
+		}
+	}
+]

@@ -1,0 +1,20 @@
+[
+	{
+		"label": "All",
+		"url": "/seas/index/container"
+	},
+	{
+		"label": "Normal",
+		"url": "/seas/index/container",
+		"query": {
+			"type": "Normal"
+		}
+	},
+	{
+		"label": "Refeer",
+		"url": "/seas/index/container",
+		"query": {
+			"type": "Refeer"
+		}
+	}
+]

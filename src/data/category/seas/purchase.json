@@ -1,0 +1,62 @@
+[
+	{
+		"label": "All",
+		"url": "/rivers/index/purchase"
+	},
+	{
+		"label": "Gear Vsl",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "Gear Vsl"
+		}
+	},
+	{
+		"label": "Gearless Vsl",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "Gearless Vsl"
+		}
+	},
+	{
+		"label": "Cont Vsl",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "Cont Vsl"
+		}
+	},
+	{
+		"label": "M/T",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "M/T"
+		}
+	},
+	{
+		"label": "SB Vsl",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "SB Vsl"
+		}
+	},
+	{
+		"label": "Screw Tug",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "Screw Tug"
+		}
+	},
+	{
+		"label": "ASD Tug",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "ASD Tug"
+		}
+	},
+	{
+		"label": "Supplyboat",
+		"url": "/rivers/index/purchase",
+		"query": {
+			"type": "Supplyboat"
+		}
+	}
+]

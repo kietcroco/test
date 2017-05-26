@@ -1,0 +1,20 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/roads/index/container"
+	},
+	{
+		"label": "Lạnh",
+		"url": "/roads/index/container",
+		"query": {
+			"type": "Lạnh"
+		}
+	},
+	{
+		"label": "Thường",
+		"url": "/roads/index/container",
+		"query": {
+			"type": "Thường"
+		}
+	}
+]

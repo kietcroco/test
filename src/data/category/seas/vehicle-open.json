@@ -1,0 +1,69 @@
+[
+	{
+		"label": "All",
+		"url": "/seas/index/vehicle-open"
+	},
+	{
+		"label": "Gear Vsl",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Gear Vsl"
+		}
+	},
+	{
+		"label": "Gearless Vsl",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Gearless Vsl"
+		}
+	},
+	{
+		"label": "Cont Vsl",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Cont Vsl"
+		}
+	},
+	{
+		"label": "M/T",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "M/T"
+		}
+	},
+	{
+		"label": "SB Vsl",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "SB Vsl"
+		}
+	},
+	{
+		"label": "Screw Tug",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Screw Tug"
+		}
+	},
+	{
+		"label": "ASD Tug",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "ASD Tug"
+		}
+	},
+	{
+		"label": "Supplyboat",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Supplyboat"
+		}
+	},
+	{
+		"label": "Other",
+		"url": "/seas/index/vehicle-open",
+		"query": {
+			"type": "Other"
+		}
+	}
+]

@@ -1,0 +1,8 @@
+/**
+ * @flow
+*/
+{
+	"apiDomain": "http://api.izifix.com.local",
+	"homePath": "/index/index/index",
+	"domain" : "https://izifix.com",
+}

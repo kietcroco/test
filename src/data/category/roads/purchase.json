@@ -1,0 +1,48 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/roads/index/purchase"
+	},
+	{
+		"label": "Thùng hở",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Thùng hở"
+		}
+	},
+	{
+		"label": "Thùng kín",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Thùng kín"
+		}
+	},
+	{
+		"label": "Container",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Container"
+		}
+	},
+	{
+		"label": "Tải có cẩu",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Tải có cẩu"
+		}
+	},
+	{
+		"label": "Tải ben",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Tải ben"
+		}
+	},
+	{
+		"label": "Đông lạnh",
+		"url": "/roads/index/purchase",
+		"query": {
+			"type": "Đông lạnh"
+		}
+	}
+]

@@ -1,0 +1,269 @@
+{
+
+	"": {
+		"label": "Tất cả",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "",
+					"type": ""
+				},
+				"iconName": "home"
+			},
+			{
+				"label": "S.lan chạy rỗng cần hàng",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": ""
+				},
+				"iconName": "barge-o"
+			},
+			{
+				"label": "Hàng - offer",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": ""
+				},
+				"iconName": "goods"
+			},
+			{
+				"label": "Sà lan - open",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": ""
+				},
+				"iconName": "barge"
+			},
+			{
+				"label": "Mua bán - S&P",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": ""
+				},
+				"iconName": "cooperation"
+			},
+			{
+				"label": "Cần thuê Sà lan",
+				"params": {
+					"Exchange": "RIVERS_BIDDING",
+					"type": ""
+				},
+				"iconName": "people-person"
+			}
+		]
+	},
+	"RIVERS_VEHICLE_HOLLOW": {
+		"label": "S.lan chạy rỗng cần hàng",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "",
+				}
+			},
+			{
+				"label": "Hàng khô có nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "Hàng khô có nắp hầm",
+				}
+			},
+			{
+				"label": "Hàng khô không nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "Hàng khô không nắp hầm",
+				}
+			},
+			{
+				"label": "Hàng lỏng",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "Hàng lỏng",
+				}
+			},
+			{
+				"label": "Ponton",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "Ponton",
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "Khác",
+				}
+			}
+		]
+	},
+	"RIVERS_PRODUCT_OFFER": {
+		"label": "Hàng - offer",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "",
+				}
+			},
+			{
+				"label": "Sắt thép",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Sắt thép",
+				}
+			},
+			{
+				"label": "Hàng bao",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Hàng bao",
+				}
+			},
+			{
+				"label": "Nông sản",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Nông sản",
+				}
+			},
+			{
+				"label": "Hàng xá",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Hàng xá",
+				}
+			},
+			{
+				"label": "Cát đá",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Cát đá",
+				}
+			},
+			{
+				"label": "Xăng dầu",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Xăng dầu",
+				}
+			},
+			{
+				"label": "Hàng lỏng",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Hàng lỏng",
+				}
+			}
+		]
+	},
+	"RIVERS_VEHICLE_OPEN": {
+		"label": "Sà lan - open",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "",
+				}
+			},
+			{
+				"label": "Hàng khô có nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "Hàng khô có nắp hầm",
+				}
+			},
+			{
+				"label": "Hàng khô không nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "Hàng khô không nắp hầm",
+				}
+			},
+			{
+				"label": "Hàng lỏng",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "Hàng lỏng",
+				}
+			},
+			{
+				"label": "Ponton",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "Ponton",
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "Khác",
+				}
+			}
+		]
+	},
+	"RIVERS_PURCHASE": {
+		"label": "Mua bán - S&P",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "",
+				}
+			},
+			{
+				"label": "Hàng khô có nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "Hàng khô có nắp hầm",
+				}
+			},
+			{
+				"label": "Hàng khô không nắp hầm",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "Hàng khô không nắp hầm",
+				}
+			},
+			{
+				"label": "S.lan Container",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "S.lan Container",
+				}
+			},
+			{
+				"label": "Hàng lỏng",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "Hàng lỏng",
+				}
+			},
+			{
+				"label": "Ponton",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "Ponton",
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "RIVERS_PURCHASE",
+					"type": "Khác",
+				}
+			}
+		]
+	},
+	"RIVERS_BIDDING": {
+		"label": "Cần thuê Sà lan",
+		"category": []
+	}
+}

@@ -1,0 +1,142 @@
+/**
+ * @flow
+ * Chuỗi json chứa dữ liệu về danh mục chính trong izifix
+*/
+{
+	"Đường bộ" : {
+		"Tất cả" : "Tất cả",
+		"Xe tải chạy rỗng cần hàng" : {
+			"Tất cả" : "Tất cả",
+			"Thùng hở" : "Thùng hở",
+			"Thùng kín" : "Thùng kín",
+			"Container" : "Container",
+			"Tải có cẩu" : "Tải có cẩu",
+			"Tải ben" : "Tải ben",
+			"Đông lạnh" : "Đông lạnh",
+			"Khác" : "Khác",
+		},
+		"Hàng - offer" : {
+			"Tất cả" : "Tất cả",
+			"Sắt thép" : "Sắt thép",
+			"Hàng bao" : "Hàng bao",
+			"Nông sản" : "Nông sản",
+			"Hàng xá" : "Hàng xá",
+			"Cát đá" : "Cát đá",
+			"Xăng dầu" : "Xăng dầu",
+			"Hàng lỏng" : "Hàng lỏng",
+		},
+		"Xe - open" : {
+			"Tất cả" : "Tất cả",
+			"Thùng hở" : "Thùng hở",
+			"Thùng kín" : "Thùng kín",
+			"Container" : "Container",
+			"Tải có cẩu" : "Tải có cẩu",
+			"Tải ben" : "Tải ben",
+			"Đông lạnh" : "Đông lạnh",
+			"Khác" : "Khác",
+		},
+		"Mua bán - S&P" : {
+			"Tất cả" : "Tất cả",
+			"Thùng hở" : "Thùng hở",
+			"Thùng kín" : "Thùng kín",
+			"Container" : "Container",
+			"Tải có cẩu" : "Tải có cẩu",
+			"Tải ben" : "Tải ben",
+			"Đông lạnh" : "Đông lạnh",
+		},
+		"Container - offer" : {
+			"Tất cả" : "Tất cả",
+			"Lạnh" : "Lạnh",
+			"Thường" : "Thường"
+		}
+	},
+	"Đường sông" : {
+		"Tất cả" : "Tất cả",
+		"Xà lan chạy rỗng cần hàng" : {
+			"Tất cả" : "Tất cả",
+			"Hàng khô có nắp hầm" : "Hàng khô có nắp hầm",
+			"Hàng khô không nắp hầm" : "Hàng khô không nắp hầm",
+			"Hàng lỏng" : "Hàng lỏng",
+			"Ponton" : "Ponton",
+			"Khác" : "Khác",
+		},
+		"Hàng - offer" : {
+			"Tất cả" : "Tất cả",
+			"Sắt thép" : "Sắt thép",
+			"Hàng bao" : "Hàng bao",
+			"Nông sản" : "Nông sản",
+			"Hàng xá" : "Hàng xá",
+			"Cát đá" : "Cát đá",
+			"Xăng dầu" : "Xăng dầu",
+			"Hàng lỏng" : "Hàng lỏng",
+		},
+		"Sà lan - open" : {
+			"Tất cả" : "Tất cả",
+			"Hàng khô có nắp hầm" : "Hàng khô có nắp hầm",
+			"Hàng khô không nắp hầm" : "Hàng khô không nắp hầm",
+			"Hàng lỏng" : "Hàng lỏng",
+			"Ponton" : "Ponton",
+			"Khác" : "Khác",
+		},
+		"Mua bán - S&P" : {
+			"Tất cả" : "Tất cả",
+			"Hàng khô có nắp hầm" : "Hàng khô có nắp hầm",
+			"Hàng khô không nắp hầm" : "Hàng khô không nắp hầm",
+			"S.lan Container" : "S.lan Container",
+			"Hàng lỏng" : "Hàng lỏng",
+			"Ponton" : "Ponton",
+			"Khác" : "Khác",
+		},
+		"Cần thuê Sà lan" : "Cần thuê Sà lan"
+	},
+	"Sea Transport" : {
+		"All" : "All",
+		"Ballast sailing - hot to fix" : {
+			"Gear Vsl" : "Gear Vsl",
+			"Gearless Vsl" : "Gearless Vsl",
+			"Cont Vsl" : "Cont Vsl",
+			"M/T" : "M/T",
+			"SB Vsl" : "SB Vsl",
+			"Screw Tug" : "Screw Tug",
+			"ASD Tug" : "ASD Tug",
+			"Supplyboat" : "Supplyboat",
+		},
+		"Catgo - offer" : {
+			"Tất cả" : "Tất cả",
+			"Steel Products" : "Steel Products",
+			"Bag Cargo" : "Bag Cargo",
+			"Agriculture Products" : "Agriculture Products",
+			"Bulk Cargo" : "Bulk Cargo",
+			"Sand / Stone" : "Sand / Stone",
+			"Oil Products" : "Oil Products",
+			"Chemical Products" : "Chemical Products",
+			"Other" : "Other",
+		},
+		"Vsl - open" : {
+			"Gear Vsl" : "Gear Vsl",
+			"Gearless Vsl" : "Gearless Vsl",
+			"Cont Vsl" : "Cont Vsl",
+			"M/T" : "M/T",
+			"SB Vsl" : "SB Vsl",
+			"Screw Tug" : "Screw Tug",
+			"ASD Tug" : "ASD Tug",
+			"Supplyboat" : "Supplyboat",
+			"Other" : "Other",
+		},
+		"S&P" : {
+			"Gear Vsl" : "Gear Vsl",
+			"Gearless Vsl" : "Gearless Vsl",
+			"Cont Vsl" : "Cont Vsl",
+			"M/T" : "M/T",
+			"SB Vsl" : "SB Vsl",
+			"Screw Tug" : "Screw Tug",
+			"ASD Tug" : "ASD Tug",
+			"Supplyboat" : "Supplyboat",
+		},
+		"Container - offer" : {
+			"All" : "All",
+			"Normal" : "Normal",
+			"Refeer" : "Refeer",
+		}
+	}
+}	

@@ -1,0 +1,55 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/roads/index/product"
+	},
+	{
+		"label": "Sắt thép",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Sắt thép"
+		}
+	},
+	{
+		"label": "Hàng bao",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Hàng bao"
+		}
+	},
+	{
+		"label": "Nông sản",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Nông sản"
+		}
+	},
+	{
+		"label": "Hàng xá",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Hàng xá"
+		}
+	},
+	{
+		"label": "Cát đá",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Cát đá"
+		}
+	},
+	{
+		"label": "Xăng dầu",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Xăng dầu"
+		}
+	},
+	{
+		"label": "Hàng lỏng",
+		"url": "/roads/index/product",
+		"query": {
+			"type": "Hàng lỏng"
+		}
+	}
+]

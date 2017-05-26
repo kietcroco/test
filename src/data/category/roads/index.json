@@ -1,0 +1,26 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/roads/index/index"
+	},
+	{
+		"label": "Xe tải chạy rỗng cần hàng",
+		"url": "/roads/index/vehicle-hollow"
+	},
+	{
+		"label": "Hàng - offer",
+		"url": "/roads/index/product"
+	},
+	{
+		"label": "Xe - open",
+		"url": "/roads/index/vehicle-open"
+	},
+	{
+		"label": "Mua bán - S&P",
+		"url": "/roads/index/purchase"
+	},
+	{
+		"label": "Container - offer",
+		"url": "/roads/index/container"
+	}
+]

@@ -1,0 +1,26 @@
+[
+	{
+		"label": "All",
+		"url": "/seas/index/index"
+	},
+	{
+		"label": "Ballast sailing - hot to fix",
+		"url": "/seas/index/vehicle-hollow"
+	},
+	{
+		"label": "Cargo - offer",
+		"url": "/seas/index/product"
+	},
+	{
+		"label": "Vsl - open",
+		"url": "/seas/index/vehicle-open"
+	},
+	{
+		"label": "S&P",
+		"url": "/seas/index/purchase"
+	},
+	{
+		"label": "Container - offer",
+		"url": "/seas/index/container"
+	}
+]

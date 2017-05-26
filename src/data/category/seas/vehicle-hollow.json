@@ -1,0 +1,62 @@
+[
+	{
+		"label": "All",
+		"url": "/seas/index/vehicle-hollow"
+	},
+	{
+		"label": "Gear Vsl",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "Gear Vsl"
+		}
+	},
+	{
+		"label": "Gearless Vsl",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "Gearless Vsl"
+		}
+	},
+	{
+		"label": "Cont Vsl",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "Cont Vsl"
+		}
+	},
+	{
+		"label": "M/T",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "M/T"
+		}
+	},
+	{
+		"label": "SB Vsl",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "SB Vsl"
+		}
+	},
+	{
+		"label": "Screw Tug",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "Screw Tug"
+		}
+	},
+	{
+		"label": "ASD Tug",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "ASD Tug"
+		}
+	},
+	{
+		"label": "Supplyboat",
+		"url": "/seas/index/vehicle-hollow",
+		"query": {
+			"type": "Supplyboat"
+		}
+	}
+]

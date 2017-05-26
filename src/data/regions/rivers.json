@@ -1,0 +1,263 @@
+[
+	{
+		"label": "Toàn quốc",
+		"value": "Toàn quốc",
+		"isSelectAll": true,
+		"autoCheck": true
+	},
+	{
+		"label": "Hồ Chí Minh",
+		"value": "Hồ Chí Minh"
+	},
+	{
+		"label": "Bà Rịa - Vũng Tàu",
+		"value": "Bà Rịa - Vũng Tàu"
+	},
+	{
+		"label": "Đồng Nai",
+		"value": "Đồng Nai"
+	},
+	{
+		"label": "Cần Thơ",
+		"value": "Cần Thơ"
+	},
+	{
+		"label": "Long An",
+		"value": "Long An"
+	},
+	{
+		"label": "Campuchia",
+		"value": "Campuchia"
+	},
+	{
+		"label": "Các tỉnh phía nam khác",
+		"value": "Các tỉnh phía nam khác",
+		"children": [
+			{
+				"label": "Tất cả",
+				"value": "Tất cả",
+				"autoCheck": true,
+				"isSelectAll": true,
+				"hideLabel": true
+			},
+			{
+				"label": "Bình Dương",
+				"value": "Bình Dương"
+			},
+			{
+				"label": "Tây Ninh",
+				"value": "Tây Ninh"
+			},
+			{
+				"label": "Bình Phước",
+				"value": "Bình Phước"
+			},
+			{
+				"label": "An Giang",
+				"value": "An Giang"
+			},
+			{
+				"label": "Bạc Liêu",
+				"value": "Bạc Liêu"
+			},
+			{
+				"label": "Bến Tre",
+				"value": "Bến Tre"
+			},
+			{
+				"label": "Cà Mau",
+				"value": "Cà Mau"
+			},
+			{
+				"label": "Đồng Tháp",
+				"value": "Đồng Tháp"
+			},
+			{
+				"label": "Hậu Giang",
+				"value": "Hậu Giang"
+			},
+			{
+				"label": "Kiên Giang",
+				"value": "Kiên Giang"
+			},
+			{
+				"label": "Sóc Trăng",
+				"value": "Sóc Trăng"
+			},
+			{
+				"label": "Tiền Giang",
+				"value": "Tiền Giang"
+			},
+			{
+				"label": "Trà Vinh",
+				"value": "Trà Vinh"
+			},
+			{
+				"label": "Vĩnh Long",
+				"value": "Vĩnh Long"
+			},
+			{
+				"label": "Tỉnh Khác",
+				"value": "Tỉnh Khác",
+				"isOther": true
+			}
+		]
+	},
+	{
+		"label": "Hà Nội",
+		"value": "Hà Nội"
+	},
+	{
+		"label": "Hải Phòng",
+		"value": "Hải Phòng"
+	},
+	{
+		"label": "Quảng Ninh",
+		"value": "Quảng Ninh"
+	},
+	{
+		"label": "Các tỉnh phía bắc khác",
+		"value": "Các tỉnh phía bắc khác",
+		"children": [
+			{
+				"label": "Tất cả",
+				"value": "Tất cả",
+				"isSelectAll": true,
+				"autoCheck": true,
+				"hideLabel": true
+			},
+			{
+				"label": "Bắc Giang",
+				"value": "Bắc Giang"
+			},
+			{
+				"label": "Bắc Ninh",
+				"value": "Bắc Ninh"
+			},
+			{
+				"label": "Phú Thọ",
+				"value": "Phú Thọ"
+			},
+			{
+				"label": "Hà Nam",
+				"value": "Hà Nam"
+			},
+			{
+				"label": "Hải Dương",
+				"value": "Hải Dương"
+			},
+			{
+				"label": "Nam Định",
+				"value": "Nam Định"
+			},
+			{
+				"label": "Thái Bình",
+				"value": "Thái Bình"
+			},
+			{
+				"label": "Hoà Bình",
+				"value": "Hoà Bình"
+			},
+			{
+				"label": "Hưng Yên",
+				"value": "Hưng Yên"
+			},
+			{
+				"label": "Ninh Bình",
+				"value": "Ninh Bình"
+			},
+			{
+				"label": "Vĩnh Phúc",
+				"value": "Vĩnh Phúc"
+			},
+			{
+				"label": "Lạng Sơn",
+				"value": "Lạng Sơn"
+			},
+			{
+				"label": "Thái Nguyên",
+				"value": "Thái Nguyên"
+			},
+			{
+				"label": "Tuyên Quang",
+				"value": "Tuyên Quang"
+			},
+			{
+				"label": "Tỉnh Khác",
+				"value": "Tỉnh Khác"
+			}
+		]
+	},
+	{
+		"label": "Đà Nẵng",
+		"value": "Đà Nẵng"
+	},
+	{
+		"label": "Hà Tĩnh",
+		"value": "Hà Tĩnh"
+	},
+	{
+		"label": "Các tỉnh miền trung, tây nguyên khác",
+		"value": "Các tỉnh miền trung, tây nguyên khác",
+		"children": [
+			{
+				"label": "Tất cả",
+				"value": "Tất cả",
+				"autoCheck": true,
+				"hideLabel": true
+			},
+			{
+				"label": "Bình Thuận",
+				"value": "Bình Thuận"
+			},
+			{
+				"label": "Phú Yên",
+				"value": "Phú Yên"
+			},
+			{
+				"label": "Khánh Hoà",
+				"value": "Khánh Hoà"
+			},
+			{
+				"label": "Nghệ An",
+				"value": "Nghệ An"
+			},
+			{
+				"label": "Thanh Hoá",
+				"value": "Thanh Hoá"
+			},
+			{
+				"label": "Quảng Bình",
+				"value": "Quảng Bình"
+			},
+			{
+				"label": "Quảng Trị",
+				"value": "Quảng Trị"
+			},
+			{
+				"label": "Thừa Thiên Huế",
+				"value": "Thừa Thiên Huế"
+			},
+			{
+				"label": "Quảng Nam",
+				"value": "Quảng Nam"
+			},
+			{
+				"label": "Bình Định",
+				"value": "Bình Định"
+			},
+			{
+				"label": "Ninh Thuận",
+				"value": "Ninh Thuận"
+			},
+			{
+				"label": "Quảng Ngãi",
+				"value": "Quảng Ngãi"
+			},
+			{
+				"label": "Tỉnh Khác",
+				"value": "Tỉnh Khác"
+			},
+		]
+	}
+]

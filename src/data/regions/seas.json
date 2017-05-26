@@ -1,0 +1,134 @@
+[
+	{
+		"label": "All Port",
+		"value": "All Port",
+		"isSelectAll": true,
+		"autoCheck": true
+	},
+	{
+		"label": "Vietnam",
+		"value": "Vietnam",
+		"children": [
+			{
+				"label": "All Vietnam",
+				"value": "All Vietnam",
+				"isSelectAll": true,
+				"autoCheck": true
+			},
+			{
+				"label": "Ho Chi Minh / Saigon",
+				"value": "Ho Chi Minh / Saigon",
+				"isHot": true
+			},
+			{
+				"label": "Hai Phong",
+				"value": "Hai Phong",
+				"isHot": true
+			},
+			{
+				"label": "Vung Tau",
+				"value": "Vung Tau"
+			},
+			{
+				"label": "Can Tho",
+				"value": "Can Tho"
+			},
+			{
+				"label": "Da Nang",
+				"value": "Da Nang"
+			},
+			{
+				"label": "Ha Tinh",
+				"value": "Ha Tinh"
+			},
+			{
+				"label": "Quang Ninh",
+				"value": "Quang Ninh"
+			},
+			{
+				"label": "Other port of Vietnam",
+				"value": "Other port of Vietnam"
+			}
+		]
+	},
+	{
+		"label": "Singapore",
+		"value": "Singapore"
+	},
+	{
+		"label": "Hongkong",
+		"value": "Hongkong"
+	},
+	{
+		"label": "Thailand",
+		"value": "Thailand",
+		"children": [
+			{
+				"label": "All Thailand",
+				"value": "All Thailand",
+				"isSelectAll": true,
+				"autoCheck": true
+			},
+			{
+				"label": "Bangkok",
+				"value": "Bangkok"
+			},
+			{
+				"label": "Laem Chabang",
+				"value": "Laem Chabang"
+			},
+			{
+				"label": "Other port of Thailand",
+				"value": "Other port of Thailand"
+			}
+		]
+	},
+	{
+		"label": "Korea",
+		"value": "Korea",
+		"children": [
+			{
+				"label": "All Korea",
+				"value": "All Korea",
+				"isSelectAll": true,
+				"autoCheck": true
+			},
+			{
+				"label": "Busan",
+				"value": "Busan"
+			},
+			{
+				"label": "Kwangyang",
+				"value": "Kwangyang"
+			},
+			{
+				"label": "Pohang",
+				"value": "Pohang"
+			},
+			{
+				"label": "Other port of Korea",
+				"value": "Other port of Korea"
+			}
+		]
+	},
+	{
+		"label": "Cambodia",
+		"value": "Cambodia"
+	},
+	{
+		"label": "Indonesia",
+		"value": "Indonesia"
+	},
+	{
+		"label": "Malaysia",
+		"value": "Malaysia"
+	},
+	{
+		"label": "China",
+		"value": "China"
+	},
+	{
+		"label": "Japan",
+		"value": "Japan"
+	}
+]

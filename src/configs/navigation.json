@@ -1,0 +1,45 @@
+/**
+ * @flow
+*/
+{
+	"home": {
+		"icon": "home",
+		"url": "/",
+		"label": "Home",
+		//"active": /\/.+/
+	},
+	"divider1" : {
+		"label": "Testing",
+		"isDivider": true
+	},
+	"index": {
+		"icon": "box_salan.png",
+		"url": "/index/index/index",
+		"label": "Trang chủ",
+		"active": "/index/index/*"
+	},
+	"roads": {
+		"icon": "box_salan.png",
+		"url": "/roads/index/index",
+		"label": "Đường bộ",
+		"active": "/roads/index/*"
+	},
+	"rivers": {
+		"icon": "box_salan.png",
+		"url": "/rivers/index/index",
+		"label": "Đường sông",
+		"active": "/rivers/index/*"
+	},
+	"seas": {
+		"icon": "box_salan.png",
+		"url": "/seas/index/index",
+		"label": "Đường biển",
+		"active": "/seas/index/*"
+	},
+	"handle": {
+		"icon": "box_salan.png",
+		"url": "/rivers/handle/product",
+		"label": "Đăng tin",
+		"active": "/rivers/product/*"
+	}
+};

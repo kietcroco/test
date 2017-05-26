@@ -1,0 +1,62 @@
+[
+	{
+		"label": "Tất cả",
+		"url": "/seas/index/product"
+	},
+	{
+		"label": "Steel Products",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Steel Products"
+		}
+	},
+	{
+		"label": "Bag Cargo",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Bag Cargo"
+		}
+	},
+	{
+		"label": "Agriculture Products",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Agriculture Products"
+		}
+	},
+	{
+		"label": "Bulk Cargo",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Bulk Cargo"
+		}
+	},
+	{
+		"label": "Sand / Stone",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Sand / Stone"
+		}
+	},
+	{
+		"label": "Oil Products",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Oil Products"
+		}
+	},
+	{
+		"label": "Chemical Products",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Chemical Products"
+		}
+	},
+	{
+		"label": "Other",
+		"url": "/seas/index/product",
+		"query": {
+			"type": "Other"
+		}
+	}
+]
