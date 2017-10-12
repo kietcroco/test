@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 export default {
 	style: PropTypes.oneOfType([
@@ -62,5 +62,8 @@ export default {
 	backHandle: PropTypes.func.isRequired, // handle nút back
 	placeholder: PropTypes.string, // placeholder search input
 	onChange: PropTypes.func, // event change
-	onChangeText: PropTypes.func // sự kiện nhập input
+	onChangeText: PropTypes.func, // sự kiện nhập input
+	maxLength: PropTypes.number,
+	keyboardType: PropTypes.string,
+	language: PropTypes.string // ngôn ngữ ( cùng prop query )
 };

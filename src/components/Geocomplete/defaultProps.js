@@ -21,5 +21,6 @@ export default {
 	keepInput: false,
 	allowDelete: true,
 	visible: false,
-	placeholder: "Tìm quận huyện"
+	placeholder: "Tìm quận huyện",
+	language: "vi"
 };

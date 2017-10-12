@@ -1,25 +1,27 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StatusBar, Platform } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import { shadow, sizes, colors, fontSizes, scale, hitSlop } from '~/configs/styles';
 
-class ModalHeader extends React.PureComponent {
+class ModalHeader extends React.Component {
 
 	static displayName = "@ModalHeader";
 
 	static propTypes = {
-		backHandle: React.PropTypes.func.isRequired,
-		title: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.node
+		backHandle: PropTypes.func.isRequired,
+		title: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.node
 		]),
-		children: React.PropTypes.node,
-		backgroundColor: React.PropTypes.string,
-		color: React.PropTypes.string
+		children: PropTypes.node,
+		backgroundColor: PropTypes.string,
+		color: PropTypes.string
 	};
 
 	static defaultProps = {
-		backgroundColor: "#2672ba",
-		color: "white"
+		backgroundColor: colors.primaryColor,
+		color: colors.secondColor
 	};
 
 	shouldComponentUpdate(nextProps) {
@@ -39,13 +41,14 @@ class ModalHeader extends React.PureComponent {
 		
 		return (
 			<View style={ [_styles.container, { backgroundColor }] }>
-				<TouchableOpacity style={ _styles.btnBack } onPress={ backHandle }>
+				<StatusBar backgroundColor={ colors.primaryColor } hidden={Platform.OS === "ios"}/>
+				<TouchableOpacity hitSlop={ hitSlop } style={ _styles.btnBack } onPress={ backHandle }>
 					<FAIcon style={ [_styles.iconBack, {color}] } name="chevron-left"/>
 				</TouchableOpacity>
 				<View style={ _styles.titleWrapper }>
 					{
 						typeof title === "string" ?
-							<Text style={ [_styles.title, {color}] } numberOfLines={1}>{ title }</Text>
+							<Text adjustsFontSizeToFit={true} style={ [_styles.title, {color}] } numberOfLines={1}>{ title }</Text>
 						: title
 					}
 				</View>
@@ -59,16 +62,16 @@ class ModalHeader extends React.PureComponent {
 
 const _styles = {
 	container: {
-		height: 40,
+		height: sizes.headerHeight,
 		flexDirection: "row",
-		backgroundColor: "#2672ba",
+		backgroundColor: colors.primaryColor,
 		alignItems: "center",
 		justifyContent: "space-between",
-		borderBottomWidth: 0.5,
-		borderBottomColor: "#cdcdcd"
+		borderBottomWidth: sizes.borderWidth,
+		borderBottomColor: colors.primaryBorderColor
 	},
 	btnBack: {
-		width: 30,
+		width: sizes.buttonNormal,
 		height: "100%",
 		alignItems: "center",
 		justifyContent: "center"
@@ -76,23 +79,24 @@ const _styles = {
 	iconBack: {
 		textAlign: "center",
 		textAlignVertical: "center",
-		color: "white",
-		fontSize: 16,
-		marginTop: 2
+		color: colors.secondColor,
+		fontSize: 16 * scale,
+		marginTop: 2 * scale
 	},
 	titleWrapper: {
 		height: "100%",
 		justifyContent: "center",
+		paddingVertical: sizes.spacing,
 		flex: 1
 	},
 	title: {
 		textAlignVertical: "center",
-		color: "white",
+		color: colors.secondColor,
 		fontWeight: "bold",
-		fontSize: 16,
+		fontSize: fontSizes.large,
 		height: "100%",
-		marginLeft: 5,
-		marginRight: 5
+		marginLeft: sizes.spacing,
+		marginRight: sizes.spacing
 	},
 	headerRight: {
 		height: "100%",

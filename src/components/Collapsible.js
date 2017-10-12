@@ -1,7 +1,8 @@
 "use strict";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Animated, Easing } from 'react-native';
-import mergeStyle from '~/utilities/mergeStyle';
+import mergeStyle from '~/library/mergeStyle';
 
 const ANIMATED_EASING_PREFIXES = ['easeInOut', 'easeOut', 'easeIn'];
 
@@ -10,21 +11,21 @@ class Collapsible extends React.Component {
 	static displayName = "@Collapsible";
 
 	static propTypes = {
-		align: React.PropTypes.oneOf(['top', 'center', 'bottom']),
-		collapsed: React.PropTypes.bool, // true = ẩn, false = hiện
-		collapsedHeight: React.PropTypes.number,
-		duration: React.PropTypes.number, // thời gian chạy hiệu ứng
-		easing: React.PropTypes.oneOfType([ // hiệu ứng
-			React.PropTypes.string,
-			React.PropTypes.func
+		align: PropTypes.oneOf(['top', 'center', 'bottom']),
+		collapsed: PropTypes.bool, // true = ẩn, false = hiện
+		collapsedHeight: PropTypes.number,
+		duration: PropTypes.number, // thời gian chạy hiệu ứng
+		easing: PropTypes.oneOfType([ // hiệu ứng
+			PropTypes.string,
+			PropTypes.func
 		]),
-		style: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
+		style: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object
 		]),
-		children: React.PropTypes.oneOfType([ // nội dung
-			React.PropTypes.element,
-			React.PropTypes.arrayOf( React.PropTypes.element )
+		children: PropTypes.oneOfType([ // nội dung
+			PropTypes.element,
+			PropTypes.arrayOf( PropTypes.element )
 		])
 	};
 

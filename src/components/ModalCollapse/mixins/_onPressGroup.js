@@ -3,7 +3,7 @@ import autoCheck from '../utils/autoCheck';
 
 export default function( rowData, sectionID, rowID, levels ) {
 
-	var dataSource = this._dataSource.slice();
+	let dataSource = this._dataSource.slice();
 
 	const changed = [];
 	changed.push( rowData.rowID );

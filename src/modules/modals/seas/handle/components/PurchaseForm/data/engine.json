@@ -1,0 +1,23 @@
+[
+	{
+		"label": "Niigata",
+		"value": "Niigata"
+	},
+	{
+		"label": "MTU",
+		"value": "MTU"
+	},
+	{
+		"label": "MAN",
+		"value": "MAN"
+	},
+	{
+		"label": "Carterpillar",
+		"value": "Carterpillar"
+	},
+	{
+		"label": "#$seas$#Khác",
+		"value": "Other",
+		"isOther": true
+	}
+]

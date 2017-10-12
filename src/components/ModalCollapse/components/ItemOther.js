@@ -1,42 +1,40 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View, TouchableOpacity, Text, TextInput } from 'react-native';
 import Radio from '~/components/Radio';
 import Checkbox from '~/components/CheckBox';
 import Geocomplete from '~/components/Geocomplete';
 import { translate } from '~/utilities/language';
+import { colors, scale, sizes, fontSizes, hitSlop } from '~/configs/styles';
 
-class ItemOther extends React.PureComponent {
+class ItemOther extends React.Component {
 
 	static displayName = '@ModalCollapseItemOther';
 
 	static propTypes = {
-		onPress: React.PropTypes.func,
-		label: React.PropTypes.string.isRequired,
-		multiple: React.PropTypes.bool,
-		checked: React.PropTypes.bool,
-		isSelectAll: React.PropTypes.bool,
-		autoCheck: React.PropTypes.bool,
-		isHot: React.PropTypes.bool,
-		isOther: React.PropTypes.bool,
-		level: React.PropTypes.number,
-		otherValue: React.PropTypes.string,
-		otherLabel: React.PropTypes.string,
-		onChange: React.PropTypes.func,
-		isInput: React.PropTypes.bool,
-		geolocation: React.PropTypes.bool,
-		geoCode: React.PropTypes.object,
-		keyword: React.PropTypes.string,
-		placeholder: React.PropTypes.string,
-		keepInput: React.PropTypes.bool
+		onPress: PropTypes.func,
+		label: PropTypes.string.isRequired,
+		multiple: PropTypes.bool,
+		checked: PropTypes.bool,
+		isHot: PropTypes.bool,
+		level: PropTypes.number,
+		otherValue: PropTypes.string,
+		otherLabel: PropTypes.string,
+		onChange: PropTypes.func,
+		isInput: PropTypes.bool,
+		geolocation: PropTypes.bool,
+		geoCode: PropTypes.object,
+		keyword: PropTypes.string,
+		placeholder: PropTypes.string,
+		keepInput: PropTypes.bool,
+		maxLength: PropTypes.number,
+		keyboardType: PropTypes.string
 	};
 
 	static defaultProps = {
 		multiple: false,
 		checked: false,
-		isSelectAll: false,
-		autoCheck: false,
 		isHot: false,
-		isOther: false,
 		level: 1,
 		otherValue: "",
 		otherLabel: "",
@@ -100,15 +98,14 @@ class ItemOther extends React.PureComponent {
 			this.props.otherLabel !== nextProps.otherLabel ||
 			this.props.multiple !== nextProps.multiple ||
 			this.props.checked !== nextProps.checked ||
-			this.props.isSelectAll !== nextProps.isSelectAll ||
-			this.props.autoCheck !== nextProps.autoCheck ||
 			this.props.isHot !== nextProps.isHot ||
 			this.props.isInput !== nextProps.isInput ||
-			this.props.isOther !== nextProps.isOther ||
 			this.props.level !== nextProps.level ||
 			this.props.geolocation !== nextProps.geolocation ||
 			this.props.placeholder !== nextProps.placeholder ||
 			this.props.keepInput !== nextProps.keepInput ||
+			this.props.maxLength !== nextProps.maxLength ||
+			this.props.keyboardType !== nextProps.keyboardType ||
 			this.props.onChange != nextProps.onChange ||
 			this.props.onPress != nextProps.onPress
 		);
@@ -155,14 +152,15 @@ class ItemOther extends React.PureComponent {
 
 			return ([
 				<TouchableOpacity onPress={ this._onPressGeo } activeOpacity={1} style={ _styles.otherInput } key="input-other">
-					<Text numberOfLines={1} style={ !this.state.otherValue && _styles.placeholder }>
+					<Text numberOfLines={1} style={ [_styles.label, !this.state.otherValue && _styles.placeholder] }>
 						{this.state.otherValue || this.props.placeholder}
 					</Text>
 				</TouchableOpacity>,
-				<TouchableOpacity key="touch-other" style={ _styles.btnOK } onPress={ this._onPressOK }>
+				<TouchableOpacity hitSlop={ hitSlop } activeOpacity={ colors.activeOpacity } key="touch-other" style={ _styles.btnOK } onPress={ this._onPressOK }>
 					<Text style={ _styles.labelOK }>OK</Text>
 				</TouchableOpacity>,
 				<Geocomplete 
+					{ ...this.props }
 					key 			= "geo-other"
 					visible 		= { this.state.visible }
 					onRequestClose 	= { this._onRequestClose }
@@ -170,7 +168,9 @@ class ItemOther extends React.PureComponent {
 					onChange 		= { this._onChange }
 					keyword 		= { this.state.keyword }
 					value 			= { this.state.otherValue }
-					keepInput 		= { this.props.keepInput }
+					//keepInput 		= { this.props.keepInput }
+					//maxLength 		= { this.props.maxLength }
+					//keyboardType 	= { this.props.keyboardType }
 				/>
 			]);
 		}
@@ -181,11 +181,14 @@ class ItemOther extends React.PureComponent {
 				underlineColorAndroid 	= "transparent"
 				value 					= { this.state.otherValue }
 				onChangeText 			= { this._onChangeText }
-				autoFocus 				= { true }
+				//autoFocus 				= { true }
 				selectTextOnFocus 		= { true }
 				key 					= "input-other"
+				placeholderTextColor 	= { colors.placeholderColor }
+				maxLength 				= { this.props.maxLength }
+				keyboardType 			= { this.props.keyboardType }
 			/>,
-			<TouchableOpacity key="touch-other" style={ _styles.btnOK } onPress={ this._onPressOK }>
+			<TouchableOpacity hitSlop={ hitSlop } activeOpacity={ colors.activeOpacity } key="touch-other" style={ _styles.btnOK } onPress={ this._onPressOK }>
 				<Text style={ _styles.labelOK }>OK</Text>
 			</TouchableOpacity>
 		]);
@@ -204,12 +207,12 @@ class ItemOther extends React.PureComponent {
 			geolocation
 		} = this.props;
 
-		const paddingLeft = { paddingLeft: (level + 1) * 10 };
+		const paddingLeft = { paddingLeft: (level + 1) * sizes.margin };
 
 		return (
 
-			<TouchableOpacity onPress={ onPress } style={ [_styles.container, paddingLeft] }>
-				<Text numberOfLines={1}>{ otherLabel || label }</Text>
+			<TouchableOpacity activeOpacity={ colors.activeOpacity } hitSlop={ hitSlop } onPress={ onPress } style={ [_styles.container, paddingLeft] }>
+				<Text numberOfLines={1} style={ _styles.label }>{ otherLabel || label }</Text>
 				{
 					isInput &&
 						<View style={ [_styles.otherInputWrapper, paddingLeft] }>
@@ -228,47 +231,57 @@ class ItemOther extends React.PureComponent {
 
 const _styles = {
 	container: {
-		height: 36,
+		height: sizes.rowItemHeight,
 		alignItems: "center",
 		justifyContent: "space-between",
-		borderBottomColor: "#e5e5e5",
-		borderBottomWidth: 0.5,
-		paddingRight: 15,
+		borderBottomColor: colors.primaryBorderColor,
+		borderBottomWidth: sizes.borderWidth,
+		paddingRight: sizes.margin,
 		flexDirection: "row",
 		position: "relative"
 	},
 	otherInputWrapper: {
 		position: "absolute",
-		right: 40,
+		right: 40 * scale,
 		flexDirection: "row",
 		top: 0,
 		left: 0,
 		bottom: 0,
 		justifyContent: "center",
-		paddingTop: 5,
-		paddingBottom: 5
+		paddingTop: 5 * scale,
+		paddingBottom: 5 * scale
 	},
 	otherInput: {
 		flex: 1,
 		padding: 0,
 		backgroundColor: "white",
-		borderWidth: 0.5,
-		borderColor: "#ccc",
-		borderRadius: 5,
-		justifyContent: "center"
+		borderWidth: sizes.borderWidth,
+		borderColor: colors.primaryBorderColor,
+		borderRadius: sizes.borderRadius,
+		justifyContent: "center",
+		//fontSize: fontSizes.normal,
+		//color: colors.normalColor
 	},
 	btnOK: {
-		width: 30,
+		width: sizes.buttonNormal,
 		height: "100%",
-		backgroundColor: "#dddddd",
+		backgroundColor: colors.secondBackgroundColor,
 		alignItems: "center",
 		justifyContent: "center",
-		borderRadius: 5,
-		marginLeft: 10
+		borderRadius: sizes.borderRadius,
+		marginLeft: sizes.margin
 	},
-	
+	labelOK: {
+		color: colors.normalColor,
+		fontSize: fontSizes.normal
+	},
 	placeholder: {
-		color: "#adadad"
+		fontSize: fontSizes.normal,
+		color: colors.placeholderColor
+	},
+	label: {
+		color: colors.normalColor,
+		fontSize: fontSizes.normal
 	}
 };
 

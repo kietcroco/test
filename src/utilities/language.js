@@ -3,12 +3,86 @@
 */
 "use strict";
 import DeviceInfo from 'react-native-device-info';
+import viSource from '~/data/lang/vi';
+
+const defaultLanguage = "vi"; // ngôn ngữ thiết kế
 
 // dữ liệu ngôn ngữ
-const _data = {};
+const _data = {
+	[ defaultLanguage ]: viSource
+};
 
 // ngôn ngữ hiện tại
-const currentLanguage = DeviceInfo.getDeviceLocale();
+var currentLanguage = (DeviceInfo.getDeviceLocale() || defaultLanguage).toLowerCase();
+
+// để test
+//currentLanguage = "vi";
+
+// hàm lấy ngôn ngữ hiện tại
+const getCurrentLanguage = () => currentLanguage;
+
+// danh sách handle
+var events = new Set();
+
+// hàm set ngôn ngữ hiện tại
+const setCurrentLanguage = locale => {
+
+	if( !locale ) {
+
+		return;
+	}
+
+	// nếu ngôn ngữ khác với ngôn ngữ hiện tại
+	if( currentLanguage !== locale ) {
+
+		// dispatch event
+		events.forEach( handle => (handle && handle( locale )) );
+	}
+	currentLanguage = locale;
+};
+
+// hàm remove sự kiện
+const removeEventListener = handle => {
+
+	if( typeof handle !== "function" ) {
+
+		throw `Missing event handle`;
+	}
+
+	if( events.has( handle ) ) {
+
+		events.delete( handle );
+	}
+};
+
+// hàm xoá tất cả sự kiện
+const removeAllEventListener = () => {
+
+	events = new Set();
+};
+
+// hàm thêm 1 sự kiện
+const addEventListener = handle => {
+
+	// check handle
+	if( typeof handle !== "function" ) {
+
+		throw `Missing event handle`;
+	}
+
+	// nếu sự kiện đã tồn tại thì xoá sự kiện cũ
+	if( events.has( handle ) ) {
+
+		events.delete( handle );
+	}
+
+	events.add( handle );
+
+	return () => removeEventListener( handle );
+};
+
+// để test
+//currentLanguage = defaultLanguage;
 
 /**
  * @todo: Hàm kiểm tra ngôn ngữ được hỗ trợ, nếu không hỗ trợ trả về ngôn ngữ mặc định vi
@@ -18,48 +92,56 @@ const currentLanguage = DeviceInfo.getDeviceLocale();
 */
 const supportLocale = locale => {
 
-	locale = locale ? locale : currentLanguage;
+	locale = locale ? locale.toLowerCase() : null;
 
-	switch ( locale && locale.toLowerCase() ) {
+	switch ( locale ) {
 
 		case "en":
 		case "en-gb":
 		case "en-au":
 		case "en-us":
 
-			locale = "en";
-			if( undefined === _data[ locale ] ) {
+			if( undefined === _data[ "en" ] ) {
 
-				_data[ locale ] = require('../data/lang/en.json') || {
+				_data[ "en" ] = require('~/data/lang/en.json') || {
 					name: "English",
-					code: locale,
+					code: "en",
 					data: {
 
 					}
 				};
 			}
-			break;
 
-		case "vi":
+			return _data[ "en" ];
+
+		case defaultLanguage:
 		case "vi-vn":
 		case "vn":
 		default:
 			
-			locale = "vi";
-			if( undefined === _data[ locale ] ) {
+			//locale = "vi";
+			if( undefined === _data[ defaultLanguage ] ) {
 				
-				_data[ locale ] = {
+				_data[ defaultLanguage ] = {
 					name: "Việt Nam",
-					code: locale,
+					code: defaultLanguage,
 					data: {
 
 					}
 				};
 			}
-			break;
+			
+			return _data[ defaultLanguage ];
 	}
 
-	return locale;
+	return false;
+};
+
+// hàm hỗ trợ bỏ namespace (vd: #$seas$#hello)
+const regxNamespace = /^#\$[a-zA-Z_\-$]+\$#(?=.+)/;
+const replaceNamespace = ( text: String = "" ) => {
+
+	return text.replace(regxNamespace, "");
 };
 
 /**
@@ -69,25 +151,38 @@ const supportLocale = locale => {
  * @return string đã được dịch
 */
 const translate = ( text: String = "", locale: String ) => {
+	
+	locale = locale || currentLanguage;
 
-	locale = supportLocale( locale );
+	const langData = (supportLocale( locale ) || supportLocale( defaultLanguage ));
 
-	if( _data[ locale ] && _data[ locale ].data && _data[ locale ].data.hasOwnProperty(text) ) {
+	if( langData && langData.data && langData.data.hasOwnProperty(text) ) {
 
-		return _data[ locale ].data[ text ];
+		return langData.data[ text ];
 	}
-	return text;
+	return replaceNamespace(text);
 };
-const langquage = {
-
-	currentLanguage,
+const language = {
+	defaultLanguage,
+	getCurrentLanguage,
 	translate,
-	supportLocale
+	supportLocale,
+	setCurrentLanguage,
+	addEventListener,
+	removeEventListener,
+	removeAllEventListener,
+	//currentLanguage
 };
 
-export default langquage;
+export default language;
 export {
-	currentLanguage,
+	defaultLanguage,
+	getCurrentLanguage,
 	translate,
-	supportLocale
+	supportLocale,
+	setCurrentLanguage,
+	addEventListener,
+	removeEventListener,
+	removeAllEventListener,
+	//currentLanguage
 };

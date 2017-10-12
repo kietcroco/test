@@ -4,7 +4,7 @@ import { translate } from '~/utilities/language';
 export default {
 	visible: false,
 	multiple: false,
-	title: translate("Chọn"),
+	//title: translate("Chọn"),
 	delimiter: "-/-",
 	separate: ";",
 	labelDelimiter: " - ",
@@ -15,5 +15,7 @@ export default {
 	formatLabel,
 	geolocation: false,
 	searchToOther: false,
-	keepInput: false
+	keepInput: false,
+	searchBar: true,
+	translate: true
 };

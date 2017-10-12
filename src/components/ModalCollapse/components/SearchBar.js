@@ -1,23 +1,29 @@
 "use strict";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View, TextInput, Text, TouchableOpacity } from 'react-native';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
+import MlIcon from 'react-native-vector-icons/MaterialIcons';
 import Geocomplete from '~/components/Geocomplete';
 import { translate } from '~/utilities/language';
+import { colors, scale, sizes, fontSizes } from '~/configs/styles';
 
 class SearchBar extends React.Component {
 
 	static displayName = "@SearchBar";
 
 	static propTypes = {
-		placeholder: React.PropTypes.string,
-		onSearch: React.PropTypes.func,
-		geolocation: React.PropTypes.bool,
-		searchToOther: React.PropTypes.bool,
-		keepInput: React.PropTypes.bool
+		keyword: PropTypes.string,
+		placeholder: PropTypes.string,
+		onSearch: PropTypes.func,
+		geolocation: PropTypes.bool,
+		searchToOther: PropTypes.bool,
+		keepInput: PropTypes.bool,
+		maxLength: PropTypes.number,
+		keyboardType: PropTypes.string
 	};
 
 	static defaultProps = {
+		keyword: "",
 		placeholder: translate("Tìm tỉnh, thành phố"),
 		geolocation: false,
 		searchToOther: false,
@@ -66,6 +72,8 @@ class SearchBar extends React.Component {
 			this.props.geolocation !== nextProps.geolocation ||
 			this.props.searchToOther !== nextProps.searchToOther ||
 			this.props.keepInput !== nextProps.keepInput ||
+			this.props.maxLength !== nextProps.maxLength ||
+			this.props.keyboardType !== nextProps.keyboardType ||
 			this.props.onSearch != nextProps.onSearch
 		);
 	}
@@ -122,32 +130,38 @@ class SearchBar extends React.Component {
 			keyword,
 			geolocation,
 			searchToOther,
-			keepInput
+			keepInput,
+			maxLength,
+			keyboardType,
+			...otherProps,
 		} = this.props;
 
 		return (
 			<View style={ _styles.container }>
 				<TouchableOpacity activeOpacity={ 1 } style={ _styles.textInputWrapper } onPress={ geolocation ? this._onPress : undefined }>
-					<FAIcon name="search" style={ _styles.iconSearch }/>
+					<MlIcon name="search" style={ _styles.iconSearch }/>
 					{
 						geolocation ?
-							<Text numberOfLines={1} style={ !this.state.value && _styles.placeholder }>{ this.state.value || placeholder }</Text>
+							<Text numberOfLines={1} style={ [_styles.label, !this.state.value && _styles.placeholder] }>{ this.state.value || placeholder }</Text>
 						: <TextInput 
 								style 					= { _styles.textInput }
 								returnKeyType 			= {searchToOther ? "done" :"search"}
 								underlineColorAndroid 	= "transparent"
 								selectTextOnFocus 		= { true }
 								placeholder 			= { placeholder }
-								placeholderTextColor 	= "#adadad"
+								placeholderTextColor 	= { colors.placeholderColor }
 								onChangeText 			= { this._onChangeText }
 								value 					= { this.state.value }
 								onSubmitEditing 		= { ({nativeEvent: {text}}) => this._onChange(text) } 
+								maxLength 				= { maxLength }
+								keyboardType 			= { keyboardType }
 						  />
 					}
 				</TouchableOpacity>
 				{
 					geolocation && 
 					<Geocomplete 
+						{ ...otherProps }
 						visible 		= { this.state.visible }
 						onRequestClose 	= { this._onRequestClose }
 						backHandle 		= { this._onRequestClose }
@@ -155,6 +169,9 @@ class SearchBar extends React.Component {
 						keyword 		= { this.state.keyword }
 						value 			= { this.state.value }
 						keepInput 		= { keepInput }
+						maxLength 		= { maxLength }
+						keyboardType 	= { keyboardType }
+						placeholder 	= { placeholder }
 					/>
 				}
 			</View>
@@ -164,35 +181,42 @@ class SearchBar extends React.Component {
 
 const _styles = {
 	container: {
-		height: 35,
-		backgroundColor: "#f4f4f4",
-		paddingLeft: 10,
-		paddingRight: 10,
+		height: sizes.rowItemHeight,
+		backgroundColor: colors.secondBackgroundColor,
+		paddingLeft: sizes.margin,
+		paddingRight: sizes.margin,
 		justifyContent: "center",
-		borderBottomColor: "#b7b6b6",
-		borderBottomWidth: 0.5
+		borderBottomColor: colors.primaryBorderColor,
+		borderBottomWidth: sizes.borderWidth
 	},
 	textInputWrapper: {
-		height: 22,
+		height: 22 * scale,
 		backgroundColor: "white",
-		borderWidth: 0.5,
-		borderColor: "#cacaca",
+		borderWidth: sizes.borderWidth,
+		borderColor: colors.primaryBorderColor,
 		position: "relative",
 		justifyContent: "center",
-		paddingLeft: 22
+		paddingLeft: 22 * scale
 	},
 	iconSearch: {
 		position: "absolute",
-		left: 5,
-		fontSize: 15,
-		color: "#bcbbbc"
+		left: sizes.spacing,
+		fontSize: 15 * scale,
+		color: colors.placeholderColor
 	},
 	placeholder: {
-		color: "#adadad"
+		fontSize: fontSizes.normal,
+		color: colors.placeholderColor
+	},
+	label: {
+		fontSize: fontSizes.normal,
+		color: colors.normalColor
 	},
 	textInput: {
 		flex: 1,
-		padding: 0
+		padding: 0,
+		fontSize: fontSizes.normal,
+		color: colors.normalColor
 	}
 };
 

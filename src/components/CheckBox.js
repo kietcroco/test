@@ -1,29 +1,38 @@
 "use strict";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import { colors, scale, sizes, fontSizes } from '~/configs/styles';
 
 class CheckBox extends React.Component {
 
 	static displayName = "@CheckBox";
 
 	static propTypes = {
-		checked: React.PropTypes.any,
-		style: React.PropTypes.object
+		disable: PropTypes.bool,
+		checked: PropTypes.any,
+		style: PropTypes.object
 	};
 	static defaultProps = {
-		checked: false
+		checked: false,
+		disable: false
 	};
 
-	shouldComponentUpdate(nextProps, nextState) {
+	shouldComponentUpdate(nextProps) {
 
-		return this.props.checked !== nextProps.checked;
+		return (
+			this.props.checked !== nextProps.checked ||
+			this.props.disable !== nextProps.disable
+		);
 	}
 
 	render() {
 
 		return (
-			<View style={ this.props.style ? [_styles.container, this.props.style] : _styles.container }>
+			<View style={ [_styles.container, this.props.disable && {
+				backgroundColor: colors.disableColor
+			}, this.props.style] }>
 				{
 					this.props.checked && <FAIcon name="check" style={ _styles.iconCheck }/>
 				}
@@ -34,18 +43,18 @@ class CheckBox extends React.Component {
 
 const _styles = {
 	container: {
-		width: 20,
-		height: 20,
-		borderRadius: 3,
-		borderColor: "#e0e0e0",
-		borderWidth: 1,
+		width: 20 * scale,
+		height: 20 * scale,
+		borderRadius: 3 * scale,
+		borderColor: colors.primaryBorderColor,
+		borderWidth: 1 * scale,
 		backgroundColor: "white",
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	iconCheck: {
-		color: "#16a085",
-		fontSize: 16
+		color: colors.checkedColor,
+		fontSize: fontSizes.large
 	}
 };
 

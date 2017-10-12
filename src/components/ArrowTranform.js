@@ -1,22 +1,24 @@
 "use strict";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { TouchableOpacity, Animated } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
-import mergeStyle from '~/utilities/mergeStyle';
+import mergeStyle from '~/library/mergeStyle';
+import { colors, scale, hitSlop } from '~/configs/styles';
 
 class ArrowTranform extends React.Component {
 
 	static displayName = '@ArrowTranform';
 
 	static propTypes = {
-		style: React.PropTypes.oneOfType([
-			React.PropTypes.object,
-			React.PropTypes.array
+		style: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.array
 		]),
-		dir: React.PropTypes.oneOf(['up','down']),
-		duration: React.PropTypes.number, //Thời gian tranform
-		disable: React.PropTypes.any, // cho phép click đổi chiều không
-		onPress: React.PropTypes.func
+		dir: PropTypes.oneOf(['up','down']),
+		duration: PropTypes.number, //Thời gian tranform
+		disable: PropTypes.any, // cho phép click đổi chiều không
+		onPress: PropTypes.func
 	};
 
 	static defaultProps = {
@@ -121,6 +123,7 @@ class ArrowTranform extends React.Component {
 			<TouchableOpacity
 				onPress 		= { onPress ? e => {this.toggle(); onPress(e)} : () => this.toggle() }
 				style 			= { _styles.container }
+				hitSlop 		= { hitSlop }
 			>
 				{ this._renderIcon() }
 			</TouchableOpacity>
@@ -139,7 +142,8 @@ const _styles = {
 		justifyContent: "center"
 	},
 	icon: {
-		fontSize: 20
+		fontSize: 20 * scale,
+		color: colors.boldColor
 	}
 };
 

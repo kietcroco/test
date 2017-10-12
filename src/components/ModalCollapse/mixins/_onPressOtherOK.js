@@ -5,8 +5,7 @@ import formatGeoCode from '../utils/formatGeoCode';
 export default function( rowData, sectionID, rowID, levels, data ) {
 
 	// clone data source
-	var dataSource = this._dataSource.slice();
-
+	let dataSource = this._dataSource.slice();
 
 	// nếu co geolocation
 	if( data.geoCode ) {

@@ -1,3 +1,6 @@
+import alertUtil from '~/utilities/alert';
+import { translate } from '~/utilities/language';
+
 /**
  * @todo: Hàm lấy vị trí hiện tại
  * @author: Croco
@@ -56,7 +59,14 @@ export default function( rowID: Number ) {
 
 			// huỷ loading
 			this._loadingRow( rowID, false );
-			alert(error.message);
+
+			alertUtil({
+				title: translate("Lỗi"),
+				message: translate("Lấy vị trí thất bại")
+			});
+			
+			//dev
+			//console.log(error.message);
 		},
 		options
 	);

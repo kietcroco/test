@@ -1,1 +1,54 @@
-App Izifix ch�nh
+﻿App Izifix chính
+
+
+xem tài khoản đang đang nhập
+code-push whoami
+
+xem key của App
+code-push deployment ls [tên app] -k
+
+Successfully added the "Izifix-R-Android" app, along with the following default deployments:
+┌────────────┬──────────────────────────────────────────────────────────────────┐
+│ Name       │ Deployment Key                                                   │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Production │ DygfutAfFBdiYSNfDVWv_Q3A246d072f8768-e0cc-487e-971f-ee119720706b │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Staging    │ d8HRoI2lZBu8kpB8h5C5wObJKgCY072f8768-e0cc-487e-971f-ee119720706b │
+└────────────┴──────────────────────────────────────────────────────────────────┘
+
+
+Successfully added the "Izifix-R-IOS" app, along with the following default deployments:
+┌────────────┬──────────────────────────────────────────────────────────────────┐
+│ Name       │ Deployment Key                                                   │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Production │ 599y1a3MuHuSEJjjxOop98C_fYM1072f8768-e0cc-487e-971f-ee119720706b │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Staging    │ f3grtERe4CVvTK8jFtdnceypejLs072f8768-e0cc-487e-971f-ee119720706b │
+└────────────┴──────────────────────────────────────────────────────────────────┘
+
+// tài khoản up app ios
+https://appleid.apple.com/account/manage
+Email: info@izifix.com
+Pass:Izi98765-
+
+// tài khoản up app android
+izifix.info@gmail.com/izifix@123;
+
+
+
+fix 0.47.0
+// xem theo đường dẫn này để fix native package @override
+https://github.com/react-native-community/react-native-svg/commit/294cda65afd33301a60c8868e866044f3769a54a
+
+// xem theo 2 đường dẫn này để fix PropTypes
+https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes
+https://github.com/reactjs/react-codemod
+https://facebook.github.io/react/warnings/dont-call-proptypes.html
+
+// bundle
+react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
+
+// push phiên bản mới
+
+code-push release-react Izifix-R-Android android --deploymentName Production --description "what is news" --mandatory
+code-push release-react Izifix-R-IOS ios --deploymentName Production --description "what is news" --mandatory

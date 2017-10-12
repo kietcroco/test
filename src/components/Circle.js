@@ -1,28 +1,31 @@
+"use strict";
+
 /**
  * @flow
 */
-"use strict";
+import PropTypes from 'prop-types';
+
 import React from 'react';
 import { View } from 'react-native';
-import mergeStyle from '~/utilities/mergeStyle';
+import mergeStyle from '~/library/mergeStyle';
 
-class Circle extends React.PureComponent {
+class Circle extends React.Component {
 
 	static displayName = "@circle";
 
 	static propTypes = {
-		size: React.PropTypes.oneOfType([
-			React.PropTypes.number,
-			React.PropTypes.string
+		size: PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string
 		]),
-		onLayout: React.PropTypes.func,
-		style: React.PropTypes.oneOfType([
-			React.PropTypes.object,
-			React.PropTypes.array
+		onLayout: PropTypes.func,
+		style: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.array
 		]),
-		children: React.PropTypes.oneOfType([
-			React.PropTypes.element,
-			React.PropTypes.arrayOf( React.PropTypes.element )
+		children: PropTypes.oneOfType([
+			PropTypes.element,
+			PropTypes.arrayOf( PropTypes.element )
 		])
 	};
 

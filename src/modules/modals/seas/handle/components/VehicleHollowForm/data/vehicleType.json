@@ -1,0 +1,39 @@
+[
+	{
+		"label": "#$seas$#Tàu có cẩu",
+		"value": "Gear Vsl"
+	},
+	{
+		"label": "#$seas$#Tàu không cẩu",
+		"value": "Gearless Vsl"
+	},
+	{
+		"label": "#$seas$#Tàu pha sông biển (SB)",
+		"value": "SB Vsl"
+	},
+	{
+		"label": "#$seas$#Tàu container",
+		"value": "Cont Vsl"
+	},
+	{
+		"label": "#$seas$#Tàu hàng lỏng",
+		"value": "M/T"
+	},
+	{
+		"label": "#$seas$#Tàu lai thường",
+		"value": "Screw Tug"
+	},
+	{
+		"label": "#$seas$#Tàu lai Azimuth",
+		"value": "ASD Tug"
+	},
+	{
+		"label": "#$seas$#Tàu dịch vụ",
+		"value": "Supplyboat"
+	},
+	{
+		"label": "#$seas$#Loại khác",
+		"value": "Other",
+		"isOther": true
+	}
+]

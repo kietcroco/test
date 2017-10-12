@@ -1,0 +1,31 @@
+[
+    {
+        "label": "Việt Nam",
+        "value": "Việt Nam"
+    },
+    {
+        "label": "Nhật",
+        "value": "Nhật"
+    },
+    {
+        "label": "Hàn Quốc",
+        "value": "Hàn Quốc"
+    },
+    {
+        "label": "Trung Quốc",
+        "value": "Trung Quốc"
+    },
+    {
+        "label": "Mỹ",
+        "value": "Mỹ"
+    },
+    {
+        "label": "Đức",
+        "value": "Đức"
+    },
+    {
+        "label": "Khác",
+        "value": "Khác",
+        "isOther": true
+    }
+]

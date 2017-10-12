@@ -1,0 +1,51 @@
+[
+	{
+		"label": "KIA",
+		"value": "KIA"
+	},
+	{
+		"label": "HUYNDAI",
+		"value": "HUYNDAI"
+	},
+	{
+		"label": "FUSO",
+		"value": "FUSO"
+	},
+	{
+		"label": "CUU LONG",
+		"value": "CUU LONG"
+	},
+	{
+		"label": "ISUZU",
+		"value": "ISUZU"
+	},
+	{
+		"label": "HINO",
+		"value": "HINO"
+	},
+	{
+		"label": "DONGFENG",
+		"value": "DONGFENG"
+	},
+	{
+		"label": "OLIN",
+		"value": "OLIN"
+	},
+	{
+		"label": "HOWO",
+		"value": "HOWO"
+	},
+	{
+		"label": "THACO",
+		"value": "THACO"
+	},
+	{
+		"label": "MITSUBISHI",
+		"value": "MITSUBISHI"
+	},
+	{
+		"label": "Khác",
+		"value": "Khác",
+		"isOther": true
+	}
+]

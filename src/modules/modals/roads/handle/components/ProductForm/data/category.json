@@ -1,0 +1,225 @@
+[
+	{
+		"label": "Sắt thép",
+		"value": "Sắt thép",
+		"children": [
+			{
+				"label": "Thép cuộn",
+				"value": "Thép cuộn"
+			},
+			{
+				"label": "Thép xây dựng",
+				"value": "Thép xây dựng"
+			},
+			{
+				"label": "Thép tấm",
+				"value": "Thép tấm"
+			},
+			{
+				"label": "Thép phôi",
+				"value": "Thép phôi"
+			},
+			{
+				"label": "Sắt vụn",
+				"value": "Sắt vụn"
+			}
+		]
+	},
+	{
+		"label": "Hàng bao",
+		"value": "Hàng bao",
+		"children": [
+			{
+				"label": "Gạo",
+				"value": "Gạo"
+			},
+			{
+				"label": "Phân bón",
+				"value": "Phân bón"
+			},
+			{
+				"label": "Xi măng",
+				"value": "Xi măng"
+			},
+			{
+				"label": "Bắp",
+				"value": "Bắp"
+			},
+			{
+				"label": "Bột mì",
+				"value": "Bột mì"
+			},
+			{
+				"label": "Bã đậu nành",
+				"value": "Bã đậu nành"
+			},
+			{
+				"label": "Quặng nhôm",
+				"value": "Quặng nhôm"
+			},
+			{
+				"label": "Soda",
+				"value": "Soda"
+			}
+		]
+	},
+	{
+		"label": "Nông sản",
+		"value": "Nông sản",
+		"children": [
+			{
+				"label": "Bã đậu nành",
+				"value": "Bã đậu nành"
+			},
+			{
+				"label": "Sắn lát",
+				"value": "Sắn lát"
+			},
+			{
+				"label": "Bắp",
+				"value": "Bắp"
+			},
+			{
+				"label": "Lúa mì",
+				"value": "Lúa mì"
+			},
+			{
+				"label": "Gạo",
+				"value": "Gạo"
+			},
+			{
+				"label": "Bột sắn",
+				"value": "Bột sắn"
+			}
+		]
+	},
+	{
+		"label": "Hàng xá",
+		"value": "Hàng xá",
+		"children": [
+			{
+				"label": "Sắn lát",
+				"value": "Sắn lát"
+			},
+			{
+				"label": "Bắp",
+				"value": "Bắp"
+			},
+			{
+				"label": "Lúa mì",
+				"value": "Lúa mì"
+			},
+			{
+				"label": "Cám viên",
+				"value": "Cám viên"
+			},
+			{
+				"label": "Bã đậu nành",
+				"value": "Bã đậu nành"
+			},
+			{
+				"label": "Gỗ dăm",
+				"value": "Gỗ dăm"
+			},
+			{
+				"label": "Gỗ",
+				"value": "Gỗ"
+			},
+			{
+				"label": "Phân bón",
+				"value": "Phân bón"
+			},
+			{
+				"label": "Clinker",
+				"value": "Clinker"
+			},
+			{
+				"label": "Xi măng",
+				"value": "Xi măng"
+			},
+			{
+				"label": "Thạch cao",
+				"value": "Thạch cao"
+			},
+			{
+				"label": "Than",
+				"value": "Than"
+			},
+			{
+				"label": "Than cốc",
+				"value": "Than cốc"
+			},
+			{
+				"label": "Than cám",
+				"value": "Than cám"
+			},
+			{
+				"label": "Quặng sắt",
+				"value": "Quặng sắt"
+			},
+			{
+				"label": "Quặng Nickel",
+				"value": "Quặng Nickel"
+			},
+			{
+				"label": "Thiết bị",
+				"value": "Thiết bị"
+			},
+		]
+	},
+	{
+		"label": "Cát đá",
+		"value": "Cát đá",
+		"children": [
+			{
+				"label": "Cát san lấp",
+				"value": "Cát san lấp"
+			},
+			{
+				"label": "Cát xây dựng",
+				"value": "Cát xây dựng"
+			},
+			{
+				"label": "Đá",
+				"value": "Đá"
+			}
+		]
+	},
+	{
+		"label": "Xăng dầu",
+		"value": "Xăng dầu",
+		"children": [
+			{
+				"label": "FO",
+				"value": "FO"
+			},
+			{
+				"label": "DO",
+				"value": "DO"
+			},
+			{
+				"label": "Nhớt",
+				"value": "Nhớt"
+			}
+		]
+	},
+	{
+		"label": "Hàng lỏng",
+		"value": "Hàng lỏng",
+		"children": [
+			{
+				"label": "Mật mía",
+				"value": "Mật mía"
+			},
+			{
+				"label": "Dầu thực vật",
+				"value": "Dầu thực vật"
+			}
+		]
+	},
+	{
+		"label": "Hàng khác",
+		"value": "Hàng khác",
+		"isOther": true
+	}
+]

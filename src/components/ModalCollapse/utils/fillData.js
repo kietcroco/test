@@ -62,7 +62,7 @@ const findAndInsert = ( data: Array = [], levels: Array = [], props: Object ) =>
 			foundIndex = selectAllIndex !== -1 ? selectAllIndex + 1 : 0;
 
 			// tạo item mới
-			var rowData = {
+			let rowData = {
 				label: value,
 				value: value,
 				isInsert: true
@@ -143,7 +143,7 @@ export default ( props: Object = {}, dataSource: Array = [], levels: Array = [],
 
 	// lấy value của item
 	let keyword = _levels.pop();
-
+	
 	// tìm tiếp đến cấp value vừa tạo
 	data = data ? findEq( data, _levels.slice() ) : undefined;
 

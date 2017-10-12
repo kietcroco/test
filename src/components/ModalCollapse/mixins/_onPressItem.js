@@ -4,7 +4,7 @@ import uncheckAll from '../utils/uncheckAll';
 
 export default function( rowData, sectionID, rowID, levels ) {
 
-	var dataSource = this._dataSource.slice();
+	let dataSource = this._dataSource.slice();
 
 	if( !rowData.checked ) {
 

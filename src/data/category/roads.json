@@ -1,0 +1,381 @@
+{
+	"": {
+		"label": "Tất cả",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "",
+					"type": ""
+				},
+				"iconName": "home"
+			},
+			{
+				"label": "Xe chạy rỗng cần hàng",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": ""
+				},
+				"iconName": "truck-o"
+			},
+			{
+				"label": "Hàng - offer",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": ""
+				},
+				"iconName": "sacks"
+			},
+			{
+				"label": "Xe - open",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": ""
+				},
+				"iconName": "truck"
+			},
+			{
+				"label": "Mua bán - S&P",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": ""
+				},
+				"iconName": "communicator"
+			},
+			{
+				"label": "Container - offer",
+				"params": {
+					"Exchange": "ROADS_CONTAINER",
+					"type": ""
+				},
+				"iconName": "container"
+			}
+			,
+			{
+				"label": "Doanh nghiệp",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": ""
+				},
+				"iconName": "building"
+			}
+		]
+	},
+	"ROADS_VEHICLE_HOLLOW": {
+		"label": "Xe chạy rỗng cần hàng",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": ""
+				}
+			},
+			{
+				"label": "Thùng hở",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Thùng hở"
+				}
+			},
+			{
+				"label": "Thùng kín",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Thùng kín"
+				}
+			},
+			{
+				"label": "Container",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Container"
+				}
+			},
+			{
+				"label": "Tải có cẩu",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Tải có cẩu"
+				}
+			},
+			{
+				"label": "Tải ben",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Tải ben"
+				}
+			},
+			{
+				"label": "Đông lạnh",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Đông lạnh"
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_HOLLOW",
+					"type": "Khác"
+				}
+			}
+		]
+	},
+	"ROADS_PRODUCT_OFFER": {
+		"label": "Hàng - offer",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "",
+				}
+			},
+			{
+				"label": "Sắt thép",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Sắt thép",
+				}
+			},
+			{
+				"label": "Hàng bao",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Hàng bao",
+				}
+			},
+			{
+				"label": "Nông sản",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Nông sản",
+				}
+			},
+			{
+				"label": "Hàng xá",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Hàng xá",
+				}
+			},
+			{
+				"label": "Cát đá",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Cát đá",
+				}
+			},
+			{
+				"label": "Xăng dầu",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Xăng dầu",
+				}
+			},
+			{
+				"label": "Hàng lỏng",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Hàng lỏng",
+				}
+			},
+			{
+				"label": "Hàng khác",
+				"params": {
+					"Exchange": "ROADS_PRODUCT_OFFER",
+					"type": "Hàng khác",
+				}
+			}
+		]
+	},
+	"ROADS_VEHICLE_OPEN": {
+		"label": "Xe - open",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": ""
+				}
+			},
+			{
+				"label": "Thùng hở",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Thùng hở"
+				}
+			},
+			{
+				"label": "Thùng kín",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Thùng kín"
+				}
+			},
+			{
+				"label": "Container",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Container"
+				}
+			},
+			{
+				"label": "Tải có cẩu",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Tải có cẩu"
+				}
+			},
+			{
+				"label": "Tải ben",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Tải ben"
+				}
+			},
+			{
+				"label": "Đông lạnh",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Đông lạnh"
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "ROADS_VEHICLE_OPEN",
+					"type": "Khác"
+				}
+			}
+		]
+	},
+	"ROADS_PURCHASE": {
+		"label": "Mua bán - S&P",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": ""
+				}
+			},
+			{
+				"label": "Thùng hở",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Thùng hở"
+				}
+			},
+			{
+				"label": "Thùng kín",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Thùng kín"
+				}
+			},
+			{
+				"label": "Container",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Container"
+				}
+			},
+			{
+				"label": "Tải có cẩu",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Tải có cẩu"
+				}
+			},
+			{
+				"label": "Tải ben",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Tải ben"
+				}
+			},
+			{
+				"label": "Đông lạnh",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Đông lạnh"
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "ROADS_PURCHASE",
+					"type": "Khác"
+				}
+			}
+		]
+	},
+	"ROADS_CONTAINER": {
+		"label": "Container",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_CONTAINER",
+					"type": ""
+				}
+			},
+			{
+				"label": "Lạnh",
+				"params": {
+					"Exchange": "ROADS_CONTAINER",
+					"type": "Lạnh"
+				}
+			},
+			{
+				"label": "Thường",
+				"params": {
+					"Exchange": "ROADS_CONTAINER",
+					"type": "Thường"
+				}
+			}
+		]
+	},
+	"ROADS_ENTERPRISE": {
+		"label": "Doanh nghiệp",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": ""
+				}
+			},
+			{
+				"label": "Sản xuất - thương mại",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": "SERVICE",
+				}
+			},
+			{
+				"label": "Vận tải đường bộ",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": "TRUCK",
+				}
+			},
+			{
+				"label": "Logistics",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": "LOGISTICS",
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "ROADS_ENTERPRISE",
+					"type": "Khác",
+				}
+			}
+		]
+	}
+}

@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 // kiểu dữ liệu của value
 const propTypeValues = PropTypes.arrayOf( PropTypes.shape({  
@@ -8,6 +8,7 @@ const propTypeValues = PropTypes.arrayOf( PropTypes.shape({
 }) );
 
 export default {
+	placeholder: PropTypes.string, // place holder searbar
 	visible: PropTypes.bool,
 	backHandle: PropTypes.func.isRequired,
 	onRequestClose: PropTypes.func.isRequired,
@@ -41,5 +42,13 @@ export default {
 	formatLabel: PropTypes.func, // hàm format label từ address
 	geolocation: PropTypes.bool, // cho phép search geocomplete
 	searchToOther: PropTypes.bool, // cho input search làm input other
-	keepInput: PropTypes.bool // cho xác nhận text trên geocomplete
+	keepInput: PropTypes.bool, // cho xác nhận text trên geocomplete
+	searchBar: PropTypes.bool, // thanh search
+	onInit: PropTypes.func, // sự kiện init value ban đầu
+	translate: PropTypes.bool, // cho phép dịch label
+	maxLength: PropTypes.number,
+	keyboardType: PropTypes.string,
+	labelApply: PropTypes.string, // label nút apply
+	labelClear: PropTypes.string, // label nút xoá
+	otherPlaceholder: PropTypes.string
 };

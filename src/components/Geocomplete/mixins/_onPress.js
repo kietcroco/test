@@ -27,7 +27,7 @@ export default function( rowData, rowID: Number ) {
 		let url = 'https://maps.googleapis.com/maps/api/place/details/json?' + Qs.stringify({
 			key: this.props.query.key,
 			placeid: rowData.place_id,
-			language: this.props.query.language
+			language: this.props.language || this.props.query.language
 		});
 
 		// ajax

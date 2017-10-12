@@ -12,7 +12,10 @@ export default function( text: String = "" ) {
 	this.abortRequests();
 
 	// khởi tạo url api google place
-	let url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?&input=' + encodeURIComponent(text) + '&' + Qs.stringify(this.props.query);
+	let url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?&input=' + encodeURIComponent(text) + '&' + Qs.stringify({
+		...this.props.query,
+		language: this.props.language || this.props.query.language
+	});
 
 	// ajax
 	this._request( 

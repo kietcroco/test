@@ -81,23 +81,20 @@ export default ( data: Array = [], options: Object = {} ) => {
 					// thêm label vào submit
 					result.labels.push( label.join( options.labelDelimiter ) );
 
-					// value submit
-					var value = {
-						value: value.join( options.delimiter )
-					};
-					
 					// extends props
 					Object.keys( rowData ).forEach( key => {
 
 						// nếu không nằm trong mảng cần bỏ qua
-						if( key !== "multiple" && arrKeyConfig.indexOf( key ) === -1 ) {
+						if( key !== "multiple" && key !== "translate" && arrKeyConfig.indexOf( key ) === -1 ) {
 
 							value[ key ] = rowData[ key ];
 						}
 					} );
 
 					// thêm value vào submit
-					result.values.push( value );
+					result.values.push( {
+						value: value.join( options.delimiter )
+					} );
 				}
 
 			}

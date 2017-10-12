@@ -1,0 +1,19 @@
+[
+	{
+		"label": "NK",
+		"value": "NK"
+	},
+	{
+		"label": "VR",
+		"value": "VR"
+	},
+	{
+		"label": "BP",
+		"value": "BP"
+	},
+    {
+		"label": "#$seas$#Khác...",
+		"value": "Other",
+		"isOther": true
+	}
+]

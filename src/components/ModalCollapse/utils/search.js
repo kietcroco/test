@@ -29,7 +29,7 @@ const search = ( data: Array = [], text: String = "" ) => {
 			}
 
 			// nếu tìm thấy hoặc tìm được trong cấp con
-			if( toAlias( data[i].value || data[i].otherValue ).indexOf( toAlias( text ) ) !== -1 || !_isHidden ) {
+			if( toAlias( data[i].label || data[i].otherValue || data[i].otherLabel ).indexOf( toAlias( text ) ) !== -1 || !_isHidden ) {
 
 				isHidden = false;
 				_isHidden = false;

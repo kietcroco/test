@@ -3,7 +3,7 @@ import removeItem from '../utils/removeItem';
 
 export default function( rowData, sectionID, rowID, levels ) {
 
-	var dataSource = this._dataSource.slice();
+	let dataSource = this._dataSource.slice();
 
 	if( rowData.isInput && rowData.otherValue ) {
 

@@ -1,0 +1,35 @@
+[
+	{
+		"label": "#$seas$#Vận tải đường biển",
+		"value": "SHIPOWER"
+	},
+	{
+		"label": "#$seas$#Chủ hàng",
+		"value": "CARGO_OWNER"
+	},
+	{
+		"label": "#$seas$#Thương mại",
+		"value": "TRADER"
+	},
+	{
+		"label": "#$seas$#Môi giới",
+		"value": "BROKER"
+	},
+	{
+		"label": "Forwarder",
+		"value": "Forwarder"
+	},
+	{
+		"label": "Logistics",
+		"value": "Logistics"
+	},
+	{
+		"label": "#$seas$#Đại lý hải quan",
+		"value": "CUSTOMER_CLEARANCE"
+	},
+	{
+		"label": "#$seas$#Khác",
+		"value": "Other",
+		"isOther" : true
+	}
+]

@@ -1,0 +1,19 @@
+[
+	{
+		"label": "Sản xuất - thương mại",
+		"value": "SERVICE"
+	},
+	{
+		"label": "Vận tải đường sông",
+		"value": "BARGES"
+	},
+	{
+		"label": "Logistics",
+		"value": "LOGISTICS"
+	},
+	{
+		"label": "Khác",
+		"value": "Khác",
+		"isOther" : true
+	}
+]

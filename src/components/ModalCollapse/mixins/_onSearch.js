@@ -2,15 +2,14 @@ import placeToAddress from '../utils/placeToAddress';
 import fillData from '../utils/fillData';
 import formatGeoCode from '../utils/formatGeoCode';
 import search from '../utils/search';
+import unSearch from '../utils/unSearch';
 
 export default function( value: String = "", geoCode: Object = null, keyword: String = "" ) {
 
 	// clone data source
-	var dataSource = this._dataSource.slice();
+	let dataSource = this._dataSource.slice();
 
 	if( this.props.searchToOther ) {
-
-		this._isSearching = false;
 
 		// prop của item
 		let data = {
@@ -54,21 +53,25 @@ export default function( value: String = "", geoCode: Object = null, keyword: St
 			showParent: this.props.showParent
 		} );
 
+		const callBack = this.props.multiple ? undefined : () => {
+
+			this._applyHandle();
+		};
+
 		this.setState({
 			dataSource: this.state.dataSource.cloneWithRows( dataSource ),
 			searchKeyword: "",
 			searchValue: ""
-		});
+		}, callBack);
 
-		if( !this.props.multiple ) {
-
-			this._applyHandle();
-		}
 	} else {
 
 		if( !value || !value.length ) {
 
+			dataSource = unSearch( dataSource );
+
 			this.setState({
+				dataSource: this.state.dataSource.cloneWithRows( dataSource ),
 				isSearching: false
 			});
 		} else {

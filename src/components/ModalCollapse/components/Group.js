@@ -1,33 +1,29 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Collapsible from '~/components/Collapsible';
 import ArrowTranform from '~/components/ArrowTranform';
+import { colors, scale, sizes, fontSizes } from '~/configs/styles';
 
-class Group extends React.PureComponent {
+class Group extends React.Component {
 
 	static displayName = '@ModalCollapseGroup';
 
 	static propTypes = {
-		onPress: React.PropTypes.func,
-		label: React.PropTypes.string.isRequired,
-		multiple: React.PropTypes.bool,
-		checked: React.PropTypes.bool,
-		isSelectAll: React.PropTypes.bool,
-		autoCheck: React.PropTypes.bool,
-		isHot: React.PropTypes.bool,
-		isOther: React.PropTypes.bool,
-		level: React.PropTypes.number,
-		children: React.PropTypes.node.isRequired,
-		opened: React.PropTypes.bool
+		onPress: PropTypes.func,
+		label: PropTypes.string.isRequired,
+		multiple: PropTypes.bool,
+		checked: PropTypes.bool,
+		isHot: PropTypes.bool,
+		level: PropTypes.number,
+		children: PropTypes.node.isRequired,
+		opened: PropTypes.bool
 	};
 	
 	static defaultProps = {
 		multiple: false,
 		checked: false,
-		isSelectAll: false,
-		autoCheck: false,
 		isHot: false,
-		isOther: false,
 		level: 1,
 		opened: false
 	};
@@ -39,10 +35,7 @@ class Group extends React.PureComponent {
 			this.props.label !== nextProps.label ||
 			this.props.multiple !== nextProps.multiple ||
 			this.props.checked !== nextProps.checked ||
-			this.props.isSelectAll !== nextProps.isSelectAll ||
-			this.props.autoCheck !== nextProps.autoCheck ||
 			this.props.isHot !== nextProps.isHot ||
-			this.props.isOther !== nextProps.isOther ||
 			this.props.level !== nextProps.level ||
 			this.props.children != nextProps.children ||
 			this.props.onPress != nextProps.onPress
@@ -59,7 +52,7 @@ class Group extends React.PureComponent {
 			onPress
 		} = this.props;
 
-		const paddingLeft = level * 10;
+		const paddingLeft = level * sizes.margin;
 
 		let mask = [];
 
@@ -76,7 +69,7 @@ class Group extends React.PureComponent {
 
 		return (
 			<View style={ !opened ? mask && mask.length && _styles.containerHasMask : _styles.containerIsOpen }>
-				<TouchableOpacity onPress={ onPress } style={ [_styles.item, {
+				<TouchableOpacity activeOpacity={ colors.activeOpacity } onPress={ onPress } style={ [_styles.item, {
 					paddingLeft
 				}] }>
 					<Text numberOfLines={1} style={ _styles.label }>{ label }</Text>
@@ -98,24 +91,26 @@ class Group extends React.PureComponent {
 
 const _styles = {
 	containerIsOpen: {
-		backgroundColor: "#f3f3f3"
+		backgroundColor: colors.secondBackgroundColor
 	},
 	containerHasMask: {
-		borderColor: "#979797",
-		borderBottomWidth: 1,
-		borderTopWidth: 1
+		borderColor: colors.boldColor,
+		borderBottomWidth: sizes.borderWidth,
+		borderTopWidth: sizes.borderWidth
 	},
 	item: {
-		height: 36,
+		height: sizes.rowItemHeight,
 		alignItems: "center",
-		borderBottomColor: "#e5e5e5",
-		borderBottomWidth: 0.5,
-		paddingRight: 15,
+		borderBottomColor: colors.primaryBorderColor,
+		borderBottomWidth: sizes.borderWidth,
+		paddingRight: sizes.margin,
 		flexDirection: "row"
 	},
 	label: {
 		fontWeight: "bold",
-		marginRight: 8
+		marginRight: sizes.spacing,
+		color: colors.normalColor,
+		fontSize: fontSizes.normal
 	}
 };
 

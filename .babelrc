@@ -1,3 +1,21 @@
 {
-  "presets": ["react-native"]
+  "env": {
+    "development": {
+      "presets": ["react-native"],
+      "plugins": []
+    },
+    "production": {
+      "presets": ["react-native"],
+      "plugins": [
+        "transform-remove-console",
+        [
+          "transform-react-remove-prop-types",
+          {
+            "ignoreFilenames": ["node_modules"],
+            "removeImport": true
+          }
+        ]
+      ]
+    }
+  }
 }

@@ -34,7 +34,11 @@ import Footer from './components/Footer';
 import mixins from './mixins';
 import propTypes from './propTypes';
 import defaultProps from './defaultProps';
-import recursiveShallowEqual from '~/utilities/recursiveShallowEqual';
+import recursiveShallowEqual from '~/library/recursiveShallowEqual';
+import { translate } from '~/utilities/language';
+import { colors } from '~/configs/styles';
+
+import mapCurrentLanguage from '~/utilities/mapCurrentLanguageToProps';
 
 class ModalCollapse extends React.Component {
 
@@ -49,7 +53,7 @@ class ModalCollapse extends React.Component {
 
 		// tạo list data
 		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => {
-			
+
 			if( 
 				r1 !== r2 ||
 				r1.checked !== r2.checked ||
@@ -70,7 +74,7 @@ class ModalCollapse extends React.Component {
 		}});
 
 		this.state = {
-			dataSource: ds.cloneWithRows( this._buildData( props.value ) ),
+			dataSource: ds.cloneWithRows( this._buildData( props.value, props.source ) ),
 			searchKeyword: "",
 			searchValue: "",
 			isSearching: false
@@ -78,24 +82,36 @@ class ModalCollapse extends React.Component {
 
 		this._renderRows = this._renderRows.bind(this);
 		this._renderRow = this._renderRow.bind(this);
-		this._renderGroup = this._renderGroup.bind(this);
+		this._renderGroup = this._renderGroup.bind(this);	
 	}
 
 	componentWillReceiveProps(nextProps) {
 
-		if( nextProps.visible && this.props.visible !== nextProps.visible ) {
+		if( 
+			!recursiveShallowEqual(this.props.value, nextProps.value) || 
+			!recursiveShallowEqual(this.props.source, nextProps.source) ||
+			this.props.currentLanguage !== nextProps.currentLanguage
+		) {
+			
+			const callBack = !nextProps.onInit ? undefined : () => {
 
-			if( !recursiveShallowEqual(this.props.value, nextProps.value) || !recursiveShallowEqual(this.props.source, nextProps.source) ) {
-				
-				this.setState({
-					dataSource: this.state.dataSource.cloneWithRows( this._buildData( nextProps.value ) )
-				});
-			}
+				const { labels, values } = this._getSubmit();
+				nextProps.onInit( labels.join( this.props.labelSeparate ), values );
+			};
+
+			this.setState({
+				dataSource: this.state.dataSource.cloneWithRows( this._buildData( nextProps.value, nextProps.source ) )
+			}, callBack);
+		}
+
+		if( nextProps.visible && this.props.visible !== nextProps.visible ) {
 
 			this.setState({
 				searchKeyword: "",
 				searchValue: ""
 			});
+
+			this._backup();
 		}
 	}
 
@@ -106,7 +122,13 @@ class ModalCollapse extends React.Component {
 			this.state.searchValue !== nextState.searchValue ||
 			this.state.searchKeyword !== nextState.searchKeyword ||
 			this.state.dataSource._dataBlob.s1 != nextState.dataSource._dataBlob.s1 ||
-			this.props.visible !== nextProps.visible
+			this.props.visible !== nextProps.visible ||
+			this.props.labelApply !== nextProps.labelApply ||
+			this.props.labelClear !== nextProps.labelClear ||
+			this.props.maxLength !== nextProps.maxLength ||
+			this.props.keyboardType !== nextProps.keyboardType ||
+			this.props.otherPlaceholder !== nextProps.otherPlaceholder ||
+			this.props.placeholder !== nextProps.placeholder
 		);
 	}
 
@@ -116,21 +138,22 @@ class ModalCollapse extends React.Component {
 
 			return (
 				<ItemOther 
+					{...this.props}
 					onPress 		= { () => this._onPressItemOther( rowData, sectionID, rowID, levels ) }
 					key 			= { `${rowID}-${levels.join('-')}-${rowData.label}` }
 					multiple 		= { multiple }
 					checked 		= { rowData.checked }
-					isSelectAll 	= { rowData.isSelectAll }
-					autoCheck 		= { rowData.autoCheck }
-					isHot 			= { rowData.isHot }
-					isOther 		= { rowData.isOther }
 					level 			= { levels.length }
 					label 			= { rowData.otherLabel || rowData.label }
 					otherValue 		= { rowData.otherValue }
 					isInput 		= { rowData.isInput }
+					isHot 			= { rowData.isHot }
 					onChange 		= { (value, geoCode, keyword) => this._onPressOtherOK( rowData, sectionID, rowID, levels, {value, geoCode, keyword} ) }
-					geolocation 	= { this.props.geolocation }
-					keepInput 		= { this.props.keepInput }
+					// geolocation 	= { this.props.geolocation }
+					// keepInput 		= { this.props.keepInput }
+					// maxLength 		= { this.props.maxLength }
+					// keyboardType 	= { this.props.keyboardType }
+					placeholder 	= { this.props.otherPlaceholder }
 				/>
 			);
 		}
@@ -141,10 +164,7 @@ class ModalCollapse extends React.Component {
 				key 			= { `${rowID}-${levels.join('-')}-${rowData.label}` }
 				multiple 		= { multiple }
 				checked 		= { rowData.checked }
-				isSelectAll 	= { rowData.isSelectAll }
-				autoCheck 		= { rowData.autoCheck }
 				isHot 			= { rowData.isHot }
-				isOther 		= { rowData.isOther }
 				level 			= { levels.length }
 				label 			= { rowData.label }
 			/>
@@ -163,10 +183,7 @@ class ModalCollapse extends React.Component {
 				multiple 		= { multiple }
 				opened 			= { !rowData.collapsed }
 				checked 		= { rowData.checked }
-				isSelectAll 	= { rowData.isSelectAll }
-				autoCheck 		= { rowData.autoCheck }
 				isHot 			= { rowData.isHot }
-				isOther 		= { rowData.isOther }
 				level 			= { levels.length }
 				label 			= { rowData.isOther && rowData.otherLabel || rowData.label }
 			>
@@ -181,6 +198,12 @@ class ModalCollapse extends React.Component {
 
 		rowData.rowID = rowID;
 		rowData.multiple = multiple;
+		// const isTranslate = rowData.hasOwnProperty('translate') ? rowData.translate : this.props.translate;
+		
+		// if( isTranslate && !rowData.isSearch ) {
+
+		// 	rowData.label = translate( rowData.label );
+		// }
 
 		if( (this.state.isSearching && rowData.isHidden) ) return null;
 		
@@ -196,10 +219,16 @@ class ModalCollapse extends React.Component {
 		const {
 			visible,
 			multiple,
-			title,
+			title = translate("Chọn"),
 			geolocation,
 			searchToOther,
-			keepInput
+			keepInput,
+			searchBar,
+			placeholder,
+			maxLength,
+			keyboardType,
+			labelApply = translate("Áp dụng"),
+			labelClear = translate("Bỏ chọn")
 		} = this.props;
 
 		return (
@@ -212,31 +241,65 @@ class ModalCollapse extends React.Component {
 					backHandle 			= { this._backHandle }
 					title 				= { title }
 				/>
-				<SearchBar
-					onSearch 			= { this._onSearch }
-					keyword 			= { this.state.searchKeyword }
-					value 				= { this.state.searchValue }
-					geolocation 		= { geolocation }
-					searchToOther 		= { searchToOther }
-					keepInput 			= { keepInput }
-				/>
+				{
+					searchBar && <SearchBar
+						{...this.props}
+						onSearch 			= { this._onSearch }
+						keyword 			= { this.state.searchKeyword }
+						value 				= { this.state.searchValue }
+						geolocation 		= { geolocation }
+						searchToOther 		= { searchToOther }
+						keepInput 			= { keepInput }
+						placeholder 		= { placeholder }
+						maxLength 			= { maxLength }
+						keyboardType 		= { keyboardType }
+					/>
+				}
 				<ListView
-					dataSource 					= { this.state.dataSource }
-					renderRow 					= { this._renderRows }
-					initialListSize				= { 30 }
-					pageSize 					= { 20 }
-					scrollRenderAheadDistance	= { 40 }
-					enableEmptySections 		= { true }
-					keyboardDismissMode 		= "interactive"
-					keyboardShouldPersistTap 	= "always"
+					dataSource 						= { this.state.dataSource }
+					renderRow 						= { this._renderRows }
+					initialListSize					= { 30 }
+					pageSize 						= { 20 }
+					scrollRenderAheadDistance		= { 40 }
+					enableEmptySections 			= { true }
+					keyboardDismissMode 			= "interactive"
+					keyboardShouldPersistTap 		= "always"
+					showsHorizontalScrollIndicator	= { false }
+					showsVerticalScrollIndicator	= { true }
+					horizontal 						= { false }
+					directionalLockEnabled 			= { true }
+					style 							= { _styles.listView }
 				/>
 				<Footer
 					clearHandle 	= { this._clearHandle }
-					applyHandle 	= { this._applyHandle }
+					applyHandle 	= { multiple ? this._applyHandle : undefined }
+					labelApply 		= { labelApply }
+					labelClear 		= { labelClear }
 				/>
 			</Modal>
 		);
 	}
+
+	componentDidMount() {
+		
+		if( this.props.onInit ) {
+
+			const { labels, values } = this._getSubmit();
+
+			this.props.onInit( labels.join( this.props.labelSeparate ), values );
+		}
+
+		if( this.props.visible ) {
+
+			this._backup();
+		}
+	}
 }
 
-export default ModalCollapse;
+const _styles = {
+	listView: {
+		backgroundColor: colors.modalBackground
+	}
+};
+
+export default mapCurrentLanguage(ModalCollapse);

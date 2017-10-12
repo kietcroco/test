@@ -1,52 +1,52 @@
 [
 	{
-		"label": "All Port",
+		"label": "#$seas$#Tất cả cảng",
 		"value": "All Port",
 		"isSelectAll": true,
 		"autoCheck": true
 	},
 	{
-		"label": "Vietnam",
+		"label": "#$seas$#Việt Nam",
 		"value": "Vietnam",
 		"children": [
 			{
-				"label": "All Vietnam",
+				"label": "#$seas$#Toàn Việt Nam",
 				"value": "All Vietnam",
 				"isSelectAll": true,
 				"autoCheck": true
 			},
 			{
-				"label": "Ho Chi Minh / Saigon",
+				"label": "#$seas$#Hồ Chí Minh",
 				"value": "Ho Chi Minh / Saigon",
 				"isHot": true
 			},
 			{
-				"label": "Hai Phong",
+				"label": "#$seas$#Hải Phòng",
 				"value": "Hai Phong",
 				"isHot": true
 			},
 			{
-				"label": "Vung Tau",
+				"label": "#$seas$#Bà Rịa - Vũng Tàu",
 				"value": "Vung Tau"
 			},
 			{
-				"label": "Can Tho",
+				"label": "#$seas$#Cần Thơ",
 				"value": "Can Tho"
 			},
 			{
-				"label": "Da Nang",
+				"label": "#$seas$#Đà Nẵng",
 				"value": "Da Nang"
 			},
 			{
-				"label": "Ha Tinh",
+				"label": "#$seas$#Hà Tĩnh",
 				"value": "Ha Tinh"
 			},
 			{
-				"label": "Quang Ninh",
+				"label": "#$seas$#Quảng Ninh",
 				"value": "Quang Ninh"
 			},
 			{
-				"label": "Other port of Vietnam",
+				"label": "#$seas$#Các cảng khác của Việt Nam",
 				"value": "Other port of Vietnam"
 			}
 		]
@@ -60,11 +60,11 @@
 		"value": "Hongkong"
 	},
 	{
-		"label": "Thailand",
+		"label": "#$seas$#Thái Lan",
 		"value": "Thailand",
 		"children": [
 			{
-				"label": "All Thailand",
+				"label": "#$seas$#Toàn Thái Lan",
 				"value": "All Thailand",
 				"isSelectAll": true,
 				"autoCheck": true
@@ -78,17 +78,17 @@
 				"value": "Laem Chabang"
 			},
 			{
-				"label": "Other port of Thailand",
+				"label": "#$seas$#Các cảng khác của Thái Lan",
 				"value": "Other port of Thailand"
 			}
 		]
 	},
 	{
-		"label": "Korea",
+		"label": "#$seas$#Hàn Quốc",
 		"value": "Korea",
 		"children": [
 			{
-				"label": "All Korea",
+				"label": "#$seas$#Toàn Hàn Quốc",
 				"value": "All Korea",
 				"isSelectAll": true,
 				"autoCheck": true
@@ -106,13 +106,13 @@
 				"value": "Pohang"
 			},
 			{
-				"label": "Other port of Korea",
-				"value": "Other port of Korea"
+				"label": "#$seas$#Các cảng khác của Hàn Quốc",
+				"value": "Other port of South Korea"
 			}
 		]
 	},
 	{
-		"label": "Cambodia",
+		"label": "#$seas$#Campuchia",
 		"value": "Cambodia"
 	},
 	{
@@ -124,11 +124,11 @@
 		"value": "Malaysia"
 	},
 	{
-		"label": "China",
+		"label": "#$seas$#Trung Quốc",
 		"value": "China"
 	},
 	{
-		"label": "Japan",
+		"label": "#$seas$#Nhật Bản",
 		"value": "Japan"
 	}
 ]

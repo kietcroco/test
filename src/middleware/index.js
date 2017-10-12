@@ -5,8 +5,7 @@ import rafScheduler from './rafScheduler';
 import vanillaPromise from './vanillaPromise';
 import readyStatePromise from './readyStatePromise';
 import logger from './logger';
-import routerNavigate from './routerNavigate';
-import routerHistory from './routerHistory';
+//import routerNavigate from './routerNavigate';
 
 export {
 	timeoutScheduler,
@@ -14,6 +13,5 @@ export {
 	vanillaPromise,
 	readyStatePromise,
 	logger,
-	routerNavigate,
-	routerHistory
+	//routerNavigate
 };

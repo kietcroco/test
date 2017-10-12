@@ -1,0 +1,31 @@
+[
+	{
+		"label": "Thùng hở",
+		"value": "Thùng hở"
+	},
+	{
+		"label": "Thùng kín",
+		"value": "Thùng kín"
+	},
+	{
+		"label": "Container",
+		"value": "Container"
+	},
+	{
+		"label": "Tải có cẩu",
+		"value": "Tải có cẩu"
+	},
+	{
+		"label": "Tải ben",
+		"value": "Tải ben"
+	},
+	{
+		"label": "Đông lạnh",
+		"value": "Đông lạnh"
+	},
+	{
+		"label": "Khác",
+		"value": "Khác",
+		"isOther": true
+	}
+]

@@ -1,0 +1,18 @@
+[
+	{
+		"label": "Tấn",
+		"value": "t"
+	},
+	{
+		"label": "Khối",
+		"value": "k"
+	},
+	{
+		"label": "Lô",
+		"value": "l"
+	},
+	{
+		"label": "Chuyến",
+		"value": "c"
+	}
+]

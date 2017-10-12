@@ -1,5 +1,4 @@
 {
-
 	"": {
 		"label": "Tất cả",
 		"category": [
@@ -25,7 +24,7 @@
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": ""
 				},
-				"iconName": "goods"
+				"iconName": "sacks"
 			},
 			{
 				"label": "Sà lan - open",
@@ -41,7 +40,7 @@
 					"Exchange": "RIVERS_PURCHASE",
 					"type": ""
 				},
-				"iconName": "cooperation"
+				"iconName": "communicator"
 			},
 			{
 				"label": "Cần thuê Sà lan",
@@ -49,7 +48,16 @@
 					"Exchange": "RIVERS_BIDDING",
 					"type": ""
 				},
-				"iconName": "people-person"
+				"iconName": "community"
+			}
+			,
+			{
+				"label": "Doanh nghiệp",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": ""
+				},
+				"iconName": "building"
 			}
 		]
 	},
@@ -60,42 +68,49 @@
 				"label": "Tất cả",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "",
+					"type": ""
 				}
 			},
 			{
 				"label": "Hàng khô có nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "Hàng khô có nắp hầm",
+					"type": "Hàng khô có nắp hầm"
 				}
 			},
 			{
 				"label": "Hàng khô không nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "Hàng khô không nắp hầm",
+					"type": "Hàng khô không nắp hầm"
+				}
+			},
+			{
+				"label": "S.lan Container",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_HOLLOW",
+					"type": "S.lan Container"
 				}
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "Hàng lỏng",
+					"type": "Hàng lỏng"
 				}
 			},
 			{
 				"label": "Ponton",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "Ponton",
+					"type": "Ponton"
 				}
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
-					"type": "Khác",
+					"type": "Khác"
 				}
 			}
 		]
@@ -158,6 +173,13 @@
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Hàng lỏng",
 				}
+			},
+			{
+				"label": "Hàng khác",
+				"params": {
+					"Exchange": "RIVERS_PRODUCT_OFFER",
+					"type": "Hàng khác",
+				}
 			}
 		]
 	},
@@ -183,6 +205,13 @@
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Hàng khô không nắp hầm",
+				}
+			},
+			{
+				"label": "S.lan Container",
+				"params": {
+					"Exchange": "RIVERS_VEHICLE_OPEN",
+					"type": "S.lan Container",
 				}
 			},
 			{
@@ -264,6 +293,54 @@
 	},
 	"RIVERS_BIDDING": {
 		"label": "Cần thuê Sà lan",
-		"category": []
+		"category": [
+			{
+				"label": "Thông tin cần thuê sà lan",
+				"params": {
+					"Exchange": "RIVERS_BIDDING",
+					"type": "",
+				}
+			}
+		]
+	},
+	"RIVERS_ENTERPRISE": {
+		"label": "Doanh nghiệp",
+		"category": [
+			{
+				"label": "Tất cả",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": "",
+				}
+			},
+			{
+				"label": "Sản xuất - thương mại",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": "SERVICE",
+				}
+			},
+			{
+				"label": "Vận tải đường sông",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": "BARGES",
+				}
+			},
+			{
+				"label": "Logistics",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": "LOGISTICS",
+				}
+			},
+			{
+				"label": "Khác",
+				"params": {
+					"Exchange": "RIVERS_ENTERPRISE",
+					"type": "Khác",
+				}
+			}
+		]
 	}
 }

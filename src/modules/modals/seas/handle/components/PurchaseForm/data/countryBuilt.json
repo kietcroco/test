@@ -1,0 +1,31 @@
+[
+	{
+		"label": "#$seas$#Việt Nam",
+		"value": "Vietnam"
+	},
+	{
+		"label": "#$seas$#Nhật Bản",
+		"value": "Japan"
+	},
+	{
+		"label": "#$seas$#Hàn Quốc",
+		"value": "Korea"
+	},
+	{
+		"label": "#$seas$#Trung Quốc",
+		"value": "China"
+	},
+	{
+		"label": "Singapore",
+		"value": "Singapore"
+	},
+	{
+		"label": "#$seas$#Nga",
+		"value": "Russia"
+	},
+	{
+		"label": "#$seas$#Khác",
+		"value": "Other",
+		"isOther": true
+	}
+]

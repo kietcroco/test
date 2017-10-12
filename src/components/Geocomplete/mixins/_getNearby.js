@@ -23,6 +23,7 @@ export default function( coords: Object, rowID: Number ) {
 			url = 'https://maps.googleapis.com/maps/api/geocode/json?' + Qs.stringify({
 				latlng: coords.latitude + ',' + coords.longitude,
 				key: this.props.query.key,
+				language: this.props.language || this.props.query.language,
 				...this.props.GoogleReverseGeocodingQuery
 			});
 		} else {
@@ -30,6 +31,7 @@ export default function( coords: Object, rowID: Number ) {
 			url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?' + Qs.stringify({
 				location: coords.latitude + ',' + coords.longitude,
 				key: this.props.query.key,
+				language: this.props.language || this.props.query.language,
 				...this.props.GooglePlacesSearchQuery,
 			});
 		}

@@ -1,0 +1,225 @@
+[
+	{
+		"label": "#$seas$#Sắt thép",
+		"value": "Steel Products",
+		"children": [
+			{
+				"label": "#$seas$#Thép cuộn",
+				"value": "Rolled coil"
+			},
+			{
+				"label": "#$seas$#Thép xây dựng",
+				"value": "Steel Construction"
+			},
+			{
+				"label": "#$seas$#Thép tấm",
+				"value": "Steel Plate"
+			},
+			{
+				"label": "#$seas$#Thép phôi",
+				"value": "Steel Billet"
+			},
+			{
+				"label": "#$seas$#Sắt vụn",
+				"value": "Steel Scrap"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Hàng bao",
+		"value": "Bag Cargo",
+		"children": [
+			{
+				"label": "#$seas$#Gạo",
+				"value": "Rice"
+			},
+			{
+				"label": "#$seas$#Phân bón",
+				"value": "Fertilizer"
+			},
+			{
+				"label": "#$seas$#Xi măng",
+				"value": "Cement"
+			},
+			{
+				"label": "#$seas$#Bắp",
+				"value": "Corn"
+			},
+			{
+				"label": "#$seas$#Tinh bột sắn",
+				"value": "Tapioca starch"
+			},
+			{
+				"label": "#$seas$#Bã đậu nành",
+				"value": "Soyabean"
+			},
+			{
+				"label": "#$seas$#Quặng nhôm",
+				"value": "Alumina"
+			},
+			{
+				"label": "Soda",
+				"value": "Soda"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Nông sản",
+		"value": "Agriculture Products",
+		"children": [
+			{
+				"label": "#$seas$#Bã đậu nành",
+				"value": "Soyabean"
+			},
+			{
+				"label": "#$seas$#Sắn lát",
+				"value": "Tapioca chips"
+			},
+			{
+				"label": "#$seas$#Bắp",
+				"value": "Corn"
+			},
+			{
+				"label": "#$seas$#Lúa mì",
+				"value": "Wheat"
+			},
+			{
+				"label": "#$seas$#Gạo",
+				"value": "Rice"
+			},
+			{
+				"label": "#$seas$#Tinh bột sắn",
+				"value": "Tapioca starch"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Hàng xá",
+		"value": "Bulk Cargo",
+		"children": [
+			{
+				"label": "#$seas$#Sắn lát",
+				"value": "Tapioca chips"
+			},
+			{
+				"label": "#$seas$#Bắp",
+				"value": "Corn"
+			},
+			{
+				"label": "#$seas$#Lúa mì",
+				"value": "Wheat"
+			},
+			{
+				"label": "#$seas$#Cám viên",
+				"value": "Wheat Brand Pillets"
+			},
+			{
+				"label": "#$seas$#Bã đậu nành",
+				"value": "Soyabean"
+			},
+			{
+				"label": "#$seas$#Gỗ dăm",
+				"value": "Woodchips"
+			},
+			{
+				"label": "#$seas$#Gỗ",
+				"value": "Logs"
+			},
+			{
+				"label": "#$seas$#Phân bón",
+				"value": "Fertilizer"
+			},
+			{
+				"label": "Clinker",
+				"value": "Clinker"
+			},
+			{
+				"label": "#$seas$#Xi măng",
+				"value": "Cement"
+			},
+			{
+				"label": "#$seas$#Thạch cao",
+				"value": "Gypsum"
+			},
+			{
+				"label": "#$seas$#Than",
+				"value": "Coal"
+			},
+			{
+				"label": "#$seas$#Than cốc",
+				"value": "Petcoke"
+			},
+			{
+				"label": "#$seas$#Than cám",
+				"value": "Metcoke"
+			},
+			{
+				"label": "#$seas$#Quặng sắt",
+				"value": "Iron Ore"
+			},
+			{
+				"label": "#$seas$#Quặng Nickel",
+				"value": "Nickel Ore"
+			},
+			{
+				"label": "#$seas$#Thiết bị",
+				"value": "Equipments"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Cát đá",
+		"value": "Sand / Stone",
+		"children": [
+			{
+				"label": "#$seas$#Cát san lấp",
+				"value": "River sand"
+			},
+			{
+				"label": "#$seas$#Cát xây dựng",
+				"value": "Construction Sand"
+			},
+			{
+				"label": "#$seas$#Đá",
+				"value": "Stone chips"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Xăng dầu",
+		"value": "Oil Products",
+		"children": [
+			{
+				"label": "FO",
+				"value": "FO"
+			},
+			{
+				"label": "DO",
+				"value": "DO"
+			},
+			{
+				"label": "#$seas$#Nhớt",
+				"value": "Lube Oil"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Hàng lỏng",
+		"value": "Chemical Products",
+		"children": [
+			{
+				"label": "#$seas$#Mật mía",
+				"value": "Molasses"
+			},
+			{
+				"label": "#$seas$#Dầu thực vật",
+				"value": "Vegettable"
+			}
+		]
+	},
+	{
+		"label": "#$seas$#Hàng khác",
+		"value": "Other",
+		"isOther": true
+	}
+]

@@ -1,117 +1,89 @@
-"use strict";
-import { NavigationActions } from 'react-navigation';
-import history from '~/library/history';
-import serialize from '~/utilities/objectToQueryString';
+// "use strict";
+// import { NavigationActions } from 'react-navigation';
+// import serialize from '~/utilities/objectToQueryString';
 
-const rootNavigationKey = "$$navigation";
+// const rootNavigationKey = "$$navigation";
 
-const getModuleName = ( path: String = "" ) => {
+// const generateAction = ( routes, state, action ) => {
 
-	return path.split("/")[0];
-};
+// 	if( routes && routes.length ) {
 
-const fixAction = ( store, action ) => {
+// 		const routeName = `/${routes.join('/')}`;
+// 		routes.pop();
 
-	if( action.routeName ) {
+// 		const key = `${rootNavigationKey}${routeName}`;
+// 		const navigationState = state[ key ];
 
-		// lấy state của navigation tab ( root )
-		const rootNavigationState = store.getState()[ rootNavigationKey ];
+// 		if( navigationState && navigationState.routes ) {
 
-		let route =  rootNavigationState.routes[ rootNavigationState.index ];
+// 			const route = navigationState.routes[ navigationState.index ];
 
-		if( route && route.routes ) {
-			
-			route = route.routes[ route.index ];
+// 			if( route && route.routeName && route.routeName !== routeName ) {
 
-			const moduleName = getModuleName( action.routeName );
-			
-			// nếu route root khác với route của action
-			if( getModuleName( route.routeName ) !== moduleName ) {
+// 				return {
+// 					type: action.type,
+// 					routeName,
+// 					action: generateAction( routes, state, action )
+// 				};
+// 			}
+// 		}
+// 	}
 
-				// push tới root mới
-				return {
-					...action,
-					action: {
-						type: action.type,
-						routeName: "/" + moduleName,
-						action: action.action
-					}
-				};
-			}
-		}
-	}
+// 	return action;
+// };
 
-	return action;
-};
+// const fixAction = ( action, state ) => {
 
-const getLocationFromAction = ( action, locations = [] ) => {
+// 	if( action.routeName ) {
 
-	const check = locations.length && locations.findIndex( location => location.pathname.includes( action.routeName ) ) !== -1;
+// 		const routes = action.routeName.split("/");
+// 		if( routes.length > 2 ) {
 
-	if( !check ) {
+// 			routes.shift();
+// 			routes.pop();
 
-		locations.push({
-			pathname: action.routeName,
-			state: action.params,
-			search: action.params ? serialize( action.params ) : ""
-		});
-	}
+// 			action = generateAction( routes, state, action );
+// 		}
+// 	}
 
-	if( action.action ) {
-
-		locations = getLocationFromAction( action.action, locations );
-	}
-
-	return locations;
-};
-
-const push = action => {
-
-	const locations = getLocationFromAction( action );
-
-	locations.forEach( location => history.push( location ) );
-};
-
-const back = action => {
-
-	if( history.canGo(-1) ) {
-
-		history.goBack();
-	}
-};
-
-/**
- * @todo: middleware custom navigation
- * @author: Croco
- * @since: 15-5-2017
-*/
-const routerNavigate = store => next => {
-
-	return action => {
+// 	return action;
+// };
 
 
-		switch( action.type ) {
+// /**
+//  * @todo: middleware custom navigation
+//  * @author: Croco
+//  * @since: 15-5-2017
+// */
+// const routerNavigate = store => next => {
 
-			case NavigationActions.INIT: 
+// 	return action => {
 
-				//push( action );
-				break;
-			case NavigationActions.BACK: 
+// 		switch( action.type ) {
 
-				//back( action );
-				break;
-			// case NavigationActions.SET_PARAMS: 
-			// case NavigationActions.URI: 
-			case NavigationActions.NAVIGATE: 
+// 			// case NavigationActions.INIT: 
+// 			// case NavigationActions.BACK: 
+// 			// case NavigationActions.SET_PARAMS: 
+// 			case NavigationActions.URI: 
+// 			case NavigationActions.NAVIGATE: 
 
-				action = fixAction( store, action );
-				//push( action );
+// 				// action = {
+// 				// 	type: NavigationActions.NAVIGATE,
+// 				// 	routeName: "/rivers/detail",
+// 				// 	action: {
+// 				// 		type: NavigationActions.NAVIGATE,
+// 				// 		routeName: "/rivers/list",
+// 				// 		action: {
+// 				// 			type: NavigationActions.NAVIGATE,
+// 				// 			routeName: "/rivers/list",
+// 				// 		}
+// 				// 	}
+// 				// };
+// 				// console.log( action );
+// 		}
 
-				return next( action );
-		}
+// 		return next( action );
+// 	};
+// };
 
-		return next( action );
-	};
-};
-
-export default routerNavigate;
+// export default routerNavigate;

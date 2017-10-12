@@ -9,6 +9,8 @@ import _getSubmit from './_getSubmit';
 import _onSearch from './_onSearch';
 import _onPressItemOther from './_onPressItemOther';
 import _onPressOtherOK from './_onPressOtherOK';
+import _backup from './_backup';
+import _restore from './_restore';
 
 export default context => {
 
@@ -25,4 +27,6 @@ export default context => {
 	context._onSearch = _onSearch.bind(context);
 	context._onPressItemOther = _onPressItemOther.bind(context);
 	context._onPressOtherOK = _onPressOtherOK.bind(context);
+	context._backup = _backup.bind(context);
+	context._restore = _restore.bind(context);
 };

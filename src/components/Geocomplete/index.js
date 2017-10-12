@@ -15,7 +15,8 @@ import mixins from './mixins';
 import defaultProps from './defaultProps';
 import ModalHeader from '~/components/ModalHeader';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
-import recursiveShallowEqual from '~/utilities/recursiveShallowEqual';
+import recursiveShallowEqual from '~/library/recursiveShallowEqual';
+import { sizes, colors, fontSizes, scale, hitSlop } from '~/configs/styles';
 
 class Geocomplete extends React.Component {
 
@@ -63,6 +64,7 @@ class Geocomplete extends React.Component {
 
 		return (
 			this.state.text !== nextState.text ||
+			this.props.language !== nextProps.language ||
 			this.state.dataSource._dataBlob.s1 != nextState.dataSource._dataBlob.s1 ||
 			!recursiveShallowEqual(this.props, nextProps)
 		);
@@ -83,7 +85,7 @@ class Geocomplete extends React.Component {
 			return (
 
 				<ActivityIndicator
-					animating 		= {true}
+					animating 		= { true }
 					size 			= "large"
 				/>
 			);
@@ -100,7 +102,7 @@ class Geocomplete extends React.Component {
 				style 							= { _styles.rowWrapper }
 			>
 				<TouchableOpacity style={ _styles.row } onPress={ () => this._onPress( rowData, rowID ) }>
-					<Text numberOfLines={1}>
+					<Text numberOfLines={1} style={ _styles.label }>
 						{ this._getAddress( rowData ) }
 					</Text>
 					{
@@ -128,6 +130,14 @@ class Geocomplete extends React.Component {
 		return <View style={ _styles.separator } key={ `separator-${sectionID}-${rowID}` }/>
 	}
 
+	componentDidUpdate( prevProps ) {
+
+		if( prevProps.visible !== this.props.visible && this.props.visible ) {
+
+			this.refs.input.focus();
+		}
+	}
+
 	render() {
 
 		const { 
@@ -136,7 +146,9 @@ class Geocomplete extends React.Component {
 			onRequestClose,
 			placeholder,
 			keepInput,
-			children
+			children,
+			maxLength,
+			keyboardType
 		} = this.props;
 
 		return (
@@ -147,10 +159,9 @@ class Geocomplete extends React.Component {
 			>
 				<ModalHeader
 					backHandle 			= { this._backHandle }
-					backgroundColor 	= "rgba(38, 114, 186, 05)"
-					color 				= "white"
 					title 				= {
 						<TextInput
+							ref 					= "input"
 							returnKeyType 			= "search"
 							underlineColorAndroid 	= "transparent"
 							style 					= { _styles.textInput }
@@ -159,12 +170,14 @@ class Geocomplete extends React.Component {
 							placeholder 			= { placeholder }
 							onChangeText 			= { this._onChangeText }
 							value 					= { this.state.text }
-							placeholderTextColor 	= "#e2e2e2"
+							placeholderTextColor 	= { colors.placeholderColor }
+							maxLength 				= { maxLength }
+							keyboardType 			= { keyboardType }
 						/>
 					}
 				>
 					{
-						keepInput && <TouchableOpacity style={ _styles.btnApply } onPress={ this._applyHandle }>
+						keepInput && <TouchableOpacity hitSlop={ hitSlop } style={ _styles.btnApply } onPress={ this._applyHandle }>
 							<FAIcon name="check" style={ _styles.iconApply }/>
 						</TouchableOpacity>
 					}
@@ -180,6 +193,11 @@ class Geocomplete extends React.Component {
 					enableEmptySections 		= { true }
 					keyboardDismissMode 		= "interactive"
 					keyboardShouldPersistTap 	= "always"
+					horizontal 					= { false }
+					directionalLockEnabled 		= { true }
+					showsHorizontalScrollIndicator	= { false }
+					showsVerticalScrollIndicator	= { true }
+					style 						= { _styles.listView }
 				/>
 				{children}
 			</Modal>
@@ -190,42 +208,52 @@ class Geocomplete extends React.Component {
 const WIDTH = Dimensions.get('window').width;
 
 const _styles = {
+	listView: {
+		backgroundColor: colors.modalBackground
+	},
 	textInput: {
 		padding: 0,
-		color: "white",
-		borderBottomWidth: 0.5,
-		borderBottomColor: "white",
-		marginRight: 5
+		color: colors.secondColor,
+		borderBottomWidth: sizes.borderWidth,
+		borderBottomColor: colors.secondColor,
+		marginRight: sizes.spacing,
+		fontSize: fontSizes.normal,
+		height: "100%"
 	},
 	btnApply: {
-		width: 30,
+		width: sizes.buttonNormal,
 		height: "100%",
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	iconApply: {
-		fontSize: 16,
-		color: "white"
+		fontSize: fontSizes.large,
+		color: colors.secondColor
 	},
 	rowWrapper: {
 		width: WIDTH - 10
 	},
 	row: {
 		minWidth: WIDTH,
-		height: 36,
-		paddingLeft: 10,
+		height: sizes.rowItemHeight,
+		paddingLeft: sizes.margin,
 		justifyContent: "center"
 	},
 	loader: {
 		position: "absolute",
-		right: 10,
-		width: 20,
-		height: 20
+		right: sizes.margin,
+		width: 20 * scale,
+		height: 20 * scale
 	},
 	separator: {
-		height: 0.1,
-		borderBottomWidth: 1,
-		borderBottomColor: '#c8c7cc'
+		height: sizes.borderWidth,
+		backgroundColor: colors.primaryBorderColor
+		//borderBottomWidth: sizes.borderWidth,
+		//borderBottomColor: colors.primaryBorderColor
+	},
+	label: {
+		fontSize: fontSizes.normal,
+		color: colors.normalColor
 	}
 };
 

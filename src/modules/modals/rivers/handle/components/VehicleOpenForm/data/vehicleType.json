@@ -1,0 +1,27 @@
+[
+	{
+		"label": "Hàng khô có nắp hầm",
+		"value": "Hàng khô có nắp hầm"
+	},
+	{
+		"label": "Hàng khô không nắp hầm",
+		"value": "Hàng khô không nắp hầm"
+	},
+	{
+		"label": "S.lan Container",
+		"value": "S.lan Container"
+	},
+	{
+		"label": "Hàng lỏng",
+		"value": "Hàng lỏng"
+	},
+	{
+		"label": "Ponton",
+		"value": "Ponton"
+	},
+    {
+		"label": "Khác",
+		"value": "Khác",
+		"isOther": true
+	}
+]

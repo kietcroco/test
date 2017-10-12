@@ -3,6 +3,24 @@
 */
 {
 	"apiDomain": "http://api.izifix.com.local",
-	"homePath": "/index/index/index",
-	"domain" : "https://izifix.com",
+	"rulesLink": "http://api.izifix.com/news/constant?id=QuyCheDangKyThanhVien",
+	"supportNav": [
+		{
+			"label": "Hướng dẫn sử dụng",
+			"link": "https://izifix.com/huong-dan"
+		},
+		{
+			"label": "Trợ giúp",
+			"link": "https://izifix.com/tin-tuc/37-Huong-dan-su-dung-tren-ung-dung-di-dong"
+		},
+		{
+			"label": "Điều khoản & điều lệ",
+			"link": "https://izifix.com/dieu-khoan-va-dieu-le"
+		}
+	],
+	"domain": "https://izifix.com",
+	"fanPage": "https://www.facebook.com/sanvantaiIZIFIX/",
+	"youtubeChannel": "https://www.youtube.com/playlist?list=PL2Zx-W2np208ilOV6tV49CxU5015IB_B4",
+	"googlePlus": "https://plus.google.com/105167523071928463438",
+	"itemPerPage": 60
 }

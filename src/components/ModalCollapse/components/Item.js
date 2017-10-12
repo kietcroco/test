@@ -1,31 +1,27 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Radio from '~/components/Radio';
 import Checkbox from '~/components/CheckBox';
+import { colors, scale, sizes, fontSizes } from '~/configs/styles';
 
-class Item extends React.PureComponent {
+class Item extends React.Component {
 
 	static displayName = '@ModalCollapseItem';
 
 	static propTypes = {
-		onPress: React.PropTypes.func,
-		label: React.PropTypes.string.isRequired,
-		multiple: React.PropTypes.bool,
-		checked: React.PropTypes.bool,
-		isSelectAll: React.PropTypes.bool,
-		autoCheck: React.PropTypes.bool,
-		isHot: React.PropTypes.bool,
-		isOther: React.PropTypes.bool,
-		level: React.PropTypes.number
+		onPress: PropTypes.func,
+		label: PropTypes.string.isRequired,
+		multiple: PropTypes.bool,
+		isHot: PropTypes.bool,
+		checked: PropTypes.bool,
+		level: PropTypes.number
 	};
 
 	static defaultProps = {
 		multiple: false,
 		checked: false,
-		isSelectAll: false,
-		autoCheck: false,
 		isHot: false,
-		isOther: false,
 		level: 1
 	};
 
@@ -35,10 +31,7 @@ class Item extends React.PureComponent {
 			this.props.label !== nextProps.label ||
 			this.props.multiple !== nextProps.multiple ||
 			this.props.checked !== nextProps.checked ||
-			this.props.isSelectAll !== nextProps.isSelectAll ||
-			this.props.autoCheck !== nextProps.autoCheck ||
 			this.props.isHot !== nextProps.isHot ||
-			this.props.isOther !== nextProps.isOther ||
 			this.props.level !== nextProps.level ||
 			this.props.onPress != nextProps.onPress
 		);
@@ -54,14 +47,14 @@ class Item extends React.PureComponent {
 			level
 		} = this.props;
 
-		const paddingLeft = (level + 1) * 10;
+		const paddingLeft = (level + 1) * sizes.margin;
 
 		return (
 
-			<TouchableOpacity onPress={ onPress } style={ [_styles.container, {
+			<TouchableOpacity activeOpacity={ colors.activeOpacity } onPress={ onPress } style={ [_styles.container, {
 				paddingLeft
 			}] }>
-				<Text numberOfLines={1}>{ label }</Text>
+				<Text numberOfLines={1} style={ _styles.label }>{ label }</Text>
 				{
 					multiple ? 
 						<Checkbox checked={ checked }/> : 
@@ -74,13 +67,17 @@ class Item extends React.PureComponent {
 
 const _styles = {
 	container: {
-		height: 36,
+		height: sizes.rowItemHeight,
 		alignItems: "center",
 		justifyContent: "space-between",
-		borderBottomColor: "#e5e5e5",
-		borderBottomWidth: 0.5,
-		paddingRight: 15,
+		borderBottomColor: colors.primaryBorderColor,
+		borderBottomWidth: sizes.borderWidth,
+		paddingRight: sizes.margin,
 		flexDirection: "row"
+	},
+	label: {
+		color: colors.normalColor,
+		fontSize: fontSizes.normal
 	}
 };
 

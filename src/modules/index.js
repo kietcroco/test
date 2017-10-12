@@ -2,25 +2,25 @@
  * @flow
 */
 import React from 'react';
-import { View, StatusBar } from 'react-native';
-import { MenuContext } from 'react-native-popup-menu';
 import { connect } from 'react-redux';
-import { addNavigationHelpers } from 'react-navigation';
 import ReducerRegistry from '~/library/ReducerRegistry';
-import { router, Navigator as Navigation } from './bootstrap';
+import Navigation from './navigation';
+import recursiveShallowEqual from '~/library/recursiveShallowEqual';
+import addNavigationHelpers from '~/library/navigation/addNavigationHelpers';
 
 // key reducer
 const key = "$$navigation";
 
 // component navigation
-class Navigator extends React.PureComponent {
+class Navigator extends React.Component {
 
-	static displayName = "@Navigator";
+	static displayName = key;
 
 	shouldComponentUpdate(nextProps) {
 
 		return (
-			this.props.navigationState.index !== nextProps.navigationState.index
+			recursiveShallowEqual( this.props.screenProps, nextProps.screenProps ) ||
+			recursiveShallowEqual( this.props.navigationState, nextProps.navigationState )
 		);
 	}
 
@@ -34,24 +34,16 @@ class Navigator extends React.PureComponent {
 		});
 
 		return (
-			<MenuContext style={ _styles.container }>
-				<StatusBar backgroundColor="#2672ba"/>
-				<Navigation { ...otherProps } navigation={ navigation }/>
-			</MenuContext>
+
+			<Navigation { ...otherProps } navigation={ navigation }/>
 		);
 	}
 }
 
-const _styles = {
-	container: {
-		flex: 1
-	}
-};
-
 // đăng ký redux
 ReducerRegistry.register( key, ( state, action ) => {
 
-	return router.getStateForAction(action, state) || state;
+	return Navigation.router.getStateForAction(action, state) || state;
 });
 
 // map state

@@ -1,0 +1,30 @@
+# --------------------
+# OSX Files
+# --------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+#._*
+.Trashes
+
+# --------------------
+# IntelliJ Files
+# --------------------
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# --------------------
+# Sublime Files
+# --------------------
+*.sublime-project
+*.sublime-workspace
+
+# --------------------
+# App Files
+# --------------------
+node_modules/
+src/node_modules/*
+install/*
+*.window.js
