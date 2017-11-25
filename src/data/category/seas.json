@@ -8,7 +8,8 @@
 					"Exchange": "",
 					"type": ""
 				},
-				"iconName": "home"
+				"iconName": "home",
+				"regex": "/duong-bien|sea-transport/"
 			},
 			{
 				"label": "#$seas$#Tàu chạy rỗng",
@@ -16,7 +17,8 @@
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": ""
 				},
-				"iconName": "ship-o"
+				"iconName": "ship-o",
+				"regex": "/duong-bien\\/tau-chay-rong|sea-transport\\/ballast-sailing/"
 			},
 			{
 				"label": "#$seas$#Chào hàng",
@@ -24,7 +26,8 @@
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": ""
 				},
-				"iconName": "sacks"
+				"iconName": "sacks",
+				"regex": "/duong-bien\\/chao-hang|sea-transport\\/cargo-offer/"
 			},
 			{
 				"label": "#$seas$#Chào tàu",
@@ -32,7 +35,8 @@
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": ""
 				},
-				"iconName": "ship"
+				"iconName": "ship",
+				"regex": "/duong-bien\\/chao-tau|sea-transport\\/vessel-open/"
 			},
 			{
 				"label": "#$seas$#Mua bán tàu (S&P)",
@@ -40,7 +44,8 @@
 					"Exchange": "SEAS_PURCHASE",
 					"type": ""
 				},
-				"iconName": "communicator"
+				"iconName": "communicator",
+				"regex": "/duong-bien\\/mua-ban-tau-bien|sea-transport\\/sale-and-purchase/"
 			},
 			{
 				"label": "#$seas$#Container",
@@ -48,7 +53,8 @@
 					"Exchange": "SEAS_CONTAINER",
 					"type": ""
 				},
-				"iconName": "container"
+				"iconName": "container",
+				"regex": "/duong-bien\\/container|sea-transport\\/container-offer/"
 			}
 			,
 			{
@@ -57,7 +63,8 @@
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": ""
 				},
-				"iconName": "building"
+				"iconName": "building",
+				"regex": "/duong-bien\\/doanh-nghiep|sea-transport\\/enterprise/"
 			}
 		]
 	},
@@ -69,70 +76,80 @@
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong|sea-transport\\/ballast-sailing/"
 			},
 			{
 				"label": "#$seas$#Tàu có cẩu",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Gear Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-co-cau|sea-transport\\/ballast-sailing\\/gear-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu không cẩu",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Gearless Vsl"
-				}
-			},
-			{
-				"label": "#$seas$#Tàu pha sông biển (SB)",
-				"params": {
-					"Exchange": "SEAS_VEHICLE_HOLLOW",
-					"type": "SB Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-khong-cau|sea-transport\\/ballast-sailing\\/gearless-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu container",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Cont Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-container|sea-transport\\/ballast-sailing\\/cont-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu hàng lỏng",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "M/T"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-hang-long|sea-transport\\/ballast-sailing\\/mt/"
+			},
+			{
+				"label": "#$seas$#Tàu pha sông biển (SB)",
+				"params": {
+					"Exchange": "SEAS_VEHICLE_HOLLOW",
+					"type": "SB Vsl"
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-pha-song-bien-sb|sea-transport\\/ballast-sailing\\/sb-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu lai thường",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Screw Tug"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-lai-thuong|sea-transport\\/ballast-sailing\\/screw-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu lai Azimuth",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "ASD Tug"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-lai-azimuth|sea-transport\\/ballast-sailing\\/asd-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu dịch vụ",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Supplyboat"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/tau-dich-vu|sea-transport\\/ballast-sailing\\/supplyboat/"
 			},
 			{
 				"label": "#$seas$#Loại khác",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_HOLLOW",
 					"type": "Other"
-				}
+				},
+				"regex": "/duong-bien\\/tau-chay-rong\\/loai-khac|sea-transport\\/ballast-sailing\\/other-type/"
 			}
 		]
 	},
@@ -144,63 +161,72 @@
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang|sea-transport\\/cargo-offer/"
 			},
 			{
 				"label": "#$seas$#Sắt thép",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Steel Products"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/sat-thep|sea-transport\\/cargo-offer\\/steel-products/"
 			},
 			{
 				"label": "#$seas$#Hàng bao",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Bag Cargo"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/hang-bao|sea-transport\\/cargo-offer\\/bag-cargo/"
 			},
 			{
 				"label": "#$seas$#Nông sản",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Agriculture Products"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/nong-san|sea-transport\\/cargo-offer\\/agriculture-products/"
 			},
 			{
 				"label": "#$seas$#Hàng xá",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Bulk Cargo"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/hang-xa|sea-transport\\/cargo-offer\\/bulk-cargo/"
 			},
 			{
 				"label": "#$seas$#Cát đá",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Sand / Stone"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/cat-da|sea-transport\\/cargo-offer\\/sand-stone/"
 			},
 			{
 				"label": "#$seas$#Xăng dầu",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Oil Products"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/xang-dau|sea-transport\\/cargo-offer\\/oil-products/"
 			},
 			{
 				"label": "#$seas$#Hàng lỏng",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Chemical Products"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/hang-long|sea-transport\\/cargo-offer\\/chemical-products/"
 			},
 			{
 				"label": "#$seas$#Hàng khác",
 				"params": {
 					"Exchange": "SEAS_PRODUCT_OFFER",
 					"type": "Other"
-				}
+				},
+				"regex": "/duong-bien\\/chao-hang\\/hang-khac|sea-transport\\/cargo-offer\\/other-cargo/"
 			}
 		]
 	},
@@ -212,70 +238,80 @@
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau|sea-transport\\/vessel-open/"
 			},
 			{
 				"label": "#$seas$#Tàu có cẩu",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Gear Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-co-cau|sea-transport\\/vessel-open\\/gear-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu không cẩu",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Gearless Vsl"
-				}
-			},
-			{
-				"label": "#$seas$#Tàu pha sông biển (SB)",
-				"params": {
-					"Exchange": "SEAS_VEHICLE_OPEN",
-					"type": "SB Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-khong-cau|sea-transport\\/vessel-open\\/gearless-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu container",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Cont Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-container|sea-transport\\/vessel-open\\/cont-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu hàng lỏng",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "M/T"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-hang-long|sea-transport\\/vessel-open\\/mt/"
+			},
+			{
+				"label": "#$seas$#Tàu pha sông biển (SB)",
+				"params": {
+					"Exchange": "SEAS_VEHICLE_OPEN",
+					"type": "SB Vsl"
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-pha-song-bien-sb|sea-transport\\/vessel-open\\/sb-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu lai thường",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Screw Tug"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-lai-thuong|sea-transport\\/vessel-open\\/screw-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu lai Azimuth",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "ASD Tug"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-lai-azimuth|sea-transport\\/vessel-open\\/asd-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu dịch vụ",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Supplyboat"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/tau-dich-vu|sea-transport\\/vessel-open\\/supplyboat/"
 			},
 			{
 				"label": "#$seas$#Loại khác",
 				"params": {
 					"Exchange": "SEAS_VEHICLE_OPEN",
 					"type": "Other"
-				}
+				},
+				"regex": "/duong-bien\\/chao-tau\\/loai-khac|sea-transport\\/vessel-open\\/other-type/"
 			}
 		]
 	},
@@ -287,70 +323,80 @@
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien|sea-transport\\/sale-and-purchase/"
 			},
 			{
 				"label": "#$seas$#Tàu có cẩu",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Gear Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-co-cau|sea-transport\\/sale-and-purchase\\/gear-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu không cẩu",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Gearless Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-khong-cau|sea-transport\\/sale-and-purchase\\/gearless-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu container",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Cont Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-container|sea-transport\\/sale-and-purchase\\/cont-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu hàng lỏng",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "M/T"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-hang-long|sea-transport\\/sale-and-purchase\\/mt/"
 			},
 			{
 				"label": "#$seas$#Tàu pha sông biển (SB)",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "SB Vsl"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-pha-song-bien-sb|sea-transport\\/sale-and-purchase\\/sb-vsl/"
 			},
 			{
 				"label": "#$seas$#Tàu lai thường",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Screw Tug"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-lai-thuong|sea-transport\\/sale-and-purchase\\/screw-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu lai Azimuth",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "ASD Tug"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-lai-azimuth|sea-transport\\/sale-and-purchase\\/asd-tug/"
 			},
 			{
 				"label": "#$seas$#Tàu dịch vụ",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Supplyboat"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/tau-dich-vu|sea-transport\\/sale-and-purchase\\/supplyboat/"
 			},
 			{
 				"label": "#$seas$#Loại khác",
 				"params": {
 					"Exchange": "SEAS_PURCHASE",
 					"type": "Other"
-				}
+				},
+				"regex": "/duong-bien\\/mua-ban-tau-bien\\/loai-khac|sea-transport\\/sale-and-purchase\\/other-type/"
 			}
 		]
 	},
@@ -362,21 +408,24 @@
 				"params": {
 					"Exchange": "SEAS_CONTAINER",
 					"type": ""
-				}
-			},
-			{
-				"label": "#$seas$#Lạnh",
-				"params": {
-					"Exchange": "SEAS_CONTAINER",
-					"type": "Refeer"
-				}
+				},
+				"regex": "/duong-bien\\/container|sea-transport\\/container-offer/"
 			},
 			{
 				"label": "#$seas$#Thường",
 				"params": {
 					"Exchange": "SEAS_CONTAINER",
 					"type": "Normal"
-				}
+				},
+				"regex": "/duong-bien\\/container\\/thuong|sea-transport\\/container-offer\\/normal/"
+			},
+			{
+				"label": "#$seas$#Lạnh",
+				"params": {
+					"Exchange": "SEAS_CONTAINER",
+					"type": "Refeer"
+				},
+				"regex": "/duong-bien\\/container\\/lanh|sea-transport\\/container-offer\\/refeer/"
 			}
 		]
 	},
@@ -388,63 +437,72 @@
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep|sea-transport\\/enterprise/"
 			},
 			{
 				"label": "#$seas$#Vận tải đường biển",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "SHIPOWER"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/van-tai-duong-bien|sea-transport\\/enterprise\\/shipower/"
 			},
 			{
 				"label": "#$seas$#Chủ hàng",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "CARGO_OWNER"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/chu-hang|sea-transport\\/enterprise\\/cargo-owner/"
 			},
 			{
 				"label": "#$seas$#Thương mại",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "TRADER"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/thuong-mai|sea-transport\\/enterprise\\/trader/"
 			},
 			{
 				"label": "#$seas$#Môi giới",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "BROKER"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/moi-gioi|sea-transport\\/enterprise\\/broker/"
 			},
 			{
 				"label": "Forwarder",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "Forwarder"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/forwarder|sea-transport\\/enterprise\\/forwarder/"
 			},
 			{
 				"label": "Logistics",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "Logistics"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/logistics|sea-transport\\/enterprise\\/logistics/"
 			},
 			{
 				"label": "#$seas$#Đại lý hải quan",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "CUSTOMER_CLEARANCE"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/dai-ly-hai-quan|sea-transport\\/enterprise\\/customer-clearance/"
 			},
 			{
 				"label": "#$seas$#Ngành nghề khác",
 				"params": {
 					"Exchange": "SEAS_ENTERPRISE",
 					"type": "Other"
-				}
+				},
+				"regex": "/duong-bien\\/doanh-nghiep\\/nganh-nghe-khac|sea-transport\\/enterprise\\/other-category/"
 			}
 		]
 	}

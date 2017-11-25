@@ -8,8 +8,8 @@ import SocialButton from './SocialButton';
 import { translate, setCurrentLanguage } from '~/utilities/language';
 import launchURL from '~/utilities/launchURL';
 import { colors, scale, sizes, fontSizes } from '~/configs/styles';
-import { supportNav, fanPage, youtubeChannel, googlePlus } from '~/configs/application';
-
+import { supportNav, instructionNav/*, fanPage, youtubeChannel, googlePlus*/ } from '~/configs/application';
+import TextInput from '~/components/TextInput';
 import categoryService from '~/services/news/category';
 import viImage from '~/assets/images/vi.jpg';
 import enImage from '~/assets/images/en.jpg';
@@ -133,20 +133,23 @@ class DrawerContent extends React.Component {
 
 					<View style={_styles.row}>
 						<TitleRow iconName="address-card-o">{`${translate("Thông tin thị trường")}:`}</TitleRow>
-						<TouchableOpacity style={_styles.btnLink} onPress={() => {
+						{
+							instructionNav.map(({ label, link }) => {
 
-							navigation.navigate("DrawerClose");
-							launchURL('https://izifix.com/ve-izifix');
-						}}>
-							<Text style={_styles.lblLink}>{translate("Giới thiệu")}</Text>
-						</TouchableOpacity>
-						<TouchableOpacity style={_styles.btnLink} onPress={() => {
+								if (label) {
 
-							navigation.navigate("DrawerClose");
-							launchURL('https://izifix.com/tin-tuc/34-Bao-chi-noi-ve-IZIFIX');
-						}}>
-							<Text style={_styles.lblLink}>{translate("Báo chí nói về IZIFIX")}</Text>
-						</TouchableOpacity>
+									return (
+										<TouchableOpacity key={`news-${label}`} style={_styles.btnLink} onPress={() => {
+
+											navigation.navigate("DrawerClose");
+											!!link && launchURL(link);
+										}}>
+											<Text style={_styles.lblLink}>{translate(label)}</Text>
+										</TouchableOpacity>
+									);
+								}
+							})
+						}
 					</View>
 
 					<View style={_styles.row}>
@@ -193,6 +196,7 @@ class DrawerContent extends React.Component {
 						<TitleRow iconName="envelope">{`${translate("Liên hệ")}`}</TitleRow>
 					</TouchableOpacity>
 
+					{
 					<View style={_styles.row}>
 						<TitleRow iconName="heart">{`${translate("IZIFIX fan")}:`}</TitleRow>
 						<SocialButton onPress={ () => {
@@ -211,6 +215,24 @@ class DrawerContent extends React.Component {
 							youtubeChannel && launchURL( youtubeChannel );
 						} } iconName="youtube-square">{translate("Youtube fan")}</SocialButton>
 					</View>
+					}
+
+					{/*
+					<View style={_styles.row}>
+						<TextInput
+							//ref="product_rivers_discharge_port"
+							//label={translate("Nơi giao hàng")}
+							placeholder={translate("Nhận tin đăng mới qua email")}
+							type="input"
+							style={_styles.input}
+							//returnKeyType="next"
+							//messageType 	= { this.state.product_rivers_discharge_port.messageType }
+							//value={this.state.product_rivers_discharge_port.label}
+							//onPress={mixinsDischargePort.inputOnPress.bind(this)}
+							//required
+						></TextInput>
+					</View>
+					*/}
 		
 				</ScrollView>
 				<View style={ _styles.languageSwitchContainer }>

@@ -84,7 +84,7 @@ const numberFormat = (value, format: String = defaultFormat, locale: String) => 
 	}
 
 	// format number
-	const result = numeral(value).format(format);
+	const result = numeral(`${value}`).format(format);
 
 	// set lại ngôn ngữ hiện tại
 	if( locale && locale !== currentLocale ) {

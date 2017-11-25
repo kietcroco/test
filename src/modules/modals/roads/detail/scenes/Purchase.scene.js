@@ -162,7 +162,7 @@ class Purchase extends React.Component {
 			navigation
 		} = this.props;
 
-		const { state: { params: { source, loaded = false, refreshed = false } } } = navigation;
+		const { state: { params: { source = {}, loaded = false, refreshed = false } } } = navigation;
 		const images = getImagesFromSource(source, source.purchase_roads_title);
 		const tags = (source.purchase_roads_tag || "").split(",");
 
@@ -227,7 +227,6 @@ class Purchase extends React.Component {
 	}
 
 	componentDidMount() {
-//console.log({'this.props.navigation' : this.props.navigation});
 		InteractionManager.runAfterInteractions(() => fetchData(purchaseService, this.props.navigation));
 	}
 
@@ -236,9 +235,7 @@ class Purchase extends React.Component {
 var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
-		//console.log({ 'id': id });
 		const res = await purchaseService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

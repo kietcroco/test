@@ -8,7 +8,8 @@
 					"Exchange": "",
 					"type": ""
 				},
-				"iconName": "home"
+				"iconName": "home",
+				"regex": "/duong-bo/"
 			},
 			{
 				"label": "Xe chạy rỗng cần hàng",
@@ -16,7 +17,8 @@
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": ""
 				},
-				"iconName": "truck-o"
+				"iconName": "truck-o",
+				"regex": "/duong-bo\\/xe-chay-rong/"
 			},
 			{
 				"label": "Hàng - offer",
@@ -24,7 +26,8 @@
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": ""
 				},
-				"iconName": "sacks"
+				"iconName": "sacks",
+				"regex": "/duong-bo\\/hang-offer/"
 			},
 			{
 				"label": "Xe - open",
@@ -32,7 +35,8 @@
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": ""
 				},
-				"iconName": "truck"
+				"iconName": "truck",
+				"regex": "/duong-bo\\/cho-thue-xe-tai/"
 			},
 			{
 				"label": "Mua bán - S&P",
@@ -40,7 +44,8 @@
 					"Exchange": "ROADS_PURCHASE",
 					"type": ""
 				},
-				"iconName": "communicator"
+				"iconName": "communicator",
+				"regex": "/duong-bo\\/mua-ban-xe-tai/"
 			},
 			{
 				"label": "Container - offer",
@@ -48,7 +53,8 @@
 					"Exchange": "ROADS_CONTAINER",
 					"type": ""
 				},
-				"iconName": "container"
+				"iconName": "container",
+				"regex": "/duong-bo\\/container/"
 			}
 			,
 			{
@@ -57,7 +63,8 @@
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": ""
 				},
-				"iconName": "building"
+				"iconName": "building",
+				"regex": "/duong-bo\\/doanh-nghiep/"
 			}
 		]
 	},
@@ -69,56 +76,64 @@
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong/"
 			},
 			{
 				"label": "Thùng hở",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Thùng hở"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/thung-ho/"
 			},
 			{
 				"label": "Thùng kín",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Thùng kín"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/thung-kin/"
 			},
 			{
 				"label": "Container",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Container"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/container/"
 			},
 			{
 				"label": "Tải có cẩu",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Tải có cẩu"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/tai-co-cau/"
 			},
 			{
 				"label": "Tải ben",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Tải ben"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/tai-ben/"
 			},
 			{
 				"label": "Đông lạnh",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Đông lạnh"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/dong-lanh/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_HOLLOW",
 					"type": "Khác"
-				}
+				},
+				"regex": "/duong-bo\\/xe-chay-rong\\/khac/"
 			}
 		]
 	},
@@ -130,63 +145,72 @@
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer/"
 			},
 			{
 				"label": "Sắt thép",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Sắt thép",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/sat-thep/"
 			},
 			{
 				"label": "Hàng bao",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Hàng bao",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/hang-bao/"
 			},
 			{
 				"label": "Nông sản",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Nông sản",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/nong-san/"
 			},
 			{
 				"label": "Hàng xá",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Hàng xá",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/hang-xa/"
 			},
 			{
 				"label": "Cát đá",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Cát đá",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/cat-da/"
 			},
 			{
 				"label": "Xăng dầu",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Xăng dầu",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/xang-dau/"
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Hàng lỏng",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/hang-long/"
 			},
 			{
 				"label": "Hàng khác",
 				"params": {
 					"Exchange": "ROADS_PRODUCT_OFFER",
 					"type": "Hàng khác",
-				}
+				},
+				"regex": "/duong-bo\\/hang-offer\\/hang-khac/"
 			}
 		]
 	},
@@ -198,56 +222,64 @@
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai/"
 			},
 			{
 				"label": "Thùng hở",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Thùng hở"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/thung-ho/"
 			},
 			{
 				"label": "Thùng kín",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Thùng kín"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/thung-kin/"
 			},
 			{
 				"label": "Container",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Container"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/container/"
 			},
 			{
 				"label": "Tải có cẩu",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Tải có cẩu"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/tai-co-cau/"
 			},
 			{
 				"label": "Tải ben",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Tải ben"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/tai-ben/"
 			},
 			{
 				"label": "Đông lạnh",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Đông lạnh"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/dong-lanh/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "ROADS_VEHICLE_OPEN",
 					"type": "Khác"
-				}
+				},
+				"regex": "/duong-bo\\/cho-thue-xe-tai\\/khac/"
 			}
 		]
 	},
@@ -259,56 +291,64 @@
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai/"
 			},
 			{
 				"label": "Thùng hở",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Thùng hở"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/thung-ho/"
 			},
 			{
 				"label": "Thùng kín",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Thùng kín"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/thung-kin/"
 			},
 			{
 				"label": "Container",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Container"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/container/"
 			},
 			{
 				"label": "Tải có cẩu",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Tải có cẩu"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/tai-co-cau/"
 			},
 			{
 				"label": "Tải ben",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Tải ben"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/tai-ben/"
 			},
 			{
 				"label": "Đông lạnh",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Đông lạnh"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/dong-lanh/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "ROADS_PURCHASE",
 					"type": "Khác"
-				}
+				},
+				"regex": "/duong-bo\\/mua-ban-xe-tai\\/khac/"
 			}
 		]
 	},
@@ -320,21 +360,24 @@
 				"params": {
 					"Exchange": "ROADS_CONTAINER",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bo\\/container/"
 			},
 			{
 				"label": "Lạnh",
 				"params": {
 					"Exchange": "ROADS_CONTAINER",
 					"type": "Lạnh"
-				}
+				},
+				"regex": "/duong-bo\\/container\\/lanh/"
 			},
 			{
 				"label": "Thường",
 				"params": {
 					"Exchange": "ROADS_CONTAINER",
 					"type": "Thường"
-				}
+				},
+				"regex": "/duong-bo\\/container\\/thuong/"
 			}
 		]
 	},
@@ -346,35 +389,40 @@
 				"params": {
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": ""
-				}
+				},
+				"regex": "/duong-bo\\/doanh-nghiep/"
 			},
 			{
 				"label": "Sản xuất - thương mại",
 				"params": {
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": "SERVICE",
-				}
+				},
+				"regex": "/duong-bo\\/doanh-nghiep\\/san-xuat-thuong-mai/"
 			},
 			{
 				"label": "Vận tải đường bộ",
 				"params": {
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": "TRUCK",
-				}
+				},
+				"regex": "/duong-bo\\/doanh-nghiep\\/van-tai-duong-bo/"
 			},
 			{
 				"label": "Logistics",
 				"params": {
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": "LOGISTICS",
-				}
+				},
+				"regex": "/duong-bo\\/doanh-nghiep\\/logistics/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "ROADS_ENTERPRISE",
 					"type": "Khác",
-				}
+				},
+				"regex": "/duong-bo\\/doanh-nghiep\\/nganh-nghe-khac/"
 			}
 		]
 	}

@@ -161,7 +161,7 @@ class Enterprise extends React.Component {
 			navigation
 		} = this.props;
 
-		const { state: { params: { source, loaded = false, refreshed = false } } } = navigation;
+		const { state: { params: { source = {}, loaded = false, refreshed = false } } } = navigation;
 		const images = getImagesFromSource(source, source.enterprise_rivers_title);
 		//const tags = (source.enterprise_rivers_tag || "").split(",");
 
@@ -251,9 +251,7 @@ class Enterprise extends React.Component {
 var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
-		//console.log({ 'id': id });
 		const res = await enterpriseService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

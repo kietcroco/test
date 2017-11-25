@@ -1,0 +1,16 @@
+{
+
+	"/rivers/detail/product": "/hang-van-chuyen-duong-song\\/.*-(\\d+)/",
+	"/rivers/detail/vehicle-hollow": "/sa-lan-chay-rong-duong-song\\/.*-(\\d+)/",
+	"/rivers/detail/vehicle-open": "/phuong-tien-open-duong-song\\/.*-(\\d+)/",
+	"/rivers/detail/purchase": "/mua-ban-duong-song\\/.*-(\\d+)/",
+	"/rivers/detail/bidding": "/thue-sa-lan-tau-song-duong-song\\/.*-(\\d+)/",
+	"/rivers/detail/enterprise": "/duong-song-doanh-nghiep\\/.*-(\\d+)/",
+
+	"/rivers/handle/product": "/(?:duong-song-dang-sa-lan-chay-rong|duong-song-hang-offer\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/rivers/handle/vehicle-hollow": "/(?:duong-song-dang-sa-lan-chay-rong|duong-song-sa-lan-chay-rong\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/rivers/handle/vehicle-open": "/(?:duong-song-dang-phuong-tien-open|duong-song-phuong-tien-open\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/rivers/handle/purchase": "/(?:duong-song-dang-mua-ban|duong-song-dang-mua-ban\\/sua-tin)(?:\\/.*-(\\d+))?",
+	"/rivers/handle/bidding": "/(?:duong-song-dang-thue-sa-lan-tau-song|duong-song-thue-sa-lan-tau-song\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/rivers/handle/enterprise": "/(?:duong-song-dang-doanh-nghiep)(?:\\/.*-(\\d+))?/",
+}

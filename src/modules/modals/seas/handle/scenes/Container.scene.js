@@ -184,8 +184,6 @@ class Container extends React.Component {
 
 	_onSubmit(data: Object = {}) {
 
-		//console.log( data );
-		
 		const {
 			params: {
 				id

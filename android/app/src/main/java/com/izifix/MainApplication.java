@@ -19,6 +19,7 @@ import com.imagepicker.ImagePickerPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.microsoft.codepush.react.CodePush;
 import com.centaurwarchief.smslistener.SmsListenerPackage;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 //import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 
 // Debugging
@@ -54,7 +55,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ImagePickerPackage(),
             new RNDeviceInfo(),
             new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
-            new SmsListenerPackage()
+            new SmsListenerPackage(),
+            new ReactNativeOneSignalPackage()
       );
     }
   };

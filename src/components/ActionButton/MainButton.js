@@ -19,7 +19,8 @@ class MainButton extends React.Component {
 			bottom: PropTypes.number,
 			left: PropTypes.number
 		}),
-		label: PropTypes.string
+		label: PropTypes.string,
+		scaleValueAnim: PropTypes.object
 	};
 
 	static defaultProps = {
@@ -32,13 +33,14 @@ class MainButton extends React.Component {
 		return (
 			this.props.active !== nextProps.active ||
 			this.props.label !== nextProps.label ||
+			this.props.scaleValueAnim !== nextProps.scaleValueAnim ||
 			this.props.children !== nextProps.children
 		);
 	}
 	
 	render() {
 
-		const { label, style, onPress, children, active, offset: {
+		const { label, style, onPress, children, active, scaleValueAnim, offset: {
 			top: marginTop,
 			right: marginRight,
 			bottom: marginBottom,
@@ -57,7 +59,7 @@ class MainButton extends React.Component {
 				{
 					active && <View style={ _styles.label }><Text style={ _styles.labelText }>{ children }</Text></View>
 				}
-				<Button style={ style } onPress={ onPress } label={ label }/>
+				<Button scaleValueAnim={scaleValueAnim} style={ style } onPress={ onPress } label={ label }/>
 			</View>
 		);
 	}

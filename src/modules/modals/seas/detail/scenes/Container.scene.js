@@ -181,7 +181,7 @@ class Container extends React.Component {
 			navigation
 		} = this.props;
 
-		const { state: { params: { source, loaded = false, refreshed = false } } } = navigation;
+		const { state: { params: { source = {}, loaded = false, refreshed = false } } } = navigation;
 		const images = getImagesFromSource(source, source.container_seas_title);
 		const tags = (source.container_seas_tag || "").split(",");
 
@@ -260,9 +260,7 @@ var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
 
-		//console.log({ 'id': id });
 		const res = await containerService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

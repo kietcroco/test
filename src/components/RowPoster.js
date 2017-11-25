@@ -58,7 +58,6 @@ class RowPoster extends React.Component {
     //         for (let key in obj) {
     //             if (obj.hasOwnProperty(key)) {
     //                 let data = obj[key].join(';');
-    //                  //console.log(data);
     //                 if (data) {
     //                     extraLabel.push(
     //                         <Text key={key} style={_styles.txtName}>

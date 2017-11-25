@@ -1,8 +1,11 @@
 import { translate } from '~/utilities/language';
 
-export default () => {
+export default (beforMin = true, min = 1980, max = (new Date()).getFullYear()) => {
+    // const yearNow = (new Date()).getFullYear();
+    // const yearMilestones = 1980;
+
     const yearNow = (new Date()).getFullYear();
-    const yearMilestones = 1980;
+    const yearMilestones = min;
 
     const yearSource = [];
 
@@ -14,10 +17,13 @@ export default () => {
         });
     }
 
-    yearSource.push({
-        value: `${yearMilestones - 1}`, 
-        label: `${translate('Trước năm')} ${yearMilestones}`
-    });
+    if ( beforMin ) {
+
+        yearSource.push({
+            value: `${yearMilestones - 1}`, 
+            label: `${beforMin === true ? translate('Trước năm') : beforMin} ${yearMilestones}`
+        });
+    }
 
     return yearSource;
 };

@@ -1,14 +1,15 @@
 "use strict";
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { translate } from '~/utilities/language';
-import TextInput from '~/components/TextInput';
+//import TextInput from '~/components/TextInput';
 import SmsListener from 'react-native-android-sms-listener';
 import LoadingButton from '~/components/LoadingButton';
 import activeService from '~/services/member/active';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 import alertUtil from '~/utilities/alert';
 import { sizes, colors, fontSizes, scale, hitSlop } from '~/configs/styles';
+import ActiveCode from '../components/ActiveCode';
 
 import { namespace } from '../constants';
 const changePasswordRouteName = `${namespace}/change-password`;
@@ -27,13 +28,91 @@ class Active extends React.Component {
 				message: ""
 			}
 		};
-
-		this._onChangeText = this._onChangeText.bind(this);
-		this._onSubmit = this._onSubmit.bind(this);
-		this._onResend = this._onResend.bind(this);
 	}
 
-	_onChangeText(value: String = "") {
+
+	render() {
+
+		return (
+			<ScrollView
+				style 							= { _styles.wrapper } 
+				contentContainerStyle 			= { _styles.container }
+				horizontal 						= { false }
+				keyboardDismissMode 			= "interactive"	
+				keyboardShouldPersistTaps 		= "always"	
+				showsHorizontalScrollIndicator 	= { false }
+				directionalLockEnabled 			= { true }
+			>
+				{/*
+					<Text style={_styles.title}>{translate("Xác minh số điện thoại")}</Text>
+				*/}
+				<Text style={_styles.title}>{translate("Số điện thoại kích hoạt")}</Text>
+				{/*
+
+					<Text style={_styles.message}>{`${translate("IZIFIX sẽ gửi mã code 4 ký tự đến số điện thoại")}`}</Text>
+				*/}
+				<Text style={{
+					paddingVertical: 20,
+					fontSize: 18,
+					fontWeight: "bold",
+					textAlign: "center"
+				}}>{`0965544750`}</Text>
+				<ActiveCode 
+					
+				/>
+				<LoadingButton
+					loading = {this.state.loadingSubmit}
+					onPress = {this._onSubmit}
+				>{translate("Kích hoạt")}</LoadingButton>
+				<TouchableOpacity hitSlop={ hitSlop } style={_styles.resend} onPress={!this.state.loadingResend && !this.state.loadingSubmit ? this._onResend : undefined}>
+					<Text style={_styles.resendLabel}>{translate("Gửi lại mã code")}</Text>
+				</TouchableOpacity>
+			</ScrollView>
+		)
+	}
+
+	componentDidMount() {
+
+		const {
+			state: {
+				params: {
+					account_mobile
+				} = {}
+			} = {}
+		} = this.props.navigation;
+
+		if (!account_mobile) {
+
+			alertUtil({
+				title: translate("Lỗi"),
+				message: translate("Không tìm thấy thông tin tài khoản")
+			});
+			return this.props.navigation.goBack();
+		}
+		this._subscription = SmsListener.addListener(message => {
+
+			if (message && message.body) {
+
+				let matchCode = message.body.match(regexActiveCode);
+				let verificationCode = matchCode ? matchCode[1] : this.state.text;
+
+				this.state.comfirm_code.value !== verificationCode && this.setState({
+					...this.state.comfirm_code,
+					value: verificationCode
+				});
+			}
+		});
+	}
+
+	componentWillUnmount() {
+
+		if (this._subscription) {
+
+			this._subscription.remove();
+		}
+	}
+
+	_onChangeText = (value: String = "") => {
 
 		this.setState({
 			comfirm_code: {
@@ -44,9 +123,9 @@ class Active extends React.Component {
 			loadingSubmit: false,
 			loadingResend: false
 		});
-	}
+	};
 
-	async _onSubmit() {
+	_onSubmit = async () => {
 
 		if (!this.state.comfirm_code.value) {
 
@@ -107,14 +186,14 @@ class Active extends React.Component {
 						let newsRoads = [];
 						let newsSeas = [];
 
-						if( !Array.isArray( news ) ) {
+						if (!Array.isArray(news)) {
 
 							news = [news];
 						}
 
-						news.forEach( item => {
-							
-							if( item && item.exchanges ) {
+						news.forEach(item => {
+
+							if (item && item.exchanges) {
 
 								let exchange = item.exchanges.split("_");
 								exchange = exchange ? exchange[0] : "";
@@ -122,22 +201,22 @@ class Active extends React.Component {
 
 								switch (exchange) {
 									case "rivers":
-										
-										newsRivers.push( item );
+
+										newsRivers.push(item);
 										break;
 									case "roads":
-										
-										newsRoads.push( item );
+
+										newsRoads.push(item);
 										break;
 									case "seas":
-										
-										newsSeas.push( item );
+
+										newsSeas.push(item);
 										break;
 								}
 							}
 						});
-						
-						if( newsRivers.length ) {
+
+						if (newsRivers.length) {
 
 							this.props.dispatch({
 								type: "/rivers/list#newOffers",
@@ -147,7 +226,7 @@ class Active extends React.Component {
 							});
 						}
 
-						if( newsRoads.length ) {
+						if (newsRoads.length) {
 
 							this.props.dispatch({
 								type: "/roads/list#newOffers",
@@ -157,7 +236,7 @@ class Active extends React.Component {
 							});
 						}
 
-						if( newsSeas.length ) {
+						if (newsSeas.length) {
 
 							this.props.dispatch({
 								type: "/seas/list#newOffers",
@@ -171,9 +250,9 @@ class Active extends React.Component {
 
 					return this.props.navigation.replace(changePasswordRouteName, {});
 				}
-				
+
 			}
-			
+
 			return alertUtil({
 				messageTitle: res.data.messageTitle || translate("Lỗi"),
 				message: res.data.message || translate("Kích hoạt không thành công")
@@ -188,9 +267,9 @@ class Active extends React.Component {
 		this.setState({
 			loadingSubmit: false
 		});
-	}
+	};
 
-	async _onResend() {
+	_onResend = async () => {
 
 		this.setState({
 			loadingResend: true
@@ -232,86 +311,7 @@ class Active extends React.Component {
 		this.setState({
 			loadingResend: false
 		});
-	}
-
-	render() {
-
-		return (
-			<ScrollView
-				style 							= { _styles.wrapper } 
-				contentContainerStyle 			= { _styles.container }
-				horizontal 						= { false }
-				keyboardDismissMode 			= "interactive"	
-				keyboardShouldPersistTaps 		= "always"	
-				showsHorizontalScrollIndicator 	= { false }
-				directionalLockEnabled 			= { true }
-			>
-				<Text style={_styles.title}>{translate("Xác minh số điện thoại")}</Text>
-				<Text style={_styles.message}>{`${translate("IZIFIX sẽ gửi mã code 4 ký tự đến số điện thoại")}`}</Text>
-				<TextInput
-					ref                  = "input"
-					label                = {translate("Active code")}
-					type                 = "input"
-					style                = {_styles.input}
-					returnKeyType        = "done"
-					maxLength            = {4}
-					value                = {this.state.comfirm_code.value}
-					onChangeText         = {this._onChangeText}
-					messageType          = {this.state.comfirm_code.messageType}
-					placeholderTextColor = { colors.placeholderColor }
-					required
-				>{this.state.comfirm_code.message}</TextInput>
-				<LoadingButton
-					loading = {this.state.loadingSubmit}
-					onPress = {this._onSubmit}
-				>{translate("Kích hoạt")}</LoadingButton>
-				<TouchableOpacity hitSlop={ hitSlop } style={_styles.resend} onPress={!this.state.loadingResend && !this.state.loadingSubmit ? this._onResend : undefined}>
-					<Text style={_styles.resendLabel}>{translate("Gửi lại mã code")}</Text>
-				</TouchableOpacity>
-			</ScrollView>
-		)
-	}
-
-	componentDidMount() {
-
-		const {
-			state: {
-				params: {
-					account_mobile
-				} = {}
-			} = {}
-		} = this.props.navigation;
-
-		if (!account_mobile) {
-
-			alertUtil({
-				title: translate("Lỗi"),
-				message: translate("Không tìm thấy thông tin tài khoản")
-			});
-			return this.props.navigation.goBack();
-		}
-		this._subscription = SmsListener.addListener(message => {
-
-			if (message && message.body) {
-
-				let matchCode = message.body.match(regexActiveCode);
-				let verificationCode = matchCode ? matchCode[1] : this.state.text;
-
-				this.state.comfirm_code.value !== verificationCode && this.setState({
-					...this.state.comfirm_code,
-					value: verificationCode
-				});
-			}
-		});
-	}
-
-	componentWillUnmount() {
-
-		if (this._subscription) {
-
-			this._subscription.remove();
-		}
-	}
+	};
 }
 
 const regexActiveCode = /\s(\d{4})/;

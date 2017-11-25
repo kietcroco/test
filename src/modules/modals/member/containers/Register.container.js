@@ -5,7 +5,8 @@ import Component from '../scenes/Register.scene';
 const mapStateToProps = state => {
 
 	return {
-		token: state["authorization"]
+		token: state["authorization"],
+		authIdentityUnActive: state["authIdentityUnActive"]
 	};
 };
 

@@ -1,4 +1,5 @@
 "use strict";
+// màn hình xác nhận
 import React from 'react';
 import { Text, ScrollView, TouchableOpacity } from 'react-native';
 import { translate } from '~/utilities/language';

@@ -67,7 +67,6 @@ class Category extends React.Component {
 		}
 
 		return source.category.map( item => {
-			//console.log({'Exchange' : Exchange, 'type' : type , 'item.params' : item.params});
 
 			return (
 				<CategoryButton 

@@ -6,7 +6,6 @@ import dateTimeFormat from '~/utilities/dateTimeFormat';
 export default (source: Object = {}, state: Object = {}) => {
 
 	const account = source.account || {};
-	//console.log(source);
 	state = {
 		
 		...state,

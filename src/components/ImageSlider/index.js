@@ -34,7 +34,7 @@ class ImageSlider extends React.Component {
 	};
 
 	static defaultProps = {
-		sliderHeight: 160 * scale,
+		sliderHeight: 230 * scale,
 		autoplay: true,
 		autoplayDelay: 500,
 		autoplayInterval: 2500,

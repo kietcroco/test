@@ -10,7 +10,9 @@ const mapStateToProps = state => {
 
 	return {
 		reducers: state[key],
-		currentLanguage: state["currentLanguage"]
+		currentLanguage: state["currentLanguage"],
+		token: state["authorization"],
+		authIdentityUnActive: state["authIdentityUnActive"]
 	};
 };
 

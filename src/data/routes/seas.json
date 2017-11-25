@@ -1,0 +1,15 @@
+{
+	"/seas/detail/product": "/(?:duong-bien-chao-hang|sea-transport-cargo-offer)\\/.*-(\\d+)/",
+	"/seas/detail/vehicle-hollow": "/(?:tau-chay-rong-duong-bien|sea-transport-ballast-sailing)\\/.*-(\\d+)/",
+	"/seas/detail/vehicle-open": "/(?:phuong-tien-open-duong-bien|sea-transport-vessel-open)\\/.*-(\\d+)/",
+	"/seas/detail/purchase": "/(?:duong-bien-mua-ban-tau-bien|sea-transport-sale-and-purchase)\\/.*-(\\d+)/",
+	"/seas/detail/container": "/(?:container-duong-bien|sea-transport-container-offer)\\/.*-(\\d+)/",
+	"/seas/detail/enterprise": "/(?:duong-bien-doanh-nghiep|sea-transpor-enterprise)\\/.*-(\\d+)/",
+
+	"/seas/handle/product": "/(?:duong-bien-dang-hang-hoa-can-tau-bien-van-chuyen|duong-bien-cap-nhat-hang-hoa-can-tau-bien-van-chuyen|sea-transport-post-cargo-offer|sea-transport-edit-sale-and-purchase)(?:\\/.*-(\\d+))?/",
+	"/seas/handle/vehicle-hollow": "/(?:duong-bien-dang-tau-chay-rong|duong-bien-tau-chay-rong\\/sua-tin|sea-transport-post-ballast-sailing|sea-transport-edit-ballast-sailing)(?:\\/.*-(\\d+))?/",
+	"/seas/handle/vehicle-open": "/(?:duong-bien-dang-phuong-tien-open|duong-bien-phuong-tien-open\\/sua-tin|sea-transport-post-vessel-open|sea-transport-edit-vehicle-open)(?:\\/.*-(\\d+))?/",
+	"/seas/handle/purchase": "/(?:duong-bien-dang-mua-ban-tau-bien|duong-bien-dang-mua-ban-tau-bien\\/sua-tin|sea-transport-post-sale-and-purchase|sea-transport-edit-sale-and-purchase)(?:\\/.*-(\\d+))?/",
+	"/seas/handle/container": "/(?:duong-bien-dang-tin-container|duong-bien-container\\/sua-tin|sea-transport-post-container-offer|sea-transport-edit-container-offer)(?:\\/.*-(\\d+))?/",
+	"/seas/handle/enterprise": "/(?:duong-bien-dang-doanh-nghiep|sea-transpor-post-enterprise)(?:\\/.*-(\\d+))?/"
+}

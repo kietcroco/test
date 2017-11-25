@@ -181,7 +181,7 @@ class VehicleHollow extends React.Component {
 			navigation
 		} = this.props;
 
-		const { state: { params: { source, loaded = false, refreshed = false } } } = navigation;
+		const { state: { params: { source = {}, loaded = false, refreshed = false } } } = navigation;
 		const images = getImagesFromSource(source, source.vehicle_hollow_seas_title);
 		const tags = (source.vehicle_hollow_seas_tag || "").split(",");
 
@@ -261,9 +261,7 @@ class VehicleHollow extends React.Component {
 var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
-		//console.log({ 'id': id });
 		const res = await vehicleHollowService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

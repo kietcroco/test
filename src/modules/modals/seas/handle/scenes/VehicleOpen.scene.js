@@ -37,9 +37,7 @@ class VehicleOpen extends React.Component {
 		});
 
 		try {
-			//console.log({ 'data': data });
 			const res = await vehicleOpenService.add(data);
-			//console.log({ 'res': res });
 			this.state.loading && this.setState({
 				loading: false
 			});

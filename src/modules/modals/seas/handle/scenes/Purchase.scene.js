@@ -38,9 +38,7 @@ class Purchase extends React.Component {
 		});
 
 		try {
-			//console.log({'data' : data});
 			const res = await purchaseService.add(data);
-			//console.log({'res' : res});
 			this.state.loading && this.setState({
 				loading: false
 			});
@@ -114,9 +112,7 @@ class Purchase extends React.Component {
 		});
 
 		try {
-			//console.log({ "id": id , "data" : data});
 			const res = await purchaseService.update(id, data);
-			//console.log({ "res": res });
 			this.state.loading && this.setState({
 				loading: false
 			});

@@ -22,8 +22,6 @@ export default {
         const hl = getCurrentLanguage();
         params['hl'] = hl;
 
-
-        //console.log({'url' :url, 'params' : params , 'baseURL' : apiDomain });
         const deferred = axios({
             url,
             baseURL: apiDomain,

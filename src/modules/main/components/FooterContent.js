@@ -1,42 +1,100 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Animated } from 'react-native';
 import getRoute from '~/utilities/getRoute';
 import getModuleNameFromRoute from '~/utilities/getModuleNameFromRoute';
 import SwipeExchange from './SwipeExchange';
 import ActionButton from '~/components/ActionButton';
 import { translate } from '~/utilities/language';
-import { colors, sizes } from '~/configs/styles';
+import { colors, sizes, scale } from '~/configs/styles';
+import _listStyle from '../assets/listStyles';
 
 import mapCurrentLanguage from '~/utilities/mapCurrentLanguageToProps';
 
 class FooterContent extends React.Component {
 
-	constructor( props ) {
-		super( props );
-
-		this._onChange = this._onChange.bind(this);
-		this._renderActionButton = this._renderActionButton.bind(this);
-	}
-
+	static displayName = "@FooterContent";
 	shouldComponentUpdate( nextProps ) {
 
-		const moduleName = getModuleNameFromRoute( getRoute( this.props.navigation.state ) );
-		const nextModuleName = getModuleNameFromRoute( getRoute( nextProps.navigation.state ) );
+		const route = getRoute( this.props.navigation.state );
+		const nextRoute = getRoute( nextProps.navigation.state );
+
+		// const moduleName = getModuleNameFromRoute( route );
+		// const nextModuleName = getModuleNameFromRoute( nextRoute );
+
+		// const exchange = route.params && route.params.Exchange || "";
+		// const nextExchange = route.params && route.params.Exchange || "";
 
 		return (
-			moduleName !== nextModuleName ||
+			// moduleName !== nextModuleName ||
+			// exchange !== nextExchange ||
+			route !== nextRoute ||
 			this.props.currentLanguage !== nextProps.currentLanguage
 		);
 	}
 	
-	_onChange( land: String = "rivers" ) {
+	_onChange = ( land: String = "rivers" ) => {
 
 		this.props.navigation.navigate(`/${land}/list`);
-	}
+	};
 
-	_renderActionButton( moduleName: String = "rivers" ) {
+	_renderActionButton = ( moduleName: String = "rivers", exchange: String = "" ) => {
 
 		const { navigation } = this.props;
+
+		if( exchange ) {
+
+			exchange = exchange.split("_");
+			exchange.splice(0, 1);
+			exchange = exchange.join("_");
+
+			switch ( exchange ) {
+
+				case "VEHICLE_HOLLOW":
+					exchange = "vehicle-hollow";
+					break;
+
+				case "PRODUCT_OFFER":
+					exchange = "product";
+					break;
+
+				case "VEHICLE_OPEN":
+					exchange = "vehicle-open";
+					break;
+
+				case "PURCHASE":
+					exchange = "purchase";
+					break;
+
+				case "BIDDING":
+					exchange = "bidding";
+					break;
+
+				case "ENTERPRISE":
+					exchange = "enterprise";
+					break;
+
+				case "CONTAINER":
+					exchange = "container";
+					break;
+
+				default:
+					exchange = "";
+					break;
+			}
+		}
+
+		if( exchange ) {
+
+			moduleName = moduleName.toLowerCase();
+			return (
+
+				<ActionButton
+					onPress        = {() => navigation.navigate(`/${ moduleName }/handle/${ exchange }`)}
+					style          = {_styles.actionButton}
+					scaleValueAnim = {_listStyle.actionButtonScaleAnim}
+				/>
+			);
+		}
 
 		switch( moduleName ) {
 
@@ -44,8 +102,9 @@ class FooterContent extends React.Component {
 
 				return (
 					<ActionButton 
-						label 		= { translate("Đ.tin đường sông") }
-						offset 		= { _styles.actionButtonOffset }
+						label 		       = { translate("Đ.tin đường sông") }
+						offset 		       = { _styles.actionButtonOffset }
+						scaleValueAnim 	   = { _listStyle.actionButtonScaleAnim }
 					>
 						<ActionButton.Item 
 							label 		= { translate("S.lan chạy rỗng cần hàng") }
@@ -96,8 +155,9 @@ class FooterContent extends React.Component {
 			case "roads": 
 					return (
 					<ActionButton 
-						label 		= { translate("Đ.tin đường bộ") }
-						offset 		= { _styles.actionButtonOffset }
+						label 		       = { translate("Đ.tin đường bộ") }
+						offset 		       = { _styles.actionButtonOffset }
+						scaleValueAnim     = {_listStyle.actionButtonScaleAnim}
 					>
 						<ActionButton.Item 
 							label 		= { translate("Xe tải chạy rỗng cần hàng") }
@@ -149,9 +209,10 @@ class FooterContent extends React.Component {
 
 				return (
 					<ActionButton 
-						label 		= { translate("#$seas$#Đ.tin đường biển") }
-						offset 		= { _styles.actionButtonOffset }
-						labelPost 	= { translate("#$seas$#Đ.tin") }
+						label 		       = { translate("#$seas$#Đ.tin đường biển") }
+						offset 		       = { _styles.actionButtonOffset }
+						labelPost 	       = { translate("#$seas$#Đ.tin") }
+						scaleValueAnim     = {_listStyle.actionButtonScaleAnim}
 					>
 						<ActionButton.Item 
 							label 		= { translate("#$seas$#Tàu chạy rỗng") }
@@ -201,19 +262,30 @@ class FooterContent extends React.Component {
 		}
 
 		return null;
-	}
+	};
 
 	render() {
 
 		const { navigation } = this.props;
-		const moduleName = getModuleNameFromRoute( getRoute( navigation.state ) );
+		const route = getRoute( navigation.state );
+		const moduleName = getModuleNameFromRoute( route );
 
+		const exchange = route.params && route.params.Exchange || "";
+	
 		return (
 			<View pointerEvents="box-none" style={ _styles.wrapper }>
-				<View style={ _styles.container }>
+				<Animated.View style={[
+					_styles.container,
+					{
+						marginBottom: _listStyle.footerMarginAnim.interpolate({
+							inputRange: [0, 1],
+							outputRange: [-sizes.footerHeight, 0]
+						})
+					}
+				]}>
 					<SwipeExchange onChange={ this._onChange }>{ moduleName }</SwipeExchange>
-				</View>
-				{ this._renderActionButton( moduleName ) }
+				</Animated.View>
+				{ this._renderActionButton( moduleName, exchange ) }
 			</View>
 		);
 	}
@@ -239,6 +311,11 @@ const _styles = {
 	actionButtonOffset: {
 		bottom: sizes.footerHeight + sizes.margin,
 		right: sizes.margin
+	},
+	actionButton: {
+		position: "absolute",
+		right: sizes.margin,
+		bottom: sizes.footerHeight + sizes.margin + (0.5 * scale)
 	}
 };
 

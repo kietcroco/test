@@ -1,4 +1,5 @@
 "use strict";
+// màn hình nhập số điện thoại
 import React from 'react';
 import { Text, ScrollView } from 'react-native';
 import { translate } from '~/utilities/language';

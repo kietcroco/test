@@ -163,7 +163,7 @@ class VehicleOpen extends React.Component {
 			navigation
 		} = this.props;
 
-		const { state: { params: { source, loaded = false, refreshed = false } } } = navigation;
+		const { state: { params: { source = {}, loaded = false, refreshed = false } } } = navigation;
 		const images = getImagesFromSource(source, source.vehicle_open_rivers_title);
 		const tags = (source.vehicle_open_rivers_tag || "").split(",");
 
@@ -242,9 +242,7 @@ class VehicleOpen extends React.Component {
 var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
-		//console.log({ 'id': id });
 		const res = await vehicleOpenService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

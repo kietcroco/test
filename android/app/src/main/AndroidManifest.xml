@@ -5,12 +5,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- Approximate location - If you want to use promptLocation for letting OneSignal know the user location. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-feature android:name="android.hardware.location.gps" />
+
 
     <!--
       <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -61,7 +63,7 @@
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize"
-        android:launchMode="singleTask"
+        android:launchMode="singleTop"
         >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -76,7 +78,7 @@
             <data android:scheme="http" android:host="izifix.com" />
             <data android:scheme="https" android:host="m1.izifix.com" />
             <data android:scheme="http" android:host="m1.izifix.com" />
-            <data android:scheme="izifix" android:host="app" />
+            <data android:scheme="izifix" android:host="main" />
         </intent-filter>
       </activity>
       <!--

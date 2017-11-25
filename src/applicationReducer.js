@@ -39,6 +39,25 @@ const authIdentity = ReducerRegistry.register("authIdentity", (state = null, act
 	}
 }, true);
 
+// reducer account entities chưa active
+const authIdentityUnActive = ReducerRegistry.register("authIdentityUnActive", (state = null, action) => {
+
+	switch (action.type) {
+
+		// set lại account entities
+		case `setAuthIdentityUnActive`:
+
+			return action.payload;
+
+		// xoá account entities
+		case `deleteAuthIdentityUnActive`:
+
+			return null;
+		default:
+			return state;
+	}
+}, true);
+
 const initCurrentLanguage = getCurrentLanguage();
 
 // reducer ngôn ngữ
@@ -55,8 +74,29 @@ const currentLanguage = ReducerRegistry.register("currentLanguage", (state = ini
 	}
 }, true);
 
+// số thông báo chưa đọc
+const unreadNotification = ReducerRegistry.register("unreadNotification", (state = 0, action) => {
+
+	switch (action.type) {
+
+		// set số thông báo chưa đọc
+		case `setUnreadNotification`:
+
+			return action.payload;
+
+		// reset số thông báo chưa đọc
+		case `unsetUnreadNotification`:
+
+			return 0;
+		default:
+			return state;
+	}
+}, true);
+
 export {
     authorization,
 	authIdentity,
-	currentLanguage
+	currentLanguage,
+	unreadNotification,
+	authIdentityUnActive
 };

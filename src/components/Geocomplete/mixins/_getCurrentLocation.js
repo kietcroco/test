@@ -66,7 +66,6 @@ export default function( rowID: Number ) {
 			});
 			
 			//dev
-			//console.log(error.message);
 		},
 		options
 	);

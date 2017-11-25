@@ -17,7 +17,7 @@ import ModalCollapse from '~/components/ModalCollapse';
 import TagsInput from '~/components/TagsInput';
 
 import regionsSeasSource from '~/data/regions/handleSeas';
-import yearSource from './data/yearSource';
+import yearSource from '~/data/yearSource';
 import vehicleType from './data/vehicleType';
 import countryBuilt from './data/countryBuilt';
 import engineSource from './data/engine';
@@ -180,7 +180,7 @@ class PurchaseForm extends React.Component {
 					visible        = {this.state.purchase_seas_year_built.modalVisible}
 					value          = {this.state.purchase_seas_year_built.value}
 					defaultValue   = {[]}
-					source         = {yearSource()}
+					source         = {yearSource(translate('#$seas$#Trước năm'))}
 					title          = {translate("#$seas$#Năm đóng")}
 					backHandle     = {mixinsYearsBuilt.modalBackHandle.bind(this)}
 					onRequestClose = {mixinsYearsBuilt.modalBackHandle.bind(this)}

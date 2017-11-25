@@ -1,0 +1,7 @@
+{
+	"/member/login": "/dang-nhap/",
+	"/member/register": "/dang-ky/",
+	"/member/contact": "/lien-he/",
+	"/member/forget-password": "/quen-mat-khau/",
+	"/member/detail": "/tai-khoan\\/(\\d+)/"
+}

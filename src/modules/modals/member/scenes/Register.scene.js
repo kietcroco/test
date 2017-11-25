@@ -104,23 +104,43 @@ class Register extends React.Component {
 						title: res.data.messageTitle || translate("Thông báo"),
 						message: res.data.message || translate("Đăng ký thành công vui lòng kích hoạt tài khoản")
 					});
-					return this.props.navigation.replace(activeRouteName, {
+					this.props.navigation.replace(activeRouteName, {
 						account_mobile: res.data.data.account_mobile
+					});
+
+					return this.props.dispatch({
+						type: "setAuthIdentityUnActive",
+						payload: res.data.data
 					});
 				}
 			}
 
-			return alertUtil({
+			alertUtil({
 				title: res.data.messageTitle || translate("Lỗi"),
 				message: res.data.message || translate("Đăng ký không thành công")
 			});
 
+			if (this.props.authIdentityUnActive) {
+
+				return this.props.dispatch({
+					type: "deleteAuthIdentityUnActive"
+				});
+			}
+
+			return;
 		} catch (error) {
 
 			alertUtil({
 				title: translate("Lỗi"),
 				message: translate("Đăng ký không thành công")
 			});
+
+			if (this.props.authIdentityUnActive) {
+
+				this.props.dispatch({
+					type: "deleteAuthIdentityUnActive"
+				});
+			}
 		}	
 
 		this.state.loading && this.setState({

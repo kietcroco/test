@@ -120,7 +120,6 @@ class Product extends React.Component {
 		});
 
 		try {
-			//console.log({"data" : data});
 			/**
 			 * CALL SERVICE TO UPDATE OR INSERT DATA
 			 */
@@ -193,8 +192,6 @@ class Product extends React.Component {
 
 	_onSubmit(data: Object = {}) {
 
-		//console.log( data );
-		
 		const {
 			params: {
 				id

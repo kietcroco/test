@@ -6,6 +6,7 @@ import line from './line.png';
 import Icon from './Icon';
 import Pointer from './Pointer';
 import { scale, hitSlop } from '~/configs/styles';
+//import BackgroundImage from '~/components/BackgroundImage';
 
 class SwipeExchange extends React.Component {
 
@@ -153,7 +154,7 @@ const height = 35 * scale;
 const _style = {
 	width,
 	height,
-	resizeMode: "cover",
+	//resizeMode: "cover",
 	justifyContent: "center",
 	alignItems: "center",
 	backgroundColor: "transparent"

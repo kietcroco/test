@@ -9,6 +9,7 @@ export default ( value: String = "", locale: String ) => {
 	const regexDecimal = new RegExp(`\\${currentDelimiters.decimal}`, "g");
 	const regexThousands = new RegExp(`\\${currentDelimiters.thousands}`, "g");
 
+	value = `${value}`;
 	value = value.replace( regexThousands, "" );
 	value = value.replace( regexDecimal, convertDelimiters.decimal );
 

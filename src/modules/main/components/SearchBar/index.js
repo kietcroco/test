@@ -17,7 +17,13 @@ class SearchBar extends React.Component {
 	static displayName = '@SearchBar';
 
 	static propTypes = {
-		navigation: PropTypes.object.isRequired
+		navigation: PropTypes.object.isRequired,
+		onPressFilter: PropTypes.func,
+		filterActive: PropTypes.bool
+	};
+
+	static defaultProps = {
+		filterActive: false
 	};
 
 	constructor(props) {
@@ -39,12 +45,6 @@ class SearchBar extends React.Component {
 			sourceArea,
 			areaLabel: this._defaultArea[0].label // label hiển thị của khu vực
 		};
-
-		this._onRequestClose = this._onRequestClose.bind(this);
-		this._categoryOnPress = this._categoryOnPress.bind(this);
-		this._categoryOnChange = this._categoryOnChange.bind(this);
-		this._areaOnPress = this._areaOnPress.bind(this);
-		this._areaOnChange = this._areaOnChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -70,104 +70,10 @@ class SearchBar extends React.Component {
 
 		return (
 			this.props.currentLanguage !== nextProps.currentLanguage ||
+			this.props.filterActive !== nextProps.filterActive ||
 			!recursiveShallowEqual(this.state, nextState) ||
 			!recursiveShallowEqual(this.props.navigation.state, nextProps.navigation.state)
 		);
-	}
-
-	/**
-	 * @todo: Hàm load data khu vực theo sàn
-	*/
-	_loadRegions(moduleName: String = "rivers") {
-
-		switch (moduleName) {
-			case "seas":
-				return require('~/data/regions/seas');
-			case "roads":
-				return require('~/data/regions/roads');
-			case "rivers":
-			default:
-				return require('~/data/regions/rivers');
-		}
-	}
-
-	/**
-	 * @todo: Hàm load danh mục theo sàn
-	*/
-	_loadCategory(moduleName: String = "rivers") {
-
-		switch (moduleName) {
-			case "seas":
-				return require('~/data/category/seas');
-			case "roads":
-				return require('~/data/category/roads');
-			case "rivers":
-			default:
-				return require('~/data/category/rivers');
-		}
-	}
-
-	/**
-	 * @todo: Hàm đóng 2 modal
-	*/
-	_onRequestClose() {
-
-		this.setState({
-			modalCategoryVisible: false,
-			modalAreaVisible: false
-		});
-	}
-
-	/**
-	 * @todo: Mở modal chọn danh mục
-	*/
-	_categoryOnPress() {
-
-		this.setState({
-			modalCategoryVisible: true
-		});
-	}
-
-	/**
-	 * @todo: Thay đổi danh mục
-	*/
-	_categoryOnChange(Exchange: String = "", type: String = "") {
-
-		this.setState({
-			modalCategoryVisible: false
-		});
-
-		this.props.navigation.setParams({
-			...this.props.navigation.state.params,
-			Exchange,
-			type
-		});
-	}
-
-	/**
-	 * @todo: Mở modal khu vực
-	*/
-	_areaOnPress() {
-
-		this.setState({
-			modalAreaVisible: true
-		});
-	}
-
-	/**
-	 * @todo: Thay đổi khu vực
-	*/
-	_areaOnChange(areaLabel: String = "", value: Array = []) {
-
-		this.setState({
-			modalAreaVisible: false,
-			areaLabel
-		});
-
-		this.props.navigation.setParams({
-			...this.props.navigation.state.params,
-			areasArr: value.map(area => area.value)
-		});
 	}
 
 	render() {
@@ -183,12 +89,15 @@ class SearchBar extends React.Component {
 		// có phải sàn con
 		const isCategoryActive = !Exchange;
 
+		// có phải chọn khu vực
+		const isAreaSelect = !areaValues || !areaValues.length || areaValues[0]["value"] != this.state.sourceArea[0]["value"];
+
 		return (
 			<View style={_styles.container}>
 				<View style={_styles.areaContainer}>
-					<CategorySelect onPress={this._areaOnPress} style={_styles.area}>{this.state.areaLabel}</CategorySelect>
+					<CategorySelect onPress={this._areaOnPress} style={ isAreaSelect ? _styles.areaSelect : _styles.area }>{this.state.areaLabel}</CategorySelect>
 					<CategorySelect onPress={this._categoryOnPress} style={ isCategoryActive ? _styles.category : _styles.categoryActive}>{ translate( categoryName ) }</CategorySelect>
-					<CategorySelect style={_styles.filter}>{ this._moduleName == "seas" ? translate("#$seas$#Lọc") : translate("Lọc")}</CategorySelect>
+					<CategorySelect onPress={ this.props.onPressFilter } style={ this.props.filterActive ? _styles.filterActive : _styles.filter}>{ this._moduleName == "seas" ? translate("#$seas$#Lọc") : translate("Lọc")}</CategorySelect>
 					<ModalCategory
 						visible        = {this.state.modalCategoryVisible}
 						onRequestClose = {this._onRequestClose}
@@ -220,6 +129,101 @@ class SearchBar extends React.Component {
 			</View>
 		);
 	}
+
+	/**
+	 * @todo: Hàm load data khu vực theo sàn
+	*/
+	_loadRegions = (moduleName: String = "rivers") => {
+
+		switch (moduleName) {
+			case "seas":
+				return require('~/data/regions/seas');
+			case "roads":
+				return require('~/data/regions/roads');
+			case "rivers":
+			default:
+				return require('~/data/regions/rivers');
+		}
+	};
+
+	/**
+	 * @todo: Hàm load danh mục theo sàn
+	*/
+	_loadCategory = (moduleName: String = "rivers") => {
+
+		switch (moduleName) {
+			case "seas":
+				return require('~/data/category/seas');
+			case "roads":
+				return require('~/data/category/roads');
+			case "rivers":
+			default:
+				return require('~/data/category/rivers');
+		}
+	};
+
+	/**
+	 * @todo: Hàm đóng 2 modal
+	*/
+	_onRequestClose = () =>{
+
+		this.setState({
+			modalCategoryVisible: false,
+			modalAreaVisible: false
+		});
+	};
+
+	/**
+	 * @todo: Mở modal chọn danh mục
+	*/
+	_categoryOnPress = () => {
+
+		this.setState({
+			modalCategoryVisible: true
+		});
+	};
+
+	/**
+	 * @todo: Thay đổi danh mục
+	*/
+	_categoryOnChange = (Exchange: String = "", type: String = "") => {
+
+		this.setState({
+			modalCategoryVisible: false
+		});
+
+		this.props.navigation.setParams({
+			...this.props.navigation.state.params,
+			Exchange,
+			type
+		});
+	};
+
+	/**
+	 * @todo: Mở modal khu vực
+	*/
+	_areaOnPress = () => {
+
+		this.setState({
+			modalAreaVisible: true
+		});
+	};
+
+	/**
+	 * @todo: Thay đổi khu vực
+	*/
+	_areaOnChange = (areaLabel: String = "", value: Array = []) => {
+
+		this.setState({
+			modalAreaVisible: false,
+			areaLabel
+		});
+
+		this.props.navigation.setParams({
+			...this.props.navigation.state.params,
+			areasArr: value.map(area => area.value)
+		});
+	};
 }
 
 const _styles = {
@@ -232,6 +236,11 @@ const _styles = {
 	area: {
 		width: "38%",
 		borderLeftWidth: 0
+	},
+	areaSelect: {
+		width: "38%",
+		borderLeftWidth: 0,
+		backgroundColor: colors.activeColor
 	},
 	category: {
 		width: "42%",
@@ -247,6 +256,11 @@ const _styles = {
 	filter: {
 		width: "20%",
 		borderRightWidth: 0
+	},
+	filterActive: {
+		width: "20%",
+		borderRightWidth: 0,
+		backgroundColor: colors.activeColor
 	}
 };
 

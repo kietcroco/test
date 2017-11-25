@@ -1,0 +1,15 @@
+{
+	"/roads/detail/product": "/hang-van-chuyen-duong-bo\\/.*-(\\d+)/",
+	"/roads/detail/vehicle-hollow": "/xe-chay-rong-duong-bo\\/.*-(\\d+)/",
+	"/roads/detail/vehicle-open": "/phuong-tien-open-duong-bo\\/.*-(\\d+)/",
+	"/roads/detail/purchase": "/mua-ban-duong-bo\\/.*-(\\d+)/",
+	"/roads/detail/container": "/container-duong-bo\\/.*-(\\d+)/",
+	"/roads/detail/enterprise": "/duong-bo-doanh-nghiep\\/.*-(\\d+)/",
+
+	"/roads/handle/product": "/(?:duong-bo-dang-tin-hang-offer|duong-bo-hang-offer\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/roads/handle/vehicle-hollow": "/(?:duong-bo-dang-xe-chay-rong|duong-bo-xe-chay-rong\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/roads/handle/vehicle-open": "/(?:duong-bo-dang-phuong-tien-open|duong-bo-phuong-tien-open\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/roads/handle/purchase": "/(?:duong-bo-dang-mua-ban|duong-bo-dang-mua-ban\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/roads/handle/container": "/(?:duong-bo-dang-tin-container|duong-bo-container\\/sua-tin)(?:\\/.*-(\\d+))?/",
+	"/roads/handle/enterprise": "/(?:duong-bo-dang-doanh-nghiep)(?:\\/.*-(\\d+))?/"
+}

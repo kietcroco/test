@@ -55,9 +55,9 @@ class Circle extends React.Component {
 			this.props.children != nextProps.children
 		) {
 
-			this.setState({
-				size: "auto"
-			});
+			// this.setState({
+			// 	size: "auto"
+			// });
 		}
 	}
 

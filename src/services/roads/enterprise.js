@@ -79,7 +79,6 @@ export default {
 		});
 
 		deferred.abort = (message: String) => source.cancel(message);
-
 		deferred.isCancel = thrown => axios.isCancel(thrown);
 
 		return deferred;
@@ -107,7 +106,7 @@ export default {
 		});
 
 		deferred.abort = (message: String) => source.cancel(message);
-
+		
 		deferred.isCancel = thrown => axios.isCancel(thrown);
 
 		return deferred;

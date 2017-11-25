@@ -41,7 +41,6 @@ class Enterprise extends React.Component {
 		try {
 
 			const res = await EnterpriseService.add(data);
-			//console.log({ 'res': res });
 
 			this.state.loading && this.setState({
 				loading: false
@@ -113,7 +112,6 @@ class Enterprise extends React.Component {
 				} = {}
 			} = this.props.navigation.state || {};
 
-			//console.log({ 'id': id });
 			const res = await EnterpriseService.handle(id);
 
 			this.state.loading && this.setState({

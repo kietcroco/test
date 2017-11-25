@@ -240,9 +240,7 @@ class Bidding extends React.Component {
 var _onDelete = async (id: Number = {}, navigation) => {
 
 	try {
-		//console.log({ 'id': id });
 		const res = await biddingService.remove(id);
-		//console.log({ 'res': res });
 
 		if (res.status === 200) {
 

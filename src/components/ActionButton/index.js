@@ -25,7 +25,8 @@ class ActionButton extends React.Component {
 			bottom: PropTypes.number,
 			left: PropTypes.number
 		}),
-		labelPost: PropTypes.string
+		labelPost: PropTypes.string,
+		scaleValueAnim: PropTypes.object
 	};
 
 	static defaultProps = {
@@ -41,8 +42,6 @@ class ActionButton extends React.Component {
 		this.state = {
 			visible: props.active
 		};
-
-		this._onPress = this._onPress.bind(this);
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -54,16 +53,17 @@ class ActionButton extends React.Component {
 			this.props.backgroundTappable !== nextProps.backgroundTappable ||
 			this.props.backdrop !== nextProps.backdrop ||
 			this.props.labelPost !== nextProps.labelPost ||
+			this.props.scaleValueAnim !== nextProps.scaleValueAnim ||
 			this.props.offset != nextProps.offset
 		);
 	}
 
-	_onPress() {
+	_onPress = () => {
 
 		this.setState({
 			visible: !this.state.visible
 		});
-	}
+	};
 
 	render() {
 
@@ -76,13 +76,14 @@ class ActionButton extends React.Component {
 			duration,
 			backgroundTappable,
 			backdrop, 
-			labelPost
+			labelPost,
+			scaleValueAnim
 		} = this.props;
 
 		if( onPress && !label && !children ) {
 
 			return (
-				<Button offset={ offset } style={ style } onPress={ onPress } label={ labelPost }/>
+				<Button scaleValueAnim={scaleValueAnim} offset={ offset } style={ style } onPress={ onPress } label={ labelPost }/>
 			);
 		}
 
@@ -137,7 +138,7 @@ class ActionButton extends React.Component {
 							</ScrollView>
 					}
 				</View>
-				<MainButton label={ labelPost } offset={ offset } active={ this.state.visible } onPress={ this._onPress }>{ label }</MainButton>
+				<MainButton scaleValueAnim={scaleValueAnim} label={ labelPost } offset={ offset } active={ this.state.visible } onPress={ this._onPress }>{ label }</MainButton>
 			</View>
 		);
 	}

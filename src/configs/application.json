@@ -3,7 +3,7 @@
 */
 {
 	"apiDomain": "http://api.izifix.com.local",
-	"rulesLink": "http://api.izifix.com/news/constant?id=QuyCheDangKyThanhVien",
+	"rulesLink": "https://api.izifix.com/news/constant?id=QuyCheDangKyThanhVien",
 	"supportNav": [
 		{
 			"label": "Hướng dẫn sử dụng",
@@ -18,9 +18,22 @@
 			"link": "https://izifix.com/dieu-khoan-va-dieu-le"
 		}
 	],
+	"instructionNav": [
+		{
+			"label": "Giới thiệu",
+			"link": "https://izifix.com/ve-izifix"
+		},
+		{
+			"label": "Báo chí nói về IZIFIX",
+			"link": "https://izifix.com/tin-tuc/34-Bao-chi-noi-ve-IZIFIXg"
+		}
+	],
 	"domain": "https://izifix.com",
 	"fanPage": "https://www.facebook.com/sanvantaiIZIFIX/",
 	"youtubeChannel": "https://www.youtube.com/playlist?list=PL2Zx-W2np208ilOV6tV49CxU5015IB_B4",
 	"googlePlus": "https://plus.google.com/105167523071928463438",
-	"itemPerPage": 60
+	"itemPerPage": 60,
+	"apiNotification": "http://notification.local/api",
+	"itemPerPageNotification": 10,
+	"googleAnalyticsID": "UA-67836420-1"
 }

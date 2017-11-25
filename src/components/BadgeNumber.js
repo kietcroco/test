@@ -60,7 +60,7 @@ class BadgeNumber extends React.Component {
 				</View>
 				{
 					((ignoreValid && number != 0) || number) ? 
-						<Circle size={18 * scale} style={[ _styles.number, (Array.isArray(numberStyle) ? mergeStyle(numberStyle) : numberStyle) ]}>
+						<Circle size={24 * scale} style={[ _styles.number, (Array.isArray(numberStyle) ? mergeStyle(numberStyle) : numberStyle) ]}>
 							<Text style={[ _styles.text, (Array.isArray(textStyle) ? mergeStyle(textStyle) : textStyle) ]}>{ (number > 99) ? 99 + "+" : ((number < -99) ? "-99": number) }</Text>
 						</Circle>
 					: null

@@ -29,7 +29,6 @@ class RowItemSeas extends React.Component {
             code,
             ticket
         } = this.props.source;
-        //console.log({ 'this.props.source': this.props.source });
         return (
             <TouchableOpacity style={_styles.container} onPress={this.props.onPress}>
                 <Avatar ticket={ticket} source={avatar ? avatar[0] : undefined}>{code}</Avatar>

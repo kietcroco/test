@@ -152,7 +152,6 @@ class VehicleHollowForm extends React.Component {
 		return (
 			<View>
 				{ /**Hình đại diện */
-					//console.log(this.state.vehicle_hollow_roads_avatar.source)
 				}
 				<Avatar
 					isHandle

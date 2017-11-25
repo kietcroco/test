@@ -9,7 +9,7 @@ export default JSON.stringify({
 	deviceId: DeviceInfo.getDeviceId(),
 	systemName: DeviceInfo.getSystemName(),
 	systemVersion: DeviceInfo.getSystemVersion(),
-	bundleId: DeviceInfo.getBundleId("com.mobile.izifix"),
+	bundleId: DeviceInfo.getBundleId(),
 	buildNumber: DeviceInfo.getBuildNumber(),
 	version: DeviceInfo.getVersion(),
 	readableVersion: DeviceInfo.getReadableVersion(),

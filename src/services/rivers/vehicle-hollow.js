@@ -31,8 +31,6 @@ export default {
 		const hl = getCurrentLanguage();
 		params['hl'] = hl;
 
-		//console.log({ 'url': url, 'apiDomain': apiDomain, 'params': params });
-
 		const deferred = axios({
 			url,
 			baseURL: apiDomain,
@@ -171,8 +169,6 @@ export default {
 		const source = axios.CancelToken.source();
 		const hl = getCurrentLanguage();
 		params["hl"] = hl;
-
-		//console.log({'url' : url , 'params' : params , 'baseURL' : apiDomain});
 
 		const deferred = axios({
 			url,

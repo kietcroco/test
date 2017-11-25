@@ -39,7 +39,6 @@ class VehicleOpen extends React.Component {
 		try {
 
 			const res = await VehicleOpenService.add(data);
-			console.log(res);
 
 			this.state.loading && this.setState({
 				loading: false
@@ -190,7 +189,6 @@ class VehicleOpen extends React.Component {
 			} = {}
 		} = this.props.navigation.state || {};
 		if (id) {
-			// console.log({'id' : id, 'data' : data});
 			return this._update(id, data);
 		}
 

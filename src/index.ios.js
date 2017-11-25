@@ -8,28 +8,32 @@ import {
 	ActivityIndicator, 
 	AsyncStorage, 
 	//BackHandler, 
-	View
+	View,
+	Linking
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import Navigator from './drawer';
 import ReducerRegistry from '~/library/ReducerRegistry';
-//import SplashScreen from 'react-native-smart-splash-screen';
-import codePush from "react-native-code-push";
 import thunk from 'redux-thunk';
 //import { logger, rafScheduler, timeoutScheduler, vanillaPromise, readyStatePromise } from '~/middleware';
 //import { logger } from '~/middleware';
+import screenTracking from '~/middleware/screenTracking';
 //import PushNotification from 'react-native-push-notification';
-import login from '~/services/member/login';
 import Registry from '~/library/Registry';
 import { NavigationActions } from 'react-navigation';
 import './applicationReducer';
 import { translate, setCurrentLanguage, addEventListener as langAddEventListener, removeAllEventListener as langRemoveAllEventListener } from '~/utilities/language';
-import alertUtil from '~/utilities/alert';
-import { autoRehydrate, purgeStoredState } from 'redux-persist';
+//import alertUtil from '~/utilities/alert';
+import { autoRehydrate } from 'redux-persist';
 import persistStore from '~/utilities/persistStore';
-import codePushAlert from '~/utilities/codePushAlert';
-import Downloader from '~/components/Downloader';
+import OneSignal from 'react-native-onesignal';
+import login from '~/services/member/login';
+import notificationSubscriber from '~/services/notification/subscriber';
+import notificationTracker from '~/services/notification/tracker';
+import WaitingEvent from '~/library/WaitingEvent';
+import getNavigateActionFromUrl from '~/utilities/getNavigateActionFromUrl';
+
 
 class Application extends React.Component {
 
@@ -45,7 +49,8 @@ class Application extends React.Component {
 			// },
 			applyMiddleware(
 
-				thunk
+				thunk,
+				screenTracking
 				//routerNavigate,
 				// rafScheduler,
 				// timeoutScheduler,
@@ -57,20 +62,16 @@ class Application extends React.Component {
 		));
 
 		this.state = {
-			loading: true,
-			downloader: false,
-			totalByte: 0,
-			currentByte: 0
+			loading: true
 		};
+
+		this.authorization = Registry.get('authorization');
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
 
 		return (
-			this.state.currentByte != nextState.currentByte ||
-			this.state.loading !== nextState.loading ||
-			this.state.totalByte != nextState.totalByte ||
-			this.state.downloader !== nextState.downloader
+			this.state.loading !== nextState.loading
 		);
 	}
 
@@ -81,39 +82,76 @@ class Application extends React.Component {
 			return (
 				<View style={ _styles.container }>
 					<ActivityIndicator
-						animating={true}
-						size="large"
-					/>
-					<Downloader
-						visible 		= { this.state.downloader }
-						current 		= { this.state.currentByte }
-						total 			= { this.state.totalByte }
+						animating 	= {true}
+						size 		= "large"
 					/>
 				</View>
 			);
 		}
 
 		return (
-			<View style={ _styles.containerProvider }>
-				<Provider store={this.store}>
-					<Navigator />
-				</Provider>
-				<Downloader
-					visible 		= { this.state.downloader }
-					current 		= { this.state.currentByte }
-					total 			= { this.state.totalByte }
-				/>
-			</View>
+			<Provider store={ this.store }>
+				<Navigator />
+			</Provider>
 		);
 	}
 
-	async persistStore() {
+	componentDidMount() {
+
+		this.initEvent();
+
+		WaitingEvent.removeEventListener( 'linking-url', this._handleOpenURL, this, true );
+		WaitingEvent.addEventListener( 'linking-url', this._handleOpenURL, this, true );
+
+    	Linking.getInitialURL().then(
+			(url: string) => url && this._handleOpenURL(url)
+		);
+
+		WaitingEvent.removeEventListener('oneSignal-ids', this._onNotificationIds, this, true);
+		WaitingEvent.addEventListener('oneSignal-ids', this._onNotificationIds, this, true);
+
+		
+		InteractionManager.runAfterInteractions(() => setTimeout( async () => {
+
+			try {
+
+				// sync local store
+				await this.persistStore();
+			} catch(e) {}
+
+			try {
+
+				// đăng nhập
+				await this.autoLogin();
+			} catch (e) {}
+
+			// đăng ký notification
+			WaitingEvent.removeEventListener('oneSignal-received', this._onNotificationReceived, this, true);
+			WaitingEvent.removeEventListener('oneSignal-opened', this._onNotificationOpened, this, true);
+
+			WaitingEvent.addEventListener('oneSignal-received', this._onNotificationReceived, this, true);
+			WaitingEvent.addEventListener('oneSignal-opened', this._onNotificationOpened, this, true);
+
+			this.setState({
+				loading: false
+			});
+
+		}, 70));
+	}
+
+	componentWillUnmount() {
+
+		this.removeEvent();
+	}
+
+	persistStore = async () => {
 
 		const restoredState = await persistStore( this.store, {
 			storage: AsyncStorage,
 			whitelist: [
 				"currentLanguage",
-				"$$navigation"
+				"$$navigation",
+				"authIdentityUnActive"
 			]
 		} );
 
@@ -128,14 +166,17 @@ class Application extends React.Component {
 			//}
 		} catch (e) {}
 
+		// đổi ngôn ngữ hiện tại
 		if( restoredState && restoredState.currentLanguage ){
 
 			setCurrentLanguage( restoredState.currentLanguage );
 		}
 		return restoredState;
-	}
 
-	async autoLogin() {
+	};
+
+
+	autoLogin = async () => {
 
 		const authorization = await AsyncStorage.getItem('authorization');
 		Registry.set('authorization', authorization);
@@ -146,305 +187,8 @@ class Application extends React.Component {
 		}
 
 		return authorization;
-		//await login.login('66666','666666');
-	}
 
-	async purgeStoredState() {
-
-		return await purgeStoredState({
-			storage: AsyncStorage
-		}, [
-			"$$navigation"
-		]);
-	}
-
-	async checkForUpdate() {
-
-		// cài đặt ngay sau khi download dùng cho package bắt buộc
-		let resolvedInstallMode = codePush.InstallMode.IMMEDIATE;
-
-		// số giây tối thiểu ứng dụng cần phải chạy nền trước khi khởi động lại
-		let minimumBackgroundDuration = 0;
-
-		// thông báo cho code push app vẫn còn chạy ))
-		await codePush.notifyAppReady();
-
-		//console.log(`codePush.SyncStatus.CHECKING_FOR_UPDATE`);
-
-		// kiểm tra bản cập nhật
-		const remotePackage = await codePush.checkForUpdate(null, update => {
-
-			if( !update ) {
-
-				//console.log(`codePush.SyncStatus.UP_TO_DATE`);
-				return codePush.SyncStatus.UP_TO_DATE;
-			}
-
-			let buttons = [
-				{
-					text: translate("OK"),
-					onPress: () => {
-
-						if( update.isMandatory ) {
-
-							//BackHandler.exitApp();
-						}
-						//console.log(`codePush.SyncStatus.UPDATE_IGNORED`);
-					}
-				}
-			];
-
-			// nếu không phải bắt buộc
-			if( !update.isMandatory ) {
-
-				buttons.push({
-					text: translate("Bỏ qua"),
-					onPress: () => {
-
-						//console.log(`codePush.SyncStatus.UPDATE_IGNORED`);
-					}
-				});
-			}
-
-			// codePushAlert.alert(
-			// 	`${translate("Update available")} v${newVersion}`,
-			// 	update.description || translate("Vui lòng cập nhật trên chợ ứng dụng"),
-			// 	buttons
-			// );
-			codePushAlert.alert(
-				`${translate("Cập nhật mới")} v${newVersion}`,
-				translate("Vui lòng cập nhật phiên bản mới"),
-				buttons
-			);
-			return codePush.SyncStatus.UPDATE_IGNORED;
-		});
-		
-		// kiểm tra bản mới đã từng cài đặt bị lỗi
-		const updateShouldBeIgnored = remotePackage && remotePackage.failedInstall;
-
-		var currentPackage;
-
-		if( remotePackage && remotePackage.failedInstall ) {
-
-			if( !currentPackage ) {
-
-				currentPackage = await codePush.getCurrentPackage();
-				//console.log( "currentPackage", currentPackage );
-			}
-
-			if( currentPackage && currentPackage.isFirstRun ) {
-
-				alertUtil({
-					title: translate("Thông báo"),
-					message: `${translate("Cập nhật không thành công")}!`,
-					actions: [
-						{text: 'OK', onPress: () => {}}
-					]
-				});
-			}
-		}
-
-		//console.log('remotePackage', remotePackage);
-
-		// nếu không có bản mới hoặc bản mới bị lỗi
-		if ( !remotePackage || updateShouldBeIgnored ) {
-
-			if( !currentPackage ) {
-
-				currentPackage = await codePush.getCurrentPackage();
-				//console.log( "currentPackage", currentPackage );
-			}
-			
-
-			if (currentPackage && currentPackage.isPending) {
-
-				// đã cài đặt
-				//console.log(`codePush.SyncStatus.UPDATE_INSTALLED`);
-				return codePush.SyncStatus.UPDATE_INSTALLED;
-			} 
-
-			if( currentPackage && currentPackage.isFirstRun ) {
-
-				try{
-
-					await this.purgeStoredState();
-				} catch (e) {
-					
-				}
-				// alertUtil({
-				// 	title: translate("Thông báo"),
-				// 	message: `${translate("Cập nhật thành công")}!`,
-				// 	actions: [
-				// 		{text: 'OK', onPress: () => {}}
-				// 	]
-				// });
-			}
-			
-			// đã là phiên bản mới nhất
-			//console.log(`codePush.SyncStatus.UP_TO_DATE`);
-			return codePush.SyncStatus.UP_TO_DATE;
-		}
-
-		//console.log( "remotePackage", remotePackage );
-
-		// nếu có bản mới và có link download
-		if( remotePackage && remotePackage.download && remotePackage.downloadUrl ) {
-
-			// xử lý version name
-			// let newVersion = remotePackage.appVersion.split(".");
-			// newVersion[ newVersion.length - 1 ] = remotePackage.label.replace(/\D+/, "");
-			// newVersion = newVersion.join('.');
-			let newVersion = `${remotePackage.appVersion}#${remotePackage.label.replace(/\D+/, "")}`;
-
-			return await new Promise( ( res, rej ) => {
-
-				// nút nhấn
-				let buttons = [
-					{
-						text: translate("Cài đặt"),
-						onPress: async () => {
-
-							//console.log(`codePush.SyncStatus.DOWNLOADING_PACKAGE`);
-
-							// hiển thị downloader
-							this.setState({
-								downloader: true,
-								totalByte: remotePackage.packageSize || 0,
-								currentByte: 0
-							});
-
-							// download package
-							const localPackage = await remotePackage.download( ({
-								totalBytes: totalByte = 0,
-								receivedBytes: currentByte = 0
-							}) => {
-								
-								// set lại thanh download
-								this.setState({
-									totalByte,
-									currentByte
-								});
-							} );
-
-							// tắt download
-							this.setState({
-								downloader: false
-							});
-
-							// nếu có install
-							if( localPackage && localPackage.install ) {
-
-								//console.log( "localPackage", localPackage );
-
-								//console.log(`codePush.SyncStatus.INSTALLING_UPDATE`);
-								await localPackage.install(resolvedInstallMode, minimumBackgroundDuration, () => {
-
-									//console.log(`codePush.SyncStatus.UPDATE_INSTALLED`);
-								});
-
-								res( codePush.SyncStatus.UPDATE_INSTALLED );
-								return codePush.SyncStatus.UPDATE_INSTALLED;
-							}
-							
-							//console.log(`codePush.SyncStatus.UNKNOWN_ERROR`);
-							rej( codePush.SyncStatus.UNKNOWN_ERROR );
-							return codePush.SyncStatus.UNKNOWN_ERROR;
-						}
-					}
-				];
-
-				// nếu phiên bản không bắt buộc
-				if( !remotePackage.isMandatory ) {
-
-					// thêm nút bỏ qua
-					buttons.push({
-						text: translate("Bỏ qua"),
-						onPress: () => {
-
-							//console.log(`codePush.SyncStatus.UPDATE_IGNORED`);
-							res( codePush.SyncStatus.UPDATE_IGNORED );
-						}
-					});
-				}
-
-				// hiển thị bảng thông báo
-				//console.log(`codePush.SyncStatus.AWAITING_USER_ACTION`);
-				// codePushAlert.alert(
-				// 	`${translate("Update available")} v${newVersion}`,
-				// 	remotePackage.description || translate("Vui lòng cập nhật lên phiên bản mới"),
-				// 	buttons
-				// );
-
-				codePushAlert.alert(
-					`${translate("Cập nhật mới")} v${newVersion}`,
-					translate("Vui lòng cập nhật phiên bản mới"),
-					buttons
-				);
-			} );
-		}
-
-		// lỗi không xác định
-		//console.log(`codePush.SyncStatus.UNKNOWN_ERROR`);
-		return codePush.SyncStatus.UNKNOWN_ERROR;
-	}
-
-	componentDidMount() {
-
-		this.initEvent();
-
-		InteractionManager.runAfterInteractions(() => setTimeout( async () => {
-
-			// SplashScreen.close({
-			// 	animationType: SplashScreen.animationType.scale,
-			// 	duration: 850,
-			// 	delay: 500
-			// });
-
-			try {
-
-				await this.checkForUpdate();
-			} catch(e) {}
-
-			try {
-
-				await this.persistStore();
-			} catch(e) {}
-
-			try {
-
-				await this.autoLogin();
-			} catch (e) {}
-
-			this.setState({
-				loading: false
-			});
-
-		}, 70));
-	}
-
-	componentWillUnmount() {
-
-		this.removeEvent();
-	}
-
-	removeEvent() {
-
-		Registry.removeAllEventListener();
-
-		//langRemoveAllEventListener();
-		this._languageEvent && this._languageEvent();
-		
-		// if( this.backHandler && this.backHandler.remove ){
-
-		// 	this.backHandler.remove();
-		// }
-
-		// clear time out
-		// if( this._backTimeout ) {
-		// 	clearTimeout( this._backTimeout );
-		// 	this._backTimeout = undefined;
-		// }
-	}
+	};
 
 	initEvent() {
 
@@ -470,32 +214,68 @@ class Application extends React.Component {
 
 		// 					this._alertIsShow = false;
 		// 					BackHandler.exitApp();
+
+
+
+
+
+
+
+
 		// 				}},
 		// 				{text: 'Cancel', onPress: () => {
+
 
 		// 					if( this._backTimeout ) {
 		// 						clearTimeout( this._backTimeout );
 		// 						this._backTimeout = undefined;
 		// 						this._backCounter = 0;
+
+
+
+
 		// 					}
 
 		// 					this._alertIsShow = false;
 
 		// 				}, style: 'cancel'}
+
 		// 			]
 		// 		});
 
 		// 		return true;
+
+
 		// 	}
 			
 		// 	// clear time out
 		// 	if( this._backTimeout ) {
 		// 		clearTimeout( this._backTimeout );
 		// 		this._backTimeout = undefined;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		// 	}
+
 
 		// 	// set time out đề nhận biết double click back
 		// 	this._backTimeout = setTimeout( () => {
+
+
+
 
 		// 		if( this._backTimeout ) {
 		// 			clearTimeout( this._backTimeout );
@@ -511,6 +291,10 @@ class Application extends React.Component {
 		// sự kiện chọn sàn
 		Registry.addEventListener("change", "exchange", async exchange => {
 
+
+
+
+
 			try {
 
 				if(exchange){
@@ -521,7 +305,30 @@ class Application extends React.Component {
 		});
 
 		// sự kiện đổi token
-		Registry.addEventListener("change", "authorization", authorization => {
+		Registry.addEventListener("change", "authorization", async authorization => {
+
+			if(this.authorization !== authorization) {
+
+				// xoá số thông báo chưa đọc
+				Registry.delete('unreadNotification');
+
+				try {
+
+					if( Registry.get('notificationPlayerID') ) {
+
+						// đăng ký nhận notification		
+						await notificationSubscriber.subscrice();
+
+
+						if( authorization ) {
+
+							// lấy số thông báo chưa đọc
+							await notificationTracker.getUnread();
+						}
+					}
+				} catch(e) {}
+			} 
+			this.authorization = authorization;
 
 			this.store.dispatch({
 				type: "setAuthorization",
@@ -534,6 +341,24 @@ class Application extends React.Component {
 
 			this.store.dispatch({
 				type: "deleteAuthorization"
+			});
+		});
+
+		// set lại số thông báo chưa đọc
+		Registry.addEventListener("change", "unreadNotification", unreadNotification => {
+
+			this.store.dispatch({
+				type: "setUnreadNotification",
+				payload: unreadNotification
+			});
+		});
+
+		// set lại số thông báo chưa đọc
+		Registry.addEventListener("delete", "unreadNotification", () => {
+
+			this.store.dispatch({
+				type: "unsetUnreadNotification",
+				payload: 0
 			});
 		});
 
@@ -562,29 +387,207 @@ class Application extends React.Component {
 				payload: locale
 			});
 		} );
+
+		
+
+
+	
+	
+	
+		// xoá thông báo
+		//OneSignal.clearOneSignalNotifications();
+
+		// huỷ thông báo
+		//OneSignal.cancelNotification(id);
+
+		// đăng ký notification
+		//OneSignal.addEventListener('received', this._onNotificationReceived);
+        //OneSignal.addEventListener('opened', this._onNotificationOpened);
+        // OneSignal.addEventListener('registered', this.onNotificationRegistered);
+        // OneSignal.addEventListener('ids', this._onNotificationIds);
+
+		// Linking.addEventListener('url', ({ url }: { url: string }) => {
+		// 	this._handleOpenURL(url);
+		// });
+
 	}
+
+	removeEvent() {
+
+		Registry.removeAllEventListener();
+
+		//langRemoveAllEventListener();
+		this._languageEvent && this._languageEvent();
+		
+		// if( this.backHandler && this.backHandler.remove ){
+
+		// 	this.backHandler.remove();
+
+
+		// }
+
+		// clear time out
+		// if( this._backTimeout ) {
+		// 	clearTimeout( this._backTimeout );
+		// 	this._backTimeout = undefined;
+
+
+		// }
+
+		//OneSignal.removeEventListener('received', this._onNotificationReceived);
+        //OneSignal.removeEventListener('opened', this._onNotificationOpened);
+        // OneSignal.removeEventListener('registered', this.onRegistered);
+        // OneSignal.removeEventListener('ids', this.onIds);
+
+        //Linking.removeEventListener('url', this._handleOpenURL);
+
+
+	}
+	
+	_handleOpenURL = ( url = "" ) => {
+
+		// set ngôn ngữ
+		let matchLang = url.match(/\/(en|vi)\//);
+		if( matchLang && matchLang.length == 2 && matchLang[1] ) {
+
+			setCurrentLanguage( matchLang[1] );
+		}
+		const action = getNavigateActionFromUrl( url );
+		if( action ) {
+
+			return this.store.dispatch(NavigationActions.navigate( action ));
+		}
+
+		Linking.canOpenURL( url ).then( supported => (supported && Linking.openURL(url)) )
+								.catch(() => {})
+		;
+	};
+
+	_onNotificationReceived = async ( notification ) => {
+
+		if( 
+			notification && 
+			notification.payload && 
+			notification.payload.notificationID
+		 ) {
+
+		 	try {
+			 	await notificationTracker.received( notification.payload.notificationID );
+			 	Registry.set('unreadNotification', (Registry.get('unreadNotification') * 1 || 0) + 1);
+
+			 	// lấy thông báo
+		 		const res = await notificationTracker.get({
+		 			notification_id: notification.payload.notificationID
+		 		});
+
+		 		// dispatch qua list thông báo
+		 		if( res.status == 200 && res.data && res.data.data ) {
+
+			 		this.store.dispatch({
+						type: "/notification/list#newOffers",
+						payload: {
+							data: res.data.data
+						}
+					});
+		 		}
+		 	} catch(e){}
+
+
+		}
+
+
+	}
+
+	_onNotificationOpened = async ( openResult ) => {
+
+		if( 
+			openResult && 
+			openResult.notification &&
+			openResult.notification.payload && 
+			openResult.notification.payload.notificationID
+		) {
+
+			try {
+
+
+			 	const unreadNotification = (Registry.get('unreadNotification') * 1 || 0) - 1;
+			 	Registry.set('unreadNotification', unreadNotification >= 0 ? unreadNotification : 0);
+			 	await notificationTracker.opened( openResult.notification.payload.notificationID );
+			} catch(e) {}
+
+			if( openResult.notification.payload.additionalData && openResult.notification.payload.additionalData.url ) {
+		 		this._handleOpenURL( openResult.notification.payload.additionalData.url );
+		 	}
+
+		}
+
+
+	}
+
+	// onNotificationRegistered = ( notifData ) => {
+
+	// 	console.log( 'onNotificationRegistered', notifData );
+	// };
+
+	_onNotificationIds = ( device ) => {
+
+
+		Registry.set('notificationPlayerID', device.userId);
+
+
+		// đăng ký nhận notification		
+		//notificationSubscriber.subscrice();
+	};
 }
+
+// chuông (Android only)
+//OneSignal.enableSound(true);
+
+// rung (Android only)
+//OneSignal.enableVibrate(true);
+
+// khi app đang mở (Android only): 0: none, 1: inapp alert, 2: notification
+OneSignal.inFocusDisplaying(0);
+
+// cho phép nhận
+OneSignal.setSubscription(true);
+
+
+
+
+// sự đăng ký lên onesignal
+const registeredHandle = e => WaitingEvent.dispatch('oneSignal-registered', e);
+OneSignal.removeEventListener('registered', registeredHandle);
+OneSignal.addEventListener('registered', registeredHandle);
+
+// sự lấy id
+const idsHandle = e => WaitingEvent.dispatch('oneSignal-ids', e);
+OneSignal.removeEventListener('ids', idsHandle);
+
+OneSignal.addEventListener('ids', idsHandle);
+
+// sự lấy nhận thông báo
+const receivedHandle = e => WaitingEvent.dispatch('oneSignal-received', e);
+OneSignal.removeEventListener('received', receivedHandle);
+OneSignal.addEventListener('received', receivedHandle);
+
+// sự lấy open
+const openedHandle = e => WaitingEvent.dispatch('oneSignal-opened', e);
+OneSignal.removeEventListener('opened', openedHandle);
+OneSignal.addEventListener('opened', openedHandle);
+
+
+// sự kiện linking
+const linkingHandle = e => WaitingEvent.dispatch('linking-url', e && e.url || "");
+Linking.removeEventListener('url', linkingHandle);
+Linking.addEventListener('url', linkingHandle);
 
 const _styles = {
 	container: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center"
-	},
-	containerProvider: {
-		flex: 1
 	}
 };
-
-// export default codePush({ 
-//   updateDialog: {
-// 		updateTitle: translate("Có phiên bản mới"),
-// 		optionalUpdateMessage: translate("Bạn cần cài đặt phiên bản mới"),
-// 		optionalIgnoreButtonLabel: translate("Bỏ qua"),
-// 		optionalInstallButtonLabel: translate("Đồng ý"),
-//   }, 
-//   installMode: codePush.InstallMode.IMMEDIATE,
-//   checkFrequency: codePush.CheckFrequency.ON_APP_START 
-// })(Application);
 
 export default Application;

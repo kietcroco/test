@@ -8,7 +8,8 @@
 					"Exchange": "",
 					"type": ""
 				},
-				"iconName": "home"
+				"iconName": "home",
+				"regex": "/duong-song/"
 			},
 			{
 				"label": "S.lan chạy rỗng cần hàng",
@@ -16,7 +17,8 @@
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": ""
 				},
-				"iconName": "barge-o"
+				"iconName": "barge-o",
+				"regex": "/duong-song\\/sa-lan-chay-rong/"
 			},
 			{
 				"label": "Hàng - offer",
@@ -24,7 +26,8 @@
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": ""
 				},
-				"iconName": "sacks"
+				"iconName": "sacks",
+				"regex": "/duong-song\\/hang-offer/"
 			},
 			{
 				"label": "Sà lan - open",
@@ -32,7 +35,8 @@
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": ""
 				},
-				"iconName": "barge"
+				"iconName": "barge",
+				"regex": "/duong-song\\/cho-thue-sa-lan/"
 			},
 			{
 				"label": "Mua bán - S&P",
@@ -40,7 +44,8 @@
 					"Exchange": "RIVERS_PURCHASE",
 					"type": ""
 				},
-				"iconName": "communicator"
+				"iconName": "communicator",
+				"regex": "/duong-song\\/mua-ban-sa-lan/"
 			},
 			{
 				"label": "Cần thuê Sà lan",
@@ -48,7 +53,8 @@
 					"Exchange": "RIVERS_BIDDING",
 					"type": ""
 				},
-				"iconName": "community"
+				"iconName": "community",
+				"regex": "/duong-song\\/thue-sa-lan-tau-song/"
 			}
 			,
 			{
@@ -57,7 +63,8 @@
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": ""
 				},
-				"iconName": "building"
+				"iconName": "building",
+				"regex": "/duong-song\\/doanh-nghiep/"
 			}
 		]
 	},
@@ -69,49 +76,56 @@
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": ""
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong/"
 			},
 			{
 				"label": "Hàng khô có nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "Hàng khô có nắp hầm"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/hang-kho-co-nap-ham/"
 			},
 			{
 				"label": "Hàng khô không nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "Hàng khô không nắp hầm"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/hang-kho-khong-nap-ham/"
 			},
 			{
 				"label": "S.lan Container",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "S.lan Container"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/slan-container/"
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "Hàng lỏng"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/hang-long/"
 			},
 			{
 				"label": "Ponton",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "Ponton"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/ponton/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_HOLLOW",
 					"type": "Khác"
-				}
+				},
+				"regex": "/duong-song\\/sa-lan-chay-rong\\/khac/"
 			}
 		]
 	},
@@ -123,63 +137,72 @@
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer/"
 			},
 			{
 				"label": "Sắt thép",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Sắt thép",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/sat-thep/"
 			},
 			{
 				"label": "Hàng bao",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Hàng bao",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/hang-bao/"
 			},
 			{
 				"label": "Nông sản",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Nông sản",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/nong-san/"
 			},
 			{
 				"label": "Hàng xá",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Hàng xá",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/hang-xa/"
 			},
 			{
 				"label": "Cát đá",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Cát đá",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/cat-da/"
 			},
 			{
 				"label": "Xăng dầu",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Xăng dầu",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/xang-dau/"
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Hàng lỏng",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/hang-long/"
 			},
 			{
 				"label": "Hàng khác",
 				"params": {
 					"Exchange": "RIVERS_PRODUCT_OFFER",
 					"type": "Hàng khác",
-				}
+				},
+				"regex": "/duong-song\\/hang-offer\\/hang-khac/"
 			}
 		]
 	},
@@ -191,49 +214,56 @@
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan/"
 			},
 			{
 				"label": "Hàng khô có nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Hàng khô có nắp hầm",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/hang-kho-co-nap-ham/"
 			},
 			{
 				"label": "Hàng khô không nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Hàng khô không nắp hầm",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/hang-kho-khong-nap-ham/"
 			},
 			{
 				"label": "S.lan Container",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "S.lan Container",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/slan-container/"
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Hàng lỏng",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/hang-long/"
 			},
 			{
 				"label": "Ponton",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Ponton",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/ponton/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "RIVERS_VEHICLE_OPEN",
 					"type": "Khác",
-				}
+				},
+				"regex": "/duong-song\\/cho-thue-sa-lan\\/khac/"
 			}
 		]
 	},
@@ -245,49 +275,56 @@
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan/"
 			},
 			{
 				"label": "Hàng khô có nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "Hàng khô có nắp hầm",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/hang-kho-co-nap-ham/"
 			},
 			{
 				"label": "Hàng khô không nắp hầm",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "Hàng khô không nắp hầm",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/hang-kho-khong-nap-ham/"
 			},
 			{
 				"label": "S.lan Container",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "S.lan Container",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/slan-container/"
 			},
 			{
 				"label": "Hàng lỏng",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "Hàng lỏng",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/hang-long/"
 			},
 			{
 				"label": "Ponton",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "Ponton",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/ponton/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "RIVERS_PURCHASE",
 					"type": "Khác",
-				}
+				},
+				"regex": "/duong-song\\/mua-ban-sa-lan\\/khac/"
 			}
 		]
 	},
@@ -299,7 +336,8 @@
 				"params": {
 					"Exchange": "RIVERS_BIDDING",
 					"type": "",
-				}
+				},
+				"regex": "/duong-song\\/thue-sa-lan-tau-song/"
 			}
 		]
 	},
@@ -311,35 +349,40 @@
 				"params": {
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": "",
-				}
+				},
+				"regex": "/duong-song\\/doanh-nghiep/"
 			},
 			{
 				"label": "Sản xuất - thương mại",
 				"params": {
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": "SERVICE",
-				}
+				},
+				"regex": "/duong-song\\/doanh-nghiep\\/san-xuat-thuong-mai/"
 			},
 			{
 				"label": "Vận tải đường sông",
 				"params": {
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": "BARGES",
-				}
+				},
+				"regex": "/duong-song\\/doanh-nghiep\\/van-tai-duong-song/"
 			},
 			{
 				"label": "Logistics",
 				"params": {
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": "LOGISTICS",
-				}
+				},
+				"regex": "/duong-song\\/doanh-nghiep\\/logistics/"
 			},
 			{
 				"label": "Khác",
 				"params": {
 					"Exchange": "RIVERS_ENTERPRISE",
 					"type": "Khác",
-				}
+				},
+				"regex": "/duong-song\\/doanh-nghiep\\/nganh-nghe-khac/"
 			}
 		]
 	}

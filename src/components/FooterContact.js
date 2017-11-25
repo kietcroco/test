@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import Chat from '~/components/Contact/Chat';
 import Email from '~/components/Contact/Email';
 import Phone from '~/components/Contact/Phone';
 import Sms from '~/components/Contact/Sms';
-import { sizes, colors } from '~/configs/styles';
+import { sizes, colors, fontSizes, scale } from '~/configs/styles';
 import { translate } from '~/utilities/language';
 import toAlias from '~/utilities/toAlias';
 
@@ -98,35 +98,38 @@ class FooterContact extends React.Component {
 
 		return (
 			<View style={ _styles.container }>
-				{
-					!!phoneNumber && (contactBy === 0 || contactBy === 1) &&
-						<Phone label={ labelPhone } phoneNumber={ phoneNumber }/>
-				}
-				{
-					!!phoneNumber && (contactBy === 0 || contactBy === 2) &&
-						<Sms 
-							label 		= { labelSMS } 
-							phoneNumber = { phoneNumber }
-							body 		= { toAlias( content, false ) }
-						/>
-				}
-				{
-					!!email &&
-						<Email 
-							label 		= { labelEmail } 
-							to 			= {[ email ]}
-							subject 	= { content }
-							body 		= { `${ description } - ${ link }` }
-						/>
-				}
-				{
-					!!skype &&
-						<Chat 
-							label 		= { labelSkype } 
-							users 		= {[ skype ]}
-							topic 		= { content }
-						/>
-				}
+				<Text style={_styles.contactLabel}>{ `${isSeas(exchange) ? translate("Liên hệ") : "Liên hệ"}:` }</Text>
+				<View style={ _styles.contactContainer }>
+					{
+						!!phoneNumber && (contactBy === 0 || contactBy === 1) &&
+							<Phone label={ labelPhone } phoneNumber={ phoneNumber }/>
+					}
+					{
+						!!phoneNumber && (contactBy === 0 || contactBy === 2) &&
+							<Sms 
+								label 		= { labelSMS } 
+								phoneNumber = { phoneNumber }
+								body 		= { toAlias( content, false ) }
+							/>
+					}
+					{
+						!!email &&
+							<Email 
+								label 		= { labelEmail } 
+								to 			= {[ email ]}
+								subject 	= { content }
+								body 		= { `${ description } - ${ link }` }
+							/>
+					}
+					{
+						!!skype &&
+							<Chat 
+								label 		= { labelSkype } 
+								users 		= {[ skype ]}
+								topic 		= { content }
+							/>
+					}
+				</View>
 			</View>
 		);
 	}
@@ -222,14 +225,24 @@ const getExchangeName = ( exchange = "RIVERS_PRODUCT_OFFER" ) => {
 const _styles = {
 	container: {
 		flexDirection: "row",
+		height: sizes.footerHeight,
+		borderTopWidth: sizes.borderWidth,
+		borderTopColor: colors.primaryBorderColor,
+		backgroundColor: colors.secondBackgroundColor,
+		alignItems: "center",
+		paddingLeft: 5 * scale
+	},
+	contactContainer: {
+		flex: 1,
+		flexDirection: "row",
 		justifyContent: "space-around",
 		alignItems: "center",
 		paddingLeft: sizes.margin,
 		paddingRight: sizes.margin,
-		height: sizes.footerHeight,
-		borderTopWidth: sizes.borderWidth,
-		borderTopColor: colors.primaryBorderColor,
-		backgroundColor: colors.secondBackgroundColor
+	},
+	contactLabel: {
+		fontSize: fontSizes.normal,
+		fontWeight: "bold"
 	}
 };
 
